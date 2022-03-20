@@ -158,13 +158,12 @@ contract coursepaper {
 
     //Get story rating
     function getStoryRating(string memory shopName) public view returns(uint) {
-        //require(shopName == shopList), "error: no shop");
         uint totalAverageValue = 0;
         uint countArrayRating = 0;
         uint complaintBooklength = complaintBooks.length;
         for(uint i = 0; i < shopList.length; i++) {
             string memory tempShopName = shopList[i];
-            if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shopName))) {
+            if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shopName))) {                    //
                 for (i = 0; i <= complaintBooklength; i++) {
                     if(keccak256(abi.encodePacked(shopName)) == keccak256(abi.encodePacked(complaintBooks[i].shop))) {
                         countArrayRating += complaintBooks[i].rating;
