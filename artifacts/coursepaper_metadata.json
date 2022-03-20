@@ -151,6 +151,25 @@
 				"inputs": [
 					{
 						"internalType": "string",
+						"name": "shopName",
+						"type": "string"
+					}
+				],
+				"name": "getStoryRating",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
 						"name": "shop",
 						"type": "string"
 					},
@@ -426,11 +445,11 @@
 	},
 	"sources": {
 		"Documents/GitHub/Store-system-with-feedback/main.sol": {
-			"keccak256": "0x8fcf98adb1b42a876cf4aba2dbfcb78c3cf3a30e033d74147c4e95abaadf0dc9",
+			"keccak256": "0x59a86745a75a4ed76de135665276882e0c342456c0a1562abfb8443ee9053478",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://ff7208b38eb36cf731aeb99a6483774730988d6591867894213ffa1188e27727",
-				"dweb:/ipfs/QmVZoNqjyEvFaraiCMxhGyVRmwMkJJ389WwfqvQJGpMcgy"
+				"bzz-raw://751a2193f091b4b3a17dd4d90f281d69f3549f516de65088920a3a69b08185f6",
+				"dweb:/ipfs/QmV4HrpmBD2YthcorLk3FvJbtHKYWgrNNHeRDcQRDsA2e9"
 			]
 		}
 	},
