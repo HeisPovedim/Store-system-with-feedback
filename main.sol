@@ -15,7 +15,6 @@ contract coursepaper {
         shops[0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db] = structShop("Pet Store", "3", "Ekaterinburg", 1000, 0);
         shopList.push(shops[0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db].name);
 
-
         //User
         structUserLogins["Peta"] = 0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB;
         structUsers[0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB] = structUser("Peta" ,1, 1000);
@@ -49,7 +48,7 @@ contract coursepaper {
         string[] comments;
     }
     //mapping(uint => complaintBook) public complaintBooks;
-    complaintBook[] public complaintBooks;
+    complaintBook[] complaintBooks;
 
     //Struct user
     struct structUser {
@@ -106,12 +105,10 @@ contract coursepaper {
     }
     
     //Function leave a feedback
-    uint countLeaveFeedback = 0;
     function leaveFeedback (string memory shop, string memory feedback, uint256 rating) public {
         require(rating <= 10,"error: rating can be from 1 to 10");
         string[] memory zerroArray;
-        complaintBooks[countLeaveFeedback] = complaintBook(shop, structUsers[msg.sender].userName, feedback, rating, zerroArray);
-        countLeaveFeedback++;
+        complaintBooks.push(complaintBook(shop, "asd", feedback, rating, zerroArray));
     }
 
     //Function acceptance of purchase

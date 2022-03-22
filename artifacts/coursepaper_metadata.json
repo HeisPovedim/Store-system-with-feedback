@@ -88,40 +88,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "complaintBooks",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "shop",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "userName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "feedback",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "rating",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "getProductList",
 				"outputs": [
@@ -463,11 +429,11 @@
 	},
 	"sources": {
 		"Documents/GitHub/Store-system-with-feedback/main.sol": {
-			"keccak256": "0xa1f2101618520e218632abd440983ff26570b4e34740a5c0ad2adf84de8257c5",
+			"keccak256": "0x03bae1c59b528439216d1e7cd2c85267d76a7f99a333288e11b4fd8585900982",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://38cc7d9bb0454612274d999ff18b5aaf6e027953dc1336488f1d399b0e8a7cfd",
-				"dweb:/ipfs/QmdSEJFufSxttMzzR4Hq5puy1RKsgjSNjBSvZzjP6WsseR"
+				"bzz-raw://a14af4fbfe67ca8d3541a7b71a47d4975717afad0e72c5c4550fc3c92d3416ae",
+				"dweb:/ipfs/Qmdn87AR8jBf2gV7Kn2sT1ndc3eqnfFUXcc2R2AJ6afzpa"
 			]
 		}
 	},
