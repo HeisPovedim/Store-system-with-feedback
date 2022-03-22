@@ -170,6 +170,24 @@
 				"inputs": [
 					{
 						"internalType": "string",
+						"name": "userName",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "comment",
+						"type": "string[]"
+					}
+				],
+				"name": "leaveComment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
 						"name": "shop",
 						"type": "string"
 					},
@@ -445,11 +463,11 @@
 	},
 	"sources": {
 		"Documents/GitHub/Store-system-with-feedback/main.sol": {
-			"keccak256": "0xd57fa42573820f02b3a62d0b075df7886b4a1d354f413376a94ecd40daa766d0",
+			"keccak256": "0xa1f2101618520e218632abd440983ff26570b4e34740a5c0ad2adf84de8257c5",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://6c41681c25b9ac40de2e47cbc624d9618002c01d1e1f2445f0922b2c2c8e69b2",
-				"dweb:/ipfs/QmVbX3eccK9eRz6Q54pWVUhU9GHWMhnihZXes9JeJ79Lm3"
+				"bzz-raw://38cc7d9bb0454612274d999ff18b5aaf6e027953dc1336488f1d399b0e8a7cfd",
+				"dweb:/ipfs/QmdSEJFufSxttMzzR4Hq5puy1RKsgjSNjBSvZzjP6WsseR"
 			]
 		}
 	},

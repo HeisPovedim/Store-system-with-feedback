@@ -47,7 +47,6 @@ contract coursepaper {
         string feedback;
         uint rating;
         string[] comments;
-
     }
     //mapping(uint => complaintBook) public complaintBooks;
     complaintBook[] public complaintBooks;
@@ -160,11 +159,10 @@ contract coursepaper {
     function getStoryRating(string memory shopName) public view returns(uint) {
         uint totalAverageValue = 0;
         uint countArrayRating = 0;
-        uint complaintBooklength = complaintBooks.length;
         for(uint i = 0; i < shopList.length; i++) {
             string memory tempShopName = shopList[i];
-            if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shopName))) {                    //
-                for (i = 0; i <= complaintBooklength; i++) {
+            if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shopName))) {                    
+                for (i = 0; i <= complaintBooks.length; i++) {
                     if(keccak256(abi.encodePacked(shopName)) == keccak256(abi.encodePacked(complaintBooks[i].shop))) {
                         countArrayRating += complaintBooks[i].rating;
                         totalAverageValue;
@@ -175,6 +173,17 @@ contract coursepaper {
         countArrayRating += countArrayRating / totalAverageValue;
         return countArrayRating;
     }
+
+    //Function leave a comment
+    function leaveComment (string memory userName, string[] memory comment) public {
+        for(uint i = 0; i < complaintBooks.length; i++) {
+            string memory tempUserName = complaintBooks[i].userName;
+            if(keccak256(abi.encodePacked(tempUserName)) == keccak256(abi.encodePacked(userName))) {                    
+                complaintBooks[i].comments = comment;
+            }
+        }
+    }
+
 //END SHOP FUNCTION
 
 //BEGIN USER FUNCTION
@@ -194,5 +203,4 @@ contract coursepaper {
         structMarriageRegistrations.push(structMarriageRegistration(msg.sender, titleProduct, true));
     }
 //END USER FUNCTION
-    
 }
