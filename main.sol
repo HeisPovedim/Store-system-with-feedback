@@ -107,8 +107,13 @@ contract coursepaper {
     //Function leave a feedback
     function leaveFeedback (string memory shop, string memory feedback, uint256 rating) public {
         require(rating <= 10,"error: rating can be from 1 to 10");
-        string[] memory zerroArray;
-        complaintBooks.push(complaintBook(shop, "asd", feedback, rating, zerroArray));
+        for(uint i = 0; i < shopList.length; i++) {
+            string memory tempShopName = shopList[i];
+            if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shop))) {                    
+                string[] memory zerroArray;
+                complaintBooks.push(complaintBook(shop, structUsers[msg.sender].userName, feedback, rating, zerroArray));
+            }
+        }
     }
 
     //Function acceptance of purchase
