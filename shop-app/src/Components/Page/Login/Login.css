@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+button {
+  border: 0;
+}
+.border-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 561px;
+  height: 717.28px;
+  background: #80A2A9;
+  backdrop-filter: blur(4px);
+  border-radius: 5px;
+}
+.border-login .border-login-line-top {
+  margin-top: 25px;
+  margin-bottom: 17px;
+  width: 521px;
+  height: 0px;
+  border: 3px solid #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.border-login-text{
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 72px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.border-login-inputLine-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 46px;
+  width: 471px;
+  height: 82.17px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.border-login-inputLine-login p {
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 55px;
+  color: #C9C9C9;
+}
+.border-login-inputLine-password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 34px;
+  margin-bottom: 87px;
+  width: 471px;
+  height: 82.17px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.border-login-inputLine-password p {
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 55px;
+  color: #C9C9C9;
+}
+.border-login-button-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 34px;
+  width: 301px;
+  height: 83.39px;
+  background: #F0D3C1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.border-login-button-login p {
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 41px;
+  color: #000000;
+}
+.login-border-button-signIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 335px;
+  height: 79.76px;
+  background: #C16471;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.login-border-button-signIn p {
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+  color: #000000;
+}
+.border-login-button-login p {
+
+}

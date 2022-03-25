@@ -8,7 +8,7 @@ const Routers = () => {
       <Route path="/" component={Login} exact />
       <Route path="/Login" component={Login} exact />
     </Switch>
-  )
-}
+  );
+};
 
 export default Routers;
