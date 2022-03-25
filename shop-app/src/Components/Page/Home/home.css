@@ -1,1 +1,59 @@
 
+* {
+  box-sizing: border-box;
+  font-size: 12px;
+  font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
+}
+:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+button,
+input {
+  border: 0;
+}
+input::placeholder {
+  font-weight: 100;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  margin-left: 0px;
+  width: 100%;
+  height: 90px;
+  right: 0;
+  left: 0;
+  top: 0;
+  background: #80A2A9;
+  border-radius: 0px 0px 20px 20px;
+}
+.header__text-header {
+  margin-left: 174px;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 55px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.header__personal-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 50px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.header__personal-info_name {
+  font-size: 24px;
+}
+.header__personal-info_link{
+  font-size: 20px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
