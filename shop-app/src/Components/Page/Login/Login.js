@@ -1,9 +1,10 @@
 import React from "react";
+import './login.css';
 
 const Login = () => {
-	return(
-		<div>Hello world</div>
-	)
+  return(
+    <div>Hellow world</div>
+  )
 }
 
 export default Login;
