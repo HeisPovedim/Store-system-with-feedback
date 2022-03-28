@@ -140,8 +140,8 @@ contract coursepaper {
     //Function marriage registration
     function MarriageRegistration(uint idMarriageRegistration, bool confirmation) public {
         if(confirmation == true) {
-            structStatusReturns[idMarriageRegistration].status = false;
             structUsers[structMarriageRegistrations[idMarriageRegistration].userLogin].ballance = structUsers[structMarriageRegistrations[idMarriageRegistration].userLogin].ballance + structProducts[structMarriageRegistrations[idMarriageRegistration].titleProduct].price;
+            structStatusReturns[idMarriageRegistration].status = false;
         } else {
             structStatusReturns[idMarriageRegistration].status = false;
         }
