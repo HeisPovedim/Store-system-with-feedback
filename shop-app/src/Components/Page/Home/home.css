@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   font-size: 12px;
@@ -23,30 +22,84 @@ input::placeholder {
   justify-content: space-between;
 }
 .container__menu {
-  margin-top: 268px;
-  margin-bottom: 556px;
+  display: flex;
+  margin-top: 200px;
+  position: relative;
 }
 .menu {
-  /* position: absolute; */
   display: flex;
   flex-direction: row;
   align-content: center;
   align-items: center;
   border-color: red;
 }
+.menu__one-border {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  margin-right: 5px;
+  width: 320px;
+  height: 475px;
+  background: #A1B9BE;
+  border-radius: 15px 5px;
+}
+.menu__one-border_line-top {
+  margin-top: 15px;
+  width: 292px;
+  height: 0px;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(180deg);
+}
+.menu__one-border_img {
+  margin-top: 19px;
+  width: 236px;
+  height: 236px;
+  background: url(image.png);
+}
+.menu__one-border_line-buttom {
+  width: 292px;
+  height: 0px;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(180deg);
+}
+.menu__two-border {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 320px;
+  height: 475px;
+  background: #A1B9BE;
+  border-radius: 15px 5px;
+}
+.menu__three-border {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 320px;
+  height: 475px;
+  background: #A1B9BE;
+  border-radius: 15px 5px;
+}
+.menu__four-border {
+  margin-left: 5px;
+  width: 320px;
+  height: 475px;
+  background: #A1B9BE;
+  border-radius: 15px 5px;
+}
 .container__but-info {
   display: flex;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 99px;
-  left: -3px;
-  top: 925px;
   background: #2B2F32;
   border-radius: 0px;
   }
-.header {
+.container__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,7 +113,7 @@ input::placeholder {
   background: #80A2A9;
   border-radius: 0px 0px 20px 20px;
 }
-.header__text-header {
+.container__header_text-header {
   margin-left: 174px;
   font-weight: 400;
   font-size: 48px;
@@ -68,7 +121,7 @@ input::placeholder {
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.header__personal-info {
+.container__header_personal-info {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,10 +133,10 @@ input::placeholder {
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.header__personal-info_name {
+.container__header_personal-info_name {
   font-size: 24px;
 }
-.header__personal-info_link{
+.container__header_personal-info_link {
   font-size: 20px;
   text-decoration: none;
   color: #FFFFFF;
