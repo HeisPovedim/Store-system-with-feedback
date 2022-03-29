@@ -7,7 +7,6 @@ const Home = () => {
     <>
     <div className="container">
       <header className="container__header">
-        <div></div>
         <div className="container__header_text-header">Ассортимент</div>
         <div className="container__header_personal-info">
           <div className="container__header_personal-info_name">name</div>
