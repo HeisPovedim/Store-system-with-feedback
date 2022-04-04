@@ -1,7 +1,7 @@
 import React from "react";
 import "./seller.css"
 
-const seller = () => {
+const Seller = () => {
   return (
     <>
       <header className="header-page-seller">
@@ -31,4 +31,4 @@ const seller = () => {
   );
 };
 
-export default seller;
+export default Seller;
