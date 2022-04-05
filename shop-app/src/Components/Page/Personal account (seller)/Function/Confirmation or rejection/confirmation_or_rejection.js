@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./confirmation_or_rejection.css"
 
 const Confirmation = () => {
   return(
     <>
       <header className="header-page-confirmation">
-        <div className="header-page-confirmation_text-header">Личный кабинет</div>
-        <div className="header-page-confirmation_text-role">Роль: продавец</div>
+        <div className="header-page-confirmation_text-header">Подтверждение или отклонение запроса покупателя на покупку</div>
+        <div className="header-page-confirmation_text-role">Роль: магазин</div>
       </header>
       <div className="container-page-confirmation">
         <div className="container-page-confirmation__border-menu">
@@ -19,7 +20,11 @@ const Confirmation = () => {
             <button className="container-page-confirmation__border-menu_buttons_reject">
               <p>Отклонить</p>
             </button>
+            
           </div>
+          <Link to="seller"><button className="container-page-confirmation__border-menu_exit-button">
+            <p>Выйти</p>
+          </button></Link>
           <div className="container-page-confirmation__border-menu_bottom-line"></div>
         </div>
       </div>

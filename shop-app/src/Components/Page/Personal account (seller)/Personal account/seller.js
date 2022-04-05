@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./seller.css"
 
 const Seller = () => {
@@ -6,7 +7,7 @@ const Seller = () => {
     <>
       <header className="header-page-seller">
         <div className="header-page-seller_text-header">Личный кабинет</div>
-        <div className="header-page-seller_text-role">Роль: продавец</div>
+        <div className="header-page-seller_text-role">Роль: магазин</div>
       </header>
       <div className="container-page-seller">
         <div className="container-page-seller__personal-information">
@@ -18,13 +19,11 @@ const Seller = () => {
         </div>
         <div className="container-page-seller__function-menu">
           <div className="container-page-seller__function-menu_text-top">Функции продовца</div>
-          <button className="container-page-seller__function-menu_button-one">Запрос на повышение</button>
-          <button className="container-page-seller__function-menu_button-two">Переключится к роли покупателя</button>
-          <button className="container-page-seller__function-menu_button-three">Запрос на понижение до роли покупателя</button>
-          <button className="container-page-seller__function-menu_button-four">Подтверждение или отклонение запроса покупателя</button>
-          <button className="container-page-seller__function-menu_button-five">Возврат товара</button>
-          <button className="container-page-seller__function-menu_button-six">Оформление брака</button>
-          <button className="container-page-seller__function-menu_button-seven">Получить список запросов от покупателей</button>
+          <button className="container-page-seller__function-menu_button-one">Создание товара</button>  
+          <Link to="/ConfirmationSeller"><button className="container-page-seller__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button></Link>
+          <Link to="/Return"><button className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button></Link>
+          <Link to="/Marriage"><button className="container-page-seller__function-menu_button-four"> Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>
+          <button className="container-page-seller__function-menu_button-five">Получить список запросов от покупателей</button>
         </div>
       </div>
     </>

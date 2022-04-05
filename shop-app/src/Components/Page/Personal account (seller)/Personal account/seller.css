@@ -82,9 +82,7 @@
   margin-top: 20px;
   margin-right: 25px;
   width: 540px;
-  height: 741px;
-  left: 875px;
-  top: 107px;
+  height: 630px;
   background: #C4C4C4;
   border-radius: 20px 5px;
 }
@@ -114,13 +112,11 @@
   cursor: pointer;
   margin: 0px 107px 20px 107px;
   width: 326px;
-  height: 75px;
-  left: 982px;
-  top: 183px;
+  height: 85px;
   background: #F0D3C1;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 28px;
   color: #000000;
 }
@@ -128,13 +124,11 @@
   cursor: pointer;
   margin: 0px 107px 20px 107px;
   width: 326px;
-  height: 75px;
-  left: 982px;
-  top: 183px;
+  height: 89px;
   background: #F0D3C1;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 28px;
   color: #000000;
 }
@@ -142,13 +136,11 @@
   cursor: pointer;
   margin: 0px 107px 20px 107px;
   width: 326px;
-  height: 75px;
-  left: 982px;
-  top: 183px;
+  height: 120px;
   background: #F0D3C1;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 28px;
   color: #000000;
 }
@@ -159,38 +151,10 @@
   height: 75px;
   left: 982px;
   top: 183px;
-  background: #F0D3C1;
-  border-radius: 10px;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  color: #000000;
-}
-.container-page-seller__function-menu_button-six {
-  cursor: pointer;
-  margin: 0px 107px 20px 107px;
-  width: 326px;
-  height: 75px;
-  left: 982px;
-  top: 183px;
-  background: #F0D3C1;
-  border-radius: 10px;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  color: #000000;
-}
-.container-page-seller__function-menu_button-seven {
-  cursor: pointer;
-  margin: 0px 107px 20px 107px;
-  width: 326px;
-  height: 75px;
-  left: 982px;
-  top: 183px;
   background: #C16471;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 28px;
   color: #000000;
 }

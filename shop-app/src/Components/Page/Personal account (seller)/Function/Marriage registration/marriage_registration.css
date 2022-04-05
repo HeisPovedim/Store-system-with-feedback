@@ -1,4 +1,4 @@
-.header-page-confirmation {
+.header-page-return {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,7 +8,7 @@
   border-radius: 0px 0px 20px 20px;
   flex-direction: row;
 }
-.header-page-confirmation_text-header {
+.header-page-return_text-header {
   margin-left: 20px;
   font-weight: 400;
   font-size: 40px;
@@ -16,19 +16,19 @@
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.header-page-confirmation_text-role {
+.header-page-return_text-role {
   margin-right: 20px;
   font-size: 20px;
   text-decoration: none;
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.container-page-confirmation {
+.container-page-return {
   margin-top: 253px;
   display: flex;
   justify-content: center;
 }
-.container-page-confirmation__border-menu {
+.container-page-return__border-menu {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -38,7 +38,7 @@
   backdrop-filter: blur(4px);
   border-radius: 5px;
 }
-.container-page-confirmation__border-menu_top-line {
+.container-page-return__border-menu_top-line {
   margin-top: 25px;
   width: 601px;
   height: 0px;
@@ -46,7 +46,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
-.container-page-confirmation__border-menu_input-id {
+.container-page-return__border-menu_input-id {
   margin-top: 30px;
   width: 433px;
   height: 76.18px;
@@ -57,11 +57,11 @@
   text-align: center;
 }
 
-.container-page-confirmation__border-menu_buttons {
+.container-page-return__border-menu_buttons {
   display: flex;
   margin-top: 37px;
 }
-.container-page-confirmation__border-menu_buttons_accept {
+.container-page-return__border-menu_buttons_accept {
   cursor: pointer;
   margin-right: 25px;
   width: 271px;
@@ -70,10 +70,10 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
-.container-page-confirmation__border-menu_buttons_accept p {
+.container-page-return__border-menu_buttons_accept p {
   font-size: 30px;
 }
-.container-page-confirmation__border-menu_buttons_reject {
+.container-page-return__border-menu_buttons_exit {
   cursor: pointer;
   margin-left: 25px;
   width: 271px;
@@ -82,22 +82,10 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
-.container-page-confirmation__border-menu_buttons_reject p {
+.container-page-return__border-menu_buttons_exit p {
   font-size: 30px;
 }
-.container-page-confirmation__border-menu_exit-button {
-  cursor: pointer;
-  margin-top: 35px;
-  width: 271px;
-  height: 76px;
-  background: #C16471;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-}
-.container-page-confirmation__border-menu_exit-button p {
-  font-size: 30px;
-}
-.container-page-confirmation__border-menu_bottom-line {
+.container-page-return__border-menu_bottom-line {
   margin-top: 30px;
   margin-bottom: 25px;
   width: 601px;
