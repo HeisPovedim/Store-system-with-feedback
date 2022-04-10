@@ -6,6 +6,7 @@ import Seller from "./Components/Page/Personal account (seller)/Personal account
 import ConfirmationSeller from "./Components/Page/Personal account (seller)/Function/Confirmation or rejection/confirmation_or_rejection";
 import Return from "./Components/Page/Personal account (seller)/Function/Return of goods/return_of_goods";
 import Marriage from "./Components/Page/Personal account (seller)/Function/Marriage registration/marriage_registration";
+import ProductCreation from "./Components/Page/Personal account (seller)/Function/Product creation/product_creation"
 
 const Routers = () => {
   return (
@@ -17,6 +18,7 @@ const Routers = () => {
       <Route path="/ConfirmationSeller" component={ConfirmationSeller} exact />
       <Route path="/Return" component={Return} exact />
       <Route path="/Marriage" component={Marriage} exact />
+      <Route path="/ProductCreation" component={ProductCreation} exact />
     </Switch>
   );
 };

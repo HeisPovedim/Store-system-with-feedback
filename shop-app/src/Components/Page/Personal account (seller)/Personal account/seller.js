@@ -19,7 +19,7 @@ const Seller = () => {
         </div>
         <div className="container-page-seller__function-menu">
           <div className="container-page-seller__function-menu_text-top">Функции продовца</div>
-          <button className="container-page-seller__function-menu_button-one">Создание товара</button>  
+          <Link to="/ProductCreation"><button className="container-page-seller__function-menu_button-one">Создание товара</button></Link>
           <Link to="/ConfirmationSeller"><button className="container-page-seller__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button></Link>
           <Link to="/Return"><button className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button></Link>
           <Link to="/Marriage"><button className="container-page-seller__function-menu_button-four"> Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>

@@ -99,15 +99,19 @@ contract coursepaper {
     //Function adding a product
     uint256 addProductShop_idProduct = 0;
     function addProductShop (string memory title, uint256 price, string memory description) public {
-        structProducts[title] = structProduct(msg.sender, description , price, addProductShop_idProduct);
-        productList.push(title);
-        addProductShop_idProduct++;
+        /*for (uint i = 0; i <= productList.length; i++) {
+            if ()*/
+            structProducts[title] = structProduct(msg.sender, description , price, addProductShop_idProduct);
+            productList.push(title);
+            addProductShop_idProduct++;
+        /*}*/
+        
     }
     
     //Function leave a feedback
     function leaveFeedback (string memory shop, string memory feedback, uint256 rating) public {
         require(rating <= 10,"error: rating can be from 1 to 10");
-        for(uint i = 0; i < shopList.length; i++) {
+        for(uint i = 0; i <= shopList.length; i++) {
             string memory tempShopName = shopList[i];
             if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shop))) {                    
                 string[] memory zerroArray;
