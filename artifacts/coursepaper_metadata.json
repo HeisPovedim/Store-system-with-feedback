@@ -136,6 +136,25 @@
 				"inputs": [
 					{
 						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					}
+				],
+				"name": "get_address",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
 						"name": "userName",
 						"type": "string"
 					},
@@ -422,18 +441,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
-			"runs": 200
+			"enabled": true,
+			"runs": 1
 		},
 		"remappings": []
 	},
 	"sources": {
 		"Documents/GitHub/Store-system-with-feedback/main.sol": {
-			"keccak256": "0x7f882766815f9f64a471e2a4376bdf0a4d10c1b3ff9960c0398b39fb3d77cde3",
+			"keccak256": "0xa6caefae8fe6f070300cacbc23f24c6ba0da3846bbba943911769f6e886158ee",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://a34f4a5029b0758f645e5d817449770e8dc4d092b40cb04369f50e18427d4acc",
-				"dweb:/ipfs/QmV7GD2ZysjR543SCpCZqWQ92D984cWnU2EJnfe8gTJ8hb"
+				"bzz-raw://e6b39fd477802fec8b1f2625e6a0797eb2899fc83414e459d1d102ee8fb9fad9",
+				"dweb:/ipfs/QmXGziYUtWHM3VxS7uozx7Wgr9oa9LR8Yr3YgXzVWRZgVV"
 			]
 		}
 	},

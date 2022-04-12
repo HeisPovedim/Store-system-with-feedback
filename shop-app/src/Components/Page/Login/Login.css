@@ -21,6 +21,11 @@ input:hover {
 input:not(:hover) {
   transition-duration: 1s;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .border-login input {
   font-size: 35px;
   text-align: center;
@@ -43,7 +48,6 @@ input:not(:hover) {
   margin-right: auto;
   margin-top: 100px;
   width: 561px;
-  height: 717.28px;
   background: #80A2A9;
   backdrop-filter: blur(4px);
   border-radius: 5px;
@@ -70,7 +74,7 @@ input:not(:hover) {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 87px;
+  margin-top: 40px;
   margin-bottom: 34px;
   width: 301px;
   height: 83.39px;

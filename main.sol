@@ -16,10 +16,10 @@ contract coursepaper {
         shopList.push(shops[0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db].name);
 
         //User
-        structUserLogins["Peta"] = 0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB;
-        structUsers[0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB] = structUser("Peta" ,1, 1000);
+        structUserLogins["Peta"] = 0x9c35a9bdf790A5Ce09b353B1C765269aB466Baad;
+        structUsers[0x9c35a9bdf790A5Ce09b353B1C765269aB466Baad] = structUser("Peta" ,1, 1000);
         userLoginsArray.push("Peta");
-}
+    }
 //END CONSTRUCTOR
 
 //BEGIN MODIFIER
@@ -207,6 +207,19 @@ contract coursepaper {
     //Function marriage registration
     function productMarriageRegistration (string memory titleProduct) public {
         structMarriageRegistrations.push(structMarriageRegistration(msg.sender, titleProduct, true));
+    }
+    //Function get address for login
+    function get_address(string memory login) public view returns(address) {
+        return(structUserLogins[login]);
+    }
+    //Function create user
+    function create_user(address addr, string memory login, bytes32 password, bytes32 secondPassword) public {
+        require(msg.sender == 0xc50eC9589e3E3E7eb19c21fF552EB47cD218A8b6, "Error: You not a zero account");
+        require(userAddresses[login] == address(0), "Error: User already exist");
+        uint[] memory basketArray;
+        users[addr] = User(login, password, 2, basketArray, true);
+        userAddresses[login] = addr;
+        UserList.push(addr);
     }
 //END USER FUNCTION
 }
