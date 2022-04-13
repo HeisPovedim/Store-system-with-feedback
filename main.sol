@@ -8,31 +8,37 @@ contract coursepaper {
     constructor() public {
 
         //Shops
-        shops[0x5B38Da6a701c568545dCfcB03FcB875f56beddC4] = structShop("Food", "1", "Moscow", 1000, 0);
-        shopList.push(shops[0x5B38Da6a701c568545dCfcB03FcB875f56beddC4].name);
-        shops[0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2] = structShop("Clothes", "2", "Petersburg", 1000, 0);
-        shopList.push(shops[0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2].name);
-        shops[0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db] = structShop("Pet Store", "3", "Ekaterinburg", 1000, 0);
-        shopList.push(shops[0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db].name);
+        shops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90] = structShop("Food", get_hash("1"), "1", "Moscow", 1000, 0);
+        shopList.push(shops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90].name);
+        shops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B] = structShop("Clothes", get_hash("1"), "2", "Petersburg", 1000, 0);
+        shopList.push(shops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B].name);
 
         //User
-        structUserLogins["Peta"] = 0x9c35a9bdf790A5Ce09b353B1C765269aB466Baad;
-        structUsers[0x9c35a9bdf790A5Ce09b353B1C765269aB466Baad] = structUser("Peta" ,1, 1000);
+        structUserLogins["Peta"] = 0xC152aD455B16d865F2344140dEc6Ea95cb361e8A;
+        structUsers[0xC152aD455B16d865F2344140dEc6Ea95cb361e8A] = structUser("Peta" , get_hash("2"), 1000, 0, false);
         userLoginsArray.push("Peta");
+        userAddressArray.push(0xC152aD455B16d865F2344140dEc6Ea95cb361e8A);
     }
 //END CONSTRUCTOR
 
 //BEGIN MODIFIER
+    function get_hash(string memory password) public pure returns(bytes32) {
+            return(keccak256(abi.encodePacked(password)));
+        }
+    function check_logged(string memory login) public view returns(bool) {
+        return(structUsers[structUserLogins[login]].logged);
+    }
 //END MODIFIER
 
 //BEGIN STRUCT
     //Struct shop
     struct structShop {
         string name;
-        string number;      
-        string city;        
-        uint256 ballance;   
-        uint256 rating;     
+        bytes32 password;
+        string number;
+        string city;
+        uint256 ballance;
+        uint256 rating;
     }
     mapping (address => structShop) shops;
     mapping(string => address) public shopLists;
@@ -53,12 +59,15 @@ contract coursepaper {
     //Struct user
     struct structUser {
         string userName;
-        uint256 password;   
-        uint256 ballance;   
+        bytes32 password;
+        uint256 ballance;
+        uint role;          //0 - user, 1 - guest
+        bool logged;
     }
     mapping(address => structUser) public structUsers;
     mapping(string => address) public structUserLogins;
     string[] userLoginsArray;
+    address[] userAddressArray;
 
     //Struct product
     struct structProduct{
@@ -213,13 +222,18 @@ contract coursepaper {
         return(structUserLogins[login]);
     }
     //Function create user
-    function create_user(address addr, string memory login, bytes32 password, bytes32 secondPassword) public {
-        require(msg.sender == 0xc50eC9589e3E3E7eb19c21fF552EB47cD218A8b6, "Error: You not a zero account");
-        require(userAddresses[login] == address(0), "Error: User already exist");
-        uint[] memory basketArray;
-        users[addr] = User(login, password, 2, basketArray, true);
-        userAddresses[login] = addr;
-        UserList.push(addr);
+    function create_user(address addr, string memory login, bytes32 password) public {
+        require(structUserLogins[login] == address(0), "Error: User already exist");
+        structUsers[addr] = structUser(login, password, 1000, 0, false);
+        structUserLogins[login] = addr;
+        userAddressArray.push(addr);
+    }
+    //Function logged user
+    function login_user(string memory login, bytes32 password) public {
+        require(structUsers[structUserLogins[login]].logged == false, "Error: You are already logged");
+        require(structUserLogins[login] != address(0), "Error: User doesn't exist");
+        require(structUsers[structUserLogins[login]].password == password, "Error: Invalid password");
+        structUsers[structUserLogins[login]].logged = true;
     }
 //END USER FUNCTION
 }

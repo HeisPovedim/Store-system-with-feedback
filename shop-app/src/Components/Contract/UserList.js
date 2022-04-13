@@ -1,28 +1,5 @@
 export const UserList = [
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "idMarriageRegistration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "confirmation",
-				"type": "bool"
-			}
-		],
-		"name": "MarriageRegistration",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -82,67 +59,26 @@ export const UserList = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "getProductList",
-		"outputs": [
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getShopList",
-		"outputs": [
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "shopName",
-				"type": "string"
-			}
-		],
-		"name": "getStoryRating",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
+				"internalType": "address",
+				"name": "addr",
+				"type": "address"
+			},
 			{
 				"internalType": "string",
 				"name": "login",
 				"type": "string"
-			}
-		],
-		"name": "get_address",
-		"outputs": [
+			},
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
+				"internalType": "bytes32",
+				"name": "password",
+				"type": "bytes32"
 			}
 		],
-		"stateMutability": "view",
+		"name": "create_user",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -190,6 +126,42 @@ export const UserList = [
 		"inputs": [
 			{
 				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "password",
+				"type": "bytes32"
+			}
+		],
+		"name": "login_user",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "idMarriageRegistration",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "confirmation",
+				"type": "bool"
+			}
+		],
+		"name": "MarriageRegistration",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
 				"name": "titleProduct",
 				"type": "string"
 			}
@@ -223,6 +195,113 @@ export const UserList = [
 		"name": "productReturn",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			}
+		],
+		"name": "check_logged",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			}
+		],
+		"name": "get_address",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "password",
+				"type": "string"
+			}
+		],
+		"name": "get_hash",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getProductList",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getShopList",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "shopName",
+				"type": "string"
+			}
+		],
+		"name": "getStoryRating",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -400,14 +479,24 @@ export const UserList = [
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "bytes32",
 				"name": "password",
-				"type": "uint256"
+				"type": "bytes32"
 			},
 			{
 				"internalType": "uint256",
 				"name": "ballance",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "role",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "logged",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",

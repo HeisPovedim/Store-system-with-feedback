@@ -88,6 +88,48 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					}
+				],
+				"name": "check_logged",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "password",
+						"type": "bytes32"
+					}
+				],
+				"name": "create_user",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getProductList",
 				"outputs": [
@@ -155,6 +197,25 @@
 				"inputs": [
 					{
 						"internalType": "string",
+						"name": "password",
+						"type": "string"
+					}
+				],
+				"name": "get_hash",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
 						"name": "userName",
 						"type": "string"
 					},
@@ -188,6 +249,24 @@
 					}
 				],
 				"name": "leaveFeedback",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "password",
+						"type": "bytes32"
+					}
+				],
+				"name": "login_user",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -406,14 +485,24 @@
 						"type": "string"
 					},
 					{
-						"internalType": "uint256",
+						"internalType": "bytes32",
 						"name": "password",
-						"type": "uint256"
+						"type": "bytes32"
 					},
 					{
 						"internalType": "uint256",
 						"name": "ballance",
 						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "role",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "logged",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -441,18 +530,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
-			"runs": 1
+			"enabled": false,
+			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"Documents/GitHub/Store-system-with-feedback/main.sol": {
-			"keccak256": "0xa6caefae8fe6f070300cacbc23f24c6ba0da3846bbba943911769f6e886158ee",
+			"keccak256": "0x8423d3011fc736664775acfb5e90cadd138a76a5e7daa815a3624c9c20d57c18",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e6b39fd477802fec8b1f2625e6a0797eb2899fc83414e459d1d102ee8fb9fad9",
-				"dweb:/ipfs/QmXGziYUtWHM3VxS7uozx7Wgr9oa9LR8Yr3YgXzVWRZgVV"
+				"bzz-raw://701e3fa046f39511f18c7febb7c344e4582f3891675f0e63b2f601205adc2a2a",
+				"dweb:/ipfs/QmUFfmM1XtLLhBRvUDNN4NnetQP8RWfG5CFh4Hjyhs5As6"
 			]
 		}
 	},
