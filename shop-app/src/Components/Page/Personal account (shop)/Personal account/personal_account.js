@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./seller.css"
+import "./personal_account.css"
 
 const Seller = () => {
   return (
@@ -12,10 +12,10 @@ const Seller = () => {
       <div className="container-page-seller">
         <div className="container-page-seller__personal-information">
           <div className="container-page-seller__personal-information_text-top">Личная информация:</div>
-          <div className="container-page-seller__personal-information_text-name">Имя: {}</div>
-          <div className="container-page-seller__personal-information_text-login">Логин: {}</div>
-          <div className="container-page-seller__personal-information_text-city">Город: {}</div>
-          <div className="container-page-seller__personal-information_text-shop">Магазин: {}</div>
+          <div className="container-page-seller__personal-information_text-name">Имя: Beer</div>
+          <div className="container-page-seller__personal-information_text-login">Баланс: 1000</div>
+          <div className="container-page-seller__personal-information_text-city">Город: Moscow</div>
+          <div className="container-page-seller__personal-information_text-shop">Номер: 1</div>
         </div>
         <div className="container-page-seller__function-menu">
           <div className="container-page-seller__function-menu_text-top">Функции продовца</div>

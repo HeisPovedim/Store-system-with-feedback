@@ -8,7 +8,7 @@ contract coursepaper {
     constructor() public {
 
         //Shops
-        shops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90] = structShop("Food", get_hash("1"), "1", "Moscow", 1000, 0);
+        shops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90] = structShop("Beer", get_hash("1"), "1", "Moscow", 1000, 0);
         shopList.push(shops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90].name);
         shops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B] = structShop("Clothes", get_hash("1"), "2", "Petersburg", 1000, 0);
         shopList.push(shops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B].name);

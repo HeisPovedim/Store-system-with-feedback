@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { UseContext } from "../../Contract/context";
 import {useHistory} from "react-router-dom";
-import Web3 from "web3";
 import './login.css';
 
 const Login = () => {
