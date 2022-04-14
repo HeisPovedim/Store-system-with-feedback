@@ -29,32 +29,49 @@ const Login = () => {
       console.log(address);
       await web3.eth.personal.unlockAccount(address, password,0);
       const protectPassword = await web3.utils.keccak256(password);
-      await Contract.methods.login_user(login, protectPassword).send({from:address});
-      const online = await Contract.methods.check_logged(login).call();
-      console.log(online);
-      localStorage.setItem("address", address);
-      const AddrInfo = await Contract.methods.structUsers(address).call();
-      console.log(AddrInfo);
-      setBalance(AddrInfo[2])
-      console.log(balance);
-      setRole(AddrInfo[3])
-      console.log(role);
-      if(online){
-        web3.eth.defaultAccount = address;
-        history.push("/Beer");
-      }
-    }
-    catch(e) {
+      const roleUser = await Contract.methods.get_role_user(login).call();
+      const roleShop = await Contract.methods.get_role_shop(login).call();
+      if(roleUser === 2) {
+        await Contract.methods.login_user(login, protectPassword).send({from:address});
+        const onlineUser = await Contract.methods.check_logged_user(login).call();
+        console.log(onlineUser);
+        localStorage.setItem("address", address);
+        var AddrInfoUser = await Contract.methods.structUsers(address).call();
+        console.log(AddrInfoUser);
+        setBalance(AddrInfoUser[2])
+        console.log(balance);
+        setRole(AddrInfoUser[3])
+        console.log(role);
+          if(onlineUser){
+            web3.eth.defaultAccount = address;
+            history.push("/Beer");
+          }
+      } else if (roleShop === 3) {
+          await Contract.mthods.login_shop(login, protectPassword).send({from:address});
+          const onlineShop = await Contract.methods.check_logged_shop(login).call();
+          console.log(onlineShop);
+          var AddrInfoShop = await Contract.methods.structShop(address).call();
+          console.log(AddrInfoShop);
+          setBalance(AddrInfoShop[2]);
+          console.log(balance);
+          setRole(AddrInfoShop[3]);
+          console.log(role);
+          if(onlineShop){
+            web3.eth.defaultAccount = address;
+            history.push("/Beer");
+        };
+      };
+    }catch(e){
       alert(e);
-    }
-  }
-
-  const Registration=async(e)=>{
+    };
+  };
+;
+  const Registration = async (e) => {
     try
     {
       e.preventDefault()
       const accounts = await web3.eth.getAccounts();
-      console.log(accounts)
+      console.log(accounts);
       await web3.eth.personal.unlockAccount(accounts[0],"0",0);
       const address = await web3.eth.personal.newAccount(password);
       alert("Ваш аккаунт создается, подождите..")
@@ -66,11 +83,11 @@ const Login = () => {
         value: 10*(10 ** 18)
       });
       await Contract.methods.create_user(address, login, protectPassword).send({from:accounts[0]});
-      alert("аккаунт создан, ваш адрес:"+ address)
+      alert("аккаунт создан, ваш адрес:"+ address);
     } catch(e) {
-      alert(e)
+      alert(e);
     }
-  }
+  };
 
   return(
     <>

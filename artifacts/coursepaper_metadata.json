@@ -95,7 +95,26 @@
 						"type": "string"
 					}
 				],
-				"name": "check_logged",
+				"name": "check_logged_shop",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					}
+				],
+				"name": "check_logged_user",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -216,6 +235,44 @@
 				"inputs": [
 					{
 						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					}
+				],
+				"name": "get_role_shop",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					}
+				],
+				"name": "get_role_user",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
 						"name": "userName",
 						"type": "string"
 					},
@@ -249,6 +306,24 @@
 					}
 				],
 				"name": "leaveFeedback",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "login",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "password",
+						"type": "bytes32"
+					}
+				],
+				"name": "login_shop",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -530,18 +605,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
-			"runs": 200
+			"enabled": true,
+			"runs": 1
 		},
 		"remappings": []
 	},
 	"sources": {
 		"Documents/GitHub/Store-system-with-feedback/main.sol": {
-			"keccak256": "0x8423d3011fc736664775acfb5e90cadd138a76a5e7daa815a3624c9c20d57c18",
+			"keccak256": "0x464ab1ad0f94fc5520764211c7a9017b05f72e6b7072957251eb448e5ac0b6c8",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://701e3fa046f39511f18c7febb7c344e4582f3891675f0e63b2f601205adc2a2a",
-				"dweb:/ipfs/QmUFfmM1XtLLhBRvUDNN4NnetQP8RWfG5CFh4Hjyhs5As6"
+				"bzz-raw://6817794c602bad36685ce6bc02c61243eac8ca8bb3924ba90c407532642091f6",
+				"dweb:/ipfs/QmT65CGFsR9QTTjan6iNbuwisHkZGMfM6Dxa4otK2fpTDZ"
 			]
 		}
 	},
