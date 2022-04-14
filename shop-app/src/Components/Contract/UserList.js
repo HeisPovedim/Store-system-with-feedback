@@ -464,6 +464,60 @@ export const UserList = [
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "structShops",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "shopName",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "password",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ballance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "role",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "logged",
+				"type": "bool"
+			},
+			{
+				"internalType": "string",
+				"name": "number",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "city",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "rating",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"

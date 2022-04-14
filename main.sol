@@ -8,14 +8,16 @@ contract coursepaper {
     constructor() public {
 
         //Shops
-        shops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90] = structShop("Beer", get_hash("1"), 1000, 3, false, "1", "Moscow", 0);
-        shopList.push(shops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90].shopName);
-        shops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B] = structShop("Clothes", get_hash("1"), 1000, 3, false, "2", "Petersburg", 0);
-        shopList.push(shops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B].shopName);
+        shopLists["Beer"] = 0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90;
+        structShops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90] = structShop("Beer", get_hash("1"), 1000, 3, false, "1", "Moscow", 0);
+        shopList.push(structShops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90].shopName);
+        shopLists["Clothes"] = 0x32BBfd99DFCF2a15c1D278a19856683930A8be0B;
+        structShops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B] = structShop("Clothes", get_hash("1"), 1000, 3, false, "2", "Petersburg", 0);
+        shopList.push(structShops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B].shopName);
 
         //User
         structUserLogins["Peta"] = 0xC152aD455B16d865F2344140dEc6Ea95cb361e8A;
-        structUsers[0xC152aD455B16d865F2344140dEc6Ea95cb361e8A] = structUser("Peta" , get_hash("2"), 1000, 0, false);
+        structUsers[0xC152aD455B16d865F2344140dEc6Ea95cb361e8A] = structUser("Peta", get_hash("2"), 1000, 2, false);
         userLoginsArray.push("Peta");
         userAddressArray.push(0xC152aD455B16d865F2344140dEc6Ea95cb361e8A);
     }
@@ -32,7 +34,7 @@ contract coursepaper {
     }
     //Function cheack logged shop
     function check_logged_shop(string memory login) public view returns(bool) {
-        return(shops[shopLists[login]].logged);
+        return(structShops[shopLists[login]].logged);
     }
     //Function get role user
     function get_role_user(string memory login) public view returns(uint) {
@@ -40,7 +42,17 @@ contract coursepaper {
     }
     //Function get role shop
     function get_role_shop(string memory login) public view returns(uint) {
-        return(shops[shopLists[login]].role);
+        return(structShops[shopLists[login]].role);
+    }
+    //Function get address for login
+    function get_address(string memory login) public view returns(address) {
+        address adr;
+        if (structUserLogins[login] != address(0)) {
+            adr = structUserLogins[login];
+        } else {
+            adr = shopLists[login];
+        }
+        return(adr);
     }
 //END REACT FUNCTON
 
@@ -50,13 +62,13 @@ contract coursepaper {
         string shopName;
         bytes32 password;
         uint256 ballance;
-        uint role;          //0 - user, 1 - guest, 3 - shop
+        uint role;          //1 - user, 2 - guest, 3 - shop
         bool logged;
         string number;
         string city;
         uint256 rating;
     }
-    mapping (address => structShop) shops;
+    mapping (address => structShop) public structShops;
     mapping(string => address) public shopLists;
     string[] shopList;
     
@@ -77,7 +89,7 @@ contract coursepaper {
         string userName;
         bytes32 password;
         uint256 ballance;
-        uint role;          //0 - user, 1 - guest, 3 - shop
+        uint role;          //1 - guest, 2 - user, 3 - shop
         bool logged;
     }
     mapping(address => structUser) public structUsers;
@@ -150,7 +162,7 @@ contract coursepaper {
         if (confirmation == true) {
             structStatusPurchases[idPurchase].status = false;
             structUsers[structStatusPurchases[idPurchase].userLogin].ballance = structUsers[structStatusPurchases[idPurchase].userLogin].ballance - structProducts[structStatusPurchases[idPurchase].titleProduct].price;
-            shops[msg.sender].ballance = shops[msg.sender].ballance + structProducts[structStatusPurchases[idPurchase].titleProduct].price;
+            structShops[msg.sender].ballance = structShops[msg.sender].ballance + structProducts[structStatusPurchases[idPurchase].titleProduct].price;
         } else {
             structStatusPurchases[idPurchase].status = false;
         }
@@ -233,10 +245,6 @@ contract coursepaper {
     function productMarriageRegistration (string memory titleProduct) public {
         structMarriageRegistrations.push(structMarriageRegistration(msg.sender, titleProduct, true));
     }
-    //Function get address for login
-    function get_address(string memory login) public view returns(address) {
-        return(structUserLogins[login]);
-    }
     //Function create user
     function create_user(address addr, string memory login, bytes32 password) public {
         require(structUserLogins[login] == address(0), "Error: User already exist");
@@ -253,10 +261,10 @@ contract coursepaper {
     }
     //Function logged shop
     function login_shop(string memory login, bytes32 password) public {
-        require(shops[shopLists[login]].logged == false, "Error: You are already logged");
+        require(structShops[shopLists[login]].logged == false, "Error: You are already logged");
         require(shopLists[login] != address(0), "Error: User doesn't exist");
-        require(shops[shopLists[login]].password == password, "Error: Invalid password");
-        shops[shopLists[login]].logged = true;
+        require(structShops[shopLists[login]].password == password, "Error: Invalid password");
+        structShops[shopLists[login]].logged = true;
     }
 //END USER FUNCTION
 }

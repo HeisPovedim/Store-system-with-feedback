@@ -2,14 +2,28 @@ import React, { useEffect, useState } from "react";
 import { UseContext } from "../../../Contract/context";
 import { useHistory } from "react-router-dom";
 import Web3 from "web3";
-import "./home.css"
+import "./beerShop.css"
 import { Link } from 'react-router-dom'
 
 const Home = () => {
+  const history = useHistory();
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
-
   const login = localStorage.getItem('login')
+
+  const personalAccountSign = async (e) => {
+    try{
+      if (role === "2") {
+        history.push("/");
+      } else if (role === "3") {
+        history.push("/PersonalAccountShop");
+      }
+    } catch (e) {
+      alert(e);
+      console.log(e);
+    }
+  }
+
   useEffect(() => {
     setBalance(localStorage.getItem('balance'))
     setRole(localStorage.getItem('role'))
@@ -22,8 +36,8 @@ const Home = () => {
         <div className="container-page-home__header-shop-beer_text-header">Ассортимент</div>
         <div className="container-page-home__header-shop-beer_personal-info">
           <div className="container-page-home__header-shop-beer_personal-info_name">{login}, {balance}</div>
-          <p>{(role === '0')?'пользователь':'error'}</p>
-          <Link className="container-page-home__header-shop-beer_personal-info_link">Личный кабинет</Link>
+          <p>{(role === '3')?'пользователь':'error'}</p>
+          <Link className="container-page-home__header-shop-beer_personal-info_link" onClick={personalAccountSign}>Личный кабинет</Link>
         </div>
       </header>
       <div className="container-page-home__menu">

@@ -35,3 +35,39 @@
 09:16:24.105587 table@remove removed @2
 10:17:56.575894 db@close closing
 10:17:56.577015 db@close done T·1.121ms
+=============== Apr 14, 2022 (MSK) ===============
+12:30:06.895835 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:30:06.895835 version@stat F·[0 1] S·224KiB[0B 224KiB] Sc·[0.00 0.00]
+12:30:06.895835 db@open opening
+12:30:06.895835 journal@recovery F·1
+12:30:06.895835 journal@recovery recovering @6
+12:30:06.903343 memdb@flush created L0@9 N·911 S·9KiB "loc..seq,v17354":"n:\xff..ail,v17379"
+12:30:06.903343 version@stat F·[1 1] S·233KiB[9KiB 224KiB] Sc·[0.25 0.00]
+12:30:06.925034 db@janitor F·5 G·1
+12:30:06.925034 db@janitor removing table-5
+12:30:06.925034 db@open done T·29.1986ms
+12:30:06.944373 table@compaction L0·1 -> L1·1 S·233KiB Q·18265
+12:30:06.950268 table@build created L1@12 N·6349 S·224KiB "loc..seq,v17354":"version,v1"
+12:30:06.950784 version@stat F·[0 1] S·224KiB[0B 224KiB] Sc·[0.00 0.00]
+12:30:06.955136 table@compaction committed F-1 S-9KiB Ke·0 D·910 T·10.7625ms
+12:30:06.955642 table@remove removed @8
+12:40:02.631835 db@close closing
+12:40:02.633467 db@close done T·1.6327ms
+=============== Apr 14, 2022 (MSK) ===============
+12:40:05.971859 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:40:05.971859 version@stat F·[0 1] S·224KiB[0B 224KiB] Sc·[0.00 0.00]
+12:40:05.971859 db@open opening
+12:40:05.971859 journal@recovery F·1
+12:40:05.971859 journal@recovery recovering @10
+12:40:05.982650 memdb@flush created L0@13 N·361 S·4KiB "loc..seq,v18266":"n:\xff..ail,v18330"
+12:40:05.982650 version@stat F·[1 1] S·228KiB[4KiB 224KiB] Sc·[0.25 0.00]
+12:40:06.001405 db@janitor F·5 G·1
+12:40:06.001405 db@janitor removing table-9
+12:40:06.001405 db@open done T·29.5461ms
+12:40:06.025082 table@compaction L0·1 -> L1·1 S·228KiB Q·18627
+12:40:06.033501 table@build created L1@16 N·6350 S·224KiB "loc..seq,v18266":"version,v1"
+12:40:06.033501 version@stat F·[0 1] S·224KiB[0B 224KiB] Sc·[0.00 0.00]
+12:40:06.039965 table@compaction committed F-1 S-4KiB Ke·0 D·360 T·14.8822ms
+12:40:06.053719 table@remove removed @12
+14:02:17.055137 db@close closing
+14:02:17.055137 db@close done T·0s
