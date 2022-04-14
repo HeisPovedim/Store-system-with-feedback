@@ -47,7 +47,7 @@ const Login = () => {
         console.log(role);
         if(onlineUser){
           web3.eth.defaultAccount = address;
-          history.push("/Beer");
+          history.push("/Home");
         }
       } else if (roleShop === "3") {
         await Contract.methods.login_shop(login, protectPassword).send({from:address});
@@ -61,7 +61,7 @@ const Login = () => {
         console.log(role);
         if(onlineShop){
           web3.eth.defaultAccount = address;
-          history.push("/Beer");
+          history.push("/Home");
         };
       };
     }catch(e){
@@ -86,7 +86,7 @@ const Login = () => {
         value: 10*(10 ** 18)
       });
       await Contract.methods.create_user(address, login, protectPassword).send({from:accounts[0]});
-      alert("аккаунт создан, ваш адрес:"+ address);
+      alert("Аккаунт создан, ваш адрес:"+ address);
     } catch(e) {
       alert(e);
     }
