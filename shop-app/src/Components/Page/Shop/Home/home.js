@@ -31,22 +31,27 @@ const Home = () => {
 
   return(
     <>
-      <header className="container-page-home__header-shop-home">
-        <div className="container-page-home__header-shop-home_text-header">Меню</div>
-        <div className="container-page-home__header-shop-home_personal-info">
-          <div className="container-page-home__header-shop-home_personal-info_name">{login}, {balance}</div>
-          <p>{(role === '3')?'пользователь':'error'}</p>
-          <Link className="container-page-home__header-shop-home_personal-info_link" onClick={personalAccountSign}>Личный кабинет</Link>
+      <body className="container-home">
+        <header className="header-home">
+          <div className="header-home_text-header">Меню</div>
+          <div className="header-home_personal-info">
+            <div className="header-home_personal-info_name">{login}, {balance}</div>
+            <p>{(role === '3')?'пользователь':'error'}</p>
+            <Link className="header-home_personal-info_link" onClick={personalAccountSign}>Личный кабинет</Link>
+          </div>
+        </header>
+        <div className="menu-home">
+          <div className="menu-home__border-one">
+            <Link to="/Beer"><button>Beer</button></Link>
+          </div>
+          <div className="menu-home__border-two">
+            <button>Product</button>
+          </div>
         </div>
-      </header>
-      <div className="menu-home">
-        <div className="menu-home__border-one">
-
-        </div>
-        <div className="menu-home_border-two">
-      
-        </div>
-      </div>
+        <footer className="footer-home">
+            <div>but</div>
+        </footer>
+      </body>
     </>
   )
 }

@@ -20,7 +20,7 @@ input {
 input::placeholder {
   font-weight: 100;
 }
-.container-page-home {
+.container-home {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,41 +33,7 @@ input::placeholder {
   flex-direction: column;
   align-items: center;
 }
-.menu {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  border-color: red;
-}
-.menu__logo-home {
-  width: 384px;
-  height: 337px;
-  left: 528px;
-  top: 125px;
-}
-.menu__buy-button {
-  margin-right: 10px;
-  color: white;
-  font-size: 18px;
-  width: 138px;
-  height: 43px;
-  left: 571px;
-  top: 486px;
-  background: #CDA058;
-  border-radius: 5px;
-}
-.menu__products-select {
-  margin-left: 10px;
-}
-.container-page-home__but-info {
-  display: flex;
-  width: 100%;
-  height: 99px;
-  background: #2B2F32;
-  border-radius: 0px;
-  }
-.container-page-home__header-shop-home {
+.header-home {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -76,7 +42,7 @@ input::placeholder {
   background: #80A2A9;
   border-radius: 0px 0px 20px 20px;
 }
-.container-page-home__header-shop-home_text-header {
+.header-home_text-header {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
@@ -86,7 +52,7 @@ input::placeholder {
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.container-page-home__header-shop-home_personal-info {
+.header-home_personal-info {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,11 +64,26 @@ input::placeholder {
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.container-page-home__header-shop-home_personal-info_name {
+.header-home_personal-info_name {
   font-size: 24px;
 }
-.container-page-home__header-shop-home_personal-info_link {
+.header-home_personal-info_link {
   font-size: 20px;
   text-decoration: none;
   color: #FFFFFF;
+}
+.menu-home__border-one button {
+  cursor: pointer;
+  font-size: 24px;
+}
+.menu-home__border-two button {
+  cursor: pointer;
+  font-size: 24px;
+}
+.footer-home {
+  display: flex;
+  width: 100%;
+  height: 99px;
+  background: #2B2F32;
+  border-radius: 0px;
 }
