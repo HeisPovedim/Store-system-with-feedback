@@ -27,7 +27,7 @@ const Login = () => {
       e.preventDefault()
       const address = await Contract.methods.get_address(login).call();
       console.log("get_address", address);
-      await web3.eth.personal.unlockAccount(address, password,0);
+      await web3.eth.personal.unlockAccount(address, password, 0);
       const protectPassword = await web3.utils.keccak256(password);
       const roleUser = await Contract.methods.get_role_user(login).call();
       console.log("roleUser:", roleUser);
@@ -75,7 +75,7 @@ const Login = () => {
       e.preventDefault()
       const accounts = await web3.eth.getAccounts();
       console.log(accounts);
-      await web3.eth.personal.unlockAccount(accounts[0],"0",0);
+      await web3.eth.personal.unlockAccount(accounts[0],"1",0);
       const address = await web3.eth.personal.newAccount(password);
       alert("Ваш аккаунт создается, подождите..")
       await web3.eth.personal.unlockAccount(address, password,0);
@@ -94,7 +94,7 @@ const Login = () => {
 
   return(
     <>
-      <div className="border-login">
+      <body className="border-login">
         <div className="border-login__line-top"></div>
         <div className="border-login__text">Вход</div>
           <input onChange={handleLogin} type="text" placeholder="Логин"/>
@@ -102,11 +102,11 @@ const Login = () => {
           <button className="border-login__button-login" onClick={LogIn}>
             <p>Войти</p>
           </button>
-          <button className="login-border__button-signIn" onClick={Registration}>
+          <button className="border-login__button-signIn" onClick={Registration}>
             <p>Зарегестрироваться</p>
           </button>
         <div className="border-login__line-button"></div>
-      </div>
+      </body>
     </>
   );
 };

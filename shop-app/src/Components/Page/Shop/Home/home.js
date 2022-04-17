@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { UseContext } from "../../../Contract/context";
 import { useHistory } from "react-router-dom";
-import Web3 from "web3";
+// import Web3 from "web3";
 import { Link } from 'react-router-dom'
 import "./home.css";
 
 const Home = () => {
   const history = useHistory();
+  const { web3, Contract } = UseContext();
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
   const login = localStorage.getItem('login')
 
-  const personalAccountSign = async (e) => {
+  const PersonalAccountSign = async (e) => {
     try{
       if (role === "2") {
         history.push("/");
@@ -21,6 +22,18 @@ const Home = () => {
     } catch (e) {
       alert(e);
       console.log(e);
+    }
+  }
+
+  const LoggedOut = async () => {
+    const roleUser = await Contract.methods.get_role_user(login).call();
+    console.log("roleUser:", roleUser);
+    const roleShop = await Contract.methods.get_role_shop(login).call();
+    console.log("roleShop",roleShop);
+    if(roleUser === "2") {
+      await Contract.methods.login_out_user(login).send({from:web3.eth.defaultAccount});
+    } else if (roleShop === "3") {
+      await Contract.methods.login_out_shop(login).send({from:web3.eth.defaultAccount});
     }
   }
 
@@ -37,7 +50,7 @@ const Home = () => {
           <div className="header-home_personal-info">
             <div className="header-home_personal-info_name">{login}, {balance}</div>
             <p>{(role === '3')?'пользователь':'error'}</p>
-            <Link className="header-home_personal-info_link" onClick={personalAccountSign}>Личный кабинет</Link>
+            <Link className="header-home_personal-info_link" onClick={PersonalAccountSign}>Личный кабинет</Link>
           </div>
         </header>
         <div className="menu-home">
@@ -49,7 +62,11 @@ const Home = () => {
           </div>
         </div>
         <footer className="footer-home">
-            <div>but</div>
+          <div className="footer-home__button-exit">
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="/Login"><button onClick={LoggedOut}>
+              <p>Выйти</p>
+            </button></Link>
+          </div>
         </footer>
       </body>
     </>
