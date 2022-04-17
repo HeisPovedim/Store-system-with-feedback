@@ -12,10 +12,15 @@ const Home = () => {
   const [role, setRole] = useState();
   const login = localStorage.getItem('login')
 
+  useEffect(() => {
+    setBalance(localStorage.getItem('balance'))
+    setRole(localStorage.getItem('role'))
+  })
+
   const PersonalAccountSign = async (e) => {
     try{
       if (role === "2") {
-        history.push("/");
+        history.push("/PersonalAccountUser");
       } else if (role === "3") {
         history.push("/PersonalAccountShop");
       }
@@ -25,22 +30,22 @@ const Home = () => {
     }
   }
 
-  const LoggedOut = async () => {
-    const roleUser = await Contract.methods.get_role_user(login).call();
-    console.log("roleUser:", roleUser);
-    const roleShop = await Contract.methods.get_role_shop(login).call();
-    console.log("roleShop",roleShop);
-    if(roleUser === "2") {
-      await Contract.methods.login_out_user(login).send({from:web3.eth.defaultAccount});
-    } else if (roleShop === "3") {
-      await Contract.methods.login_out_shop(login).send({from:web3.eth.defaultAccount});
+  const LoggedOut = async (e) => {
+    try {
+      const roleUser = await Contract.methods.get_role_user(login).call();
+      console.log("roleUser:", roleUser);
+      const roleShop = await Contract.methods.get_role_shop(login).call();
+      console.log("roleShop",roleShop);
+      if(roleUser === "2") {
+        await Contract.methods.login_out_user(login).send({from:web3.eth.defaultAccount});
+      } else if (roleShop === "3") {
+        await Contract.methods.login_out_shop(login).send({from:web3.eth.defaultAccount});
+      }
+      alert(e);
+    } catch (e) {
+      alert(e);
     }
   }
-
-  useEffect(() => {
-    setBalance(localStorage.getItem('balance'))
-    setRole(localStorage.getItem('role'))
-  })
 
   return(
     <>
