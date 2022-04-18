@@ -307,6 +307,25 @@ export const UserList = [
 		"inputs": [
 			{
 				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			}
+		],
+		"name": "get_city",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
 				"name": "password",
 				"type": "string"
 			}

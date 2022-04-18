@@ -54,6 +54,10 @@ contract coursepaper {
         }
         return(adr);
     }
+    //Function get city
+    function get_city(string memory login) public view returns(string memory) {
+        return(structShops[shopLists[login]].city);
+    }
 //END REACT FUNCTON
 
 //BEGIN STRUCT
