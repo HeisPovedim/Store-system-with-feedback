@@ -666,11 +666,19 @@
 	},
 	"sources": {
 		"Documents/GitHub/Store-system-with-feedback/main.sol": {
+<<<<<<< Updated upstream
 			"keccak256": "0x2afd789a057ce75dab26723830c56a201e8aeead2ae60490fed2689b4e8f443d",
 			"license": "GPL-3.0",
 			"urls": [
 				"bzz-raw://af6ce6bd1bf6471d4b3a105eb6449814a03dbbd7e96e88db593cb21336343ef2",
 				"dweb:/ipfs/QmVBMfVrBcyzzP4KC8CPqYVPj8orTc4WT9jjaGTEzoXPwZ"
+=======
+			"keccak256": "0x6901c9c78b83a21e4b3ea28af3569e53927dac624f9aba96f26578cd76068a21",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://0e7036de2de61766378b18c87c29ee4006884602391ffceb2b4dc5af234a9239",
+				"dweb:/ipfs/QmZqYhJ7kA9nkDUPnyRsUAxEqU8oTx1Y5D6bhjtw9C5bEU"
+>>>>>>> Stashed changes
 			]
 		}
 	},

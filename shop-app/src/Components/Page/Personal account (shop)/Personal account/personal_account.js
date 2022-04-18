@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { UseContext } from "../../../Contract/context";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./personal_account.css"
 
-const Seller = () => {
+const Seller = async () => {
+  const history = useHistory();
+  const { web3, Contract } = UseContext();
+  const [balance, setBalance] = useState();
+  const [role, setRole] = useState();
+  const [city, setCity] = useState('');
+  const login = localStorage.getItem('login')
+  
+
+  useEffect( () => {
+    setBalance(localStorage.getItem('balance'));
+    setRole(localStorage.getItem('role'));
+    setCity(localStorage.getItem('city'));
+  })
   return (
     <>
       <header className="header-page-seller">
         <div className="header-page-seller_text-header">Личный кабинет</div>
-        <div className="header-page-seller_text-role">Роль: магазин</div>
+        <div className="header-page-seller_text-role">Роль: {role}</div>
       </header>
       <div className="container-page-seller">
         <div className="container-page-seller__personal-information">
           <div className="container-page-seller__personal-information_text-top">Личная информация:</div>
-          <div className="container-page-seller__personal-information_text-name">Имя: Beer</div>
-          <div className="container-page-seller__personal-information_text-login">Баланс: 1000</div>
-          <div className="container-page-seller__personal-information_text-city">Город: Moscow</div>
+          <div className="container-page-seller__personal-information_text-name">Имя: {login}</div>
+          <div className="container-page-seller__personal-information_text-login">Баланс: {balance}</div>
+          <div className="container-page-seller__personal-information_text-city">Город: {city}</div>
           <div className="container-page-seller__personal-information_text-shop">Номер: 1</div>
         </div>
         <div className="container-page-seller__function-menu">

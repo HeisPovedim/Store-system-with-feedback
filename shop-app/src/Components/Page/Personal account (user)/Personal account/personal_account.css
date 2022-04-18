@@ -1,0 +1,160 @@
+.header-page-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 90px;
+  background: #80A2A9;
+  border-radius: 0px 0px 20px 20px;
+  flex-direction: row;
+}
+.header-page-user_text-header {
+  margin-left: 20px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 55px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.header-page-user_text-role {
+  margin-right: 20px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.container-page-user {
+  display: flex;
+  justify-content: space-between;
+}
+.container-page-user__personal-information {
+  margin-top: 20px;
+  margin-left: 25px;
+  width: 540px;
+  height: 266px;
+  left: 25px;
+  top: 107px;
+  background: #C4C4C4;
+  border-radius: 5px 20px;
+}
+.container-page-user__personal-information_text-top {
+  margin-left: 50px;
+  font-weight: 700;
+  font-size: 39px;
+  line-height: 46px;
+  text-decoration-line: underline;
+  color: #000000;
+}
+.container-page-user__personal-information_text-name {
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 41px;
+  color: #000000;
+}
+.container-page-user__personal-information_text-login {
+  margin-bottom: 5px;
+  margin-left: 20px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 41px;
+  color: #000000;
+}
+.container-page-user__personal-information_text-city {
+  margin-bottom: 5px;
+  margin-left: 20px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 41px;
+  color: #000000;
+}
+.container-page-user__personal-information_text-shop {
+  margin-bottom: 5px;
+  margin-left: 20px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 41px;
+  color: #000000;
+}
+.container-page-user__function-menu {
+  margin-top: 20px;
+  margin-right: 25px;
+  width: 540px;
+  height: 630px;
+  background: #C4C4C4;
+  border-radius: 20px 5px;
+}
+.container-page-user__function-menu_text-top {
+  margin: 10px 66px 20px 80px;
+  font-weight: 700;
+  font-size: 39px;
+  line-height: 46px;
+  text-decoration-line: underline;
+  color: #000000;
+}
+.container-page-user__function-menu_button-one {
+  cursor: pointer;
+  margin: 0px 107px 20px 107px;
+  width: 326px;
+  height: 75px;
+  left: 982px;
+  top: 183px;
+  background: #F0D3C1;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+.container-page-user__function-menu_button-two {
+  cursor: pointer;
+  margin: 0px 107px 20px 107px;
+  width: 326px;
+  height: 85px;
+  background: #F0D3C1;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+}
+.container-page-user__function-menu_button-three {
+  cursor: pointer;
+  margin: 0px 107px 20px 107px;
+  width: 326px;
+  height: 89px;
+  background: #F0D3C1;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+}
+.container-page-user__function-menu_button-four {
+  cursor: pointer;
+  margin: 0px 107px 20px 107px;
+  width: 326px;
+  height: 120px;
+  background: #F0D3C1;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+}
+.container-page-user__function-menu_button-five {
+  cursor: pointer;
+  margin: 0px 107px 20px 107px;
+  width: 326px;
+  height: 75px;
+  left: 982px;
+  top: 183px;
+  background: #C16471;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+}

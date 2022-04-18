@@ -10,10 +10,12 @@ const Login = () => {
   const history = useHistory();
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
+  const [city, setCity] = useState('');
 
   localStorage.setItem("login", login);
   localStorage.setItem("balance", balance);
   localStorage.setItem("role", role);
+  localStorage.setItem("city", city);
 
   const hadlePassword = (e) => {
     setPassword(e.target.value)
@@ -27,12 +29,12 @@ const Login = () => {
       e.preventDefault()
       const address = await Contract.methods.get_address(login).call();
       console.log("get_address", address);
-      await web3.eth.personal.unlockAccount(address, password,0);
+      await web3.eth.personal.unlockAccount(address, password, 0);
       const protectPassword = await web3.utils.keccak256(password);
       const roleUser = await Contract.methods.get_role_user(login).call();
       console.log("roleUser:", roleUser);
       const roleShop = await Contract.methods.get_role_shop(login).call();
-      console.log("roleShop",roleShop);
+      console.log("roleShop:",roleShop);
 
       if(roleUser === "2") {
         await Contract.methods.login_user(login, protectPassword).send({from:address});
@@ -42,9 +44,8 @@ const Login = () => {
         var AddrInfoUser = await Contract.methods.structUsers(address).call();
         console.log(AddrInfoUser);
         setBalance(AddrInfoUser[2])
-        console.log(balance);
+        console.log("Balance:", AddrInfoUser[2]);
         setRole(AddrInfoUser[3])
-        console.log(role);
         if(onlineUser){
           web3.eth.defaultAccount = address;
           history.push("/Home");
@@ -56,9 +57,10 @@ const Login = () => {
         var AddrInfoShop = await Contract.methods.structShops(address).call();
         console.log(AddrInfoShop);
         setBalance(AddrInfoShop[2]);
-        console.log(balance);
+        console.log("Balance:", AddrInfoShop[2]);
         setRole(AddrInfoShop[3]);
-        console.log(role);
+        setCity(AddrInfoShop[6])
+        console.log("City:", AddrInfoShop[6]);
         if(onlineShop){
           web3.eth.defaultAccount = address;
           history.push("/Home");
@@ -75,7 +77,7 @@ const Login = () => {
       e.preventDefault()
       const accounts = await web3.eth.getAccounts();
       console.log(accounts);
-      await web3.eth.personal.unlockAccount(accounts[0],"0",0);
+      await web3.eth.personal.unlockAccount(accounts[0],"1",0);
       const address = await web3.eth.personal.newAccount(password);
       alert("Ваш аккаунт создается, подождите..")
       await web3.eth.personal.unlockAccount(address, password,0);
@@ -94,7 +96,7 @@ const Login = () => {
 
   return(
     <>
-      <div className="border-login">
+      <body className="border-login">
         <div className="border-login__line-top"></div>
         <div className="border-login__text">Вход</div>
           <input onChange={handleLogin} type="text" placeholder="Логин"/>
@@ -102,11 +104,11 @@ const Login = () => {
           <button className="border-login__button-login" onClick={LogIn}>
             <p>Войти</p>
           </button>
-          <button className="login-border__button-signIn" onClick={Registration}>
+          <button className="border-login__button-signIn" onClick={Registration}>
             <p>Зарегестрироваться</p>
           </button>
         <div className="border-login__line-button"></div>
-      </div>
+      </body>
     </>
   );
 };

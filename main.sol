@@ -8,18 +8,18 @@ contract coursepaper {
     constructor() public {
 
         //Shops
-        shopLists["Beer"] = 0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90;
-        structShops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90] = structShop("Beer", get_hash("1"), 1000, 3, false, "1", "Moscow", 0);
-        shopList.push(structShops[0x22140e5EEE5a0341a107bd6A65ee0F5BB72DEb90].shopName);
-        shopLists["Clothes"] = 0x32BBfd99DFCF2a15c1D278a19856683930A8be0B;
-        structShops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B] = structShop("Clothes", get_hash("1"), 1000, 3, false, "2", "Petersburg", 0);
-        shopList.push(structShops[0x32BBfd99DFCF2a15c1D278a19856683930A8be0B].shopName);
+        shopLists["Beer"] = 0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004;
+        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004] = structShop("Beer", get_hash("2"), 1000, 3, false, "1", "Moscow", 0);
+        shopList.push(structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].shopName);
+        shopLists["Product"] = 0x49C364fedaD517382ee5A776d3071f11CfDE4C5c;
+        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c] = structShop("Product", get_hash("2"), 1000, 3, false, "2", "Petersburg", 0);
+        shopList.push(structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].shopName);
 
         //User
-        structUserLogins["Peta"] = 0xC152aD455B16d865F2344140dEc6Ea95cb361e8A;
-        structUsers[0xC152aD455B16d865F2344140dEc6Ea95cb361e8A] = structUser("Peta", get_hash("2"), 1000, 2, false);
+        structUserLogins["Peta"] = 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025;
+        structUsers[0xAdA67460CF329D12c1ed898710CC8Da5D40d8025] = structUser("Peta", get_hash("3"), 1000, 2, false);
         userLoginsArray.push("Peta");
-        userAddressArray.push(0xC152aD455B16d865F2344140dEc6Ea95cb361e8A);
+        userAddressArray.push(0xAdA67460CF329D12c1ed898710CC8Da5D40d8025);
     }
 //END CONSTRUCTOR
 
@@ -53,6 +53,10 @@ contract coursepaper {
             adr = shopLists[login];
         }
         return(adr);
+    }
+    //Function get city
+    function get_city(string memory login) public view returns(string memory) {
+        return(structShops[shopLists[login]].city);
     }
 //END REACT FUNCTON
 
@@ -226,7 +230,17 @@ contract coursepaper {
             }
         }
     }
-
+    //Function logged shop
+    function login_shop(string memory login, bytes32 password) public {
+        require(structShops[shopLists[login]].logged == false, "Error: You are already logged");
+        require(shopLists[login] != address(0), "Error: User doesn't exist");
+        require(structShops[shopLists[login]].password == password, "Error: Invalid password");
+        structShops[shopLists[login]].logged = true;
+    }
+    //Function logged out shop
+    function login_out_shop(string memory login) public {
+        structShops[shopLists[login]].logged = false;
+    }
 //END SHOP FUNCTION
 
 //BEGIN USER FUNCTION
@@ -248,7 +262,7 @@ contract coursepaper {
     //Function create user
     function create_user(address addr, string memory login, bytes32 password) public {
         require(structUserLogins[login] == address(0), "Error: User already exist");
-        structUsers[addr] = structUser(login, password, 1000, 0, false);
+        structUsers[addr] = structUser(login, password, 1000, 2, false);
         structUserLogins[login] = addr;
         userAddressArray.push(addr);
     }
@@ -259,12 +273,9 @@ contract coursepaper {
         require(structUsers[structUserLogins[login]].password == password, "Error: Invalid password");
         structUsers[structUserLogins[login]].logged = true;
     }
-    //Function logged shop
-    function login_shop(string memory login, bytes32 password) public {
-        require(structShops[shopLists[login]].logged == false, "Error: You are already logged");
-        require(shopLists[login] != address(0), "Error: User doesn't exist");
-        require(structShops[shopLists[login]].password == password, "Error: Invalid password");
-        structShops[shopLists[login]].logged = true;
+    //Function logged out user
+    function login_out_user(string memory login) public {
+        structUsers[structUserLogins[login]].logged = false;
     }
 //END USER FUNCTION
 }
