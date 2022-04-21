@@ -11,13 +11,16 @@ const Login = () => {
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
   const [city, setCity] = useState('');
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState();
+  const [shopNumber, setShopNumber] = useState();
 
   localStorage.setItem("login", login);
   localStorage.setItem("balance", balance);
   localStorage.setItem("role", role);
   localStorage.setItem("city", city);
   localStorage.setItem("address", address);
+  localStorage.setItem("shopNumber", shopNumber);
+
   
 
   const hadlePassword = (e) => {
@@ -65,6 +68,8 @@ const Login = () => {
         setRole(AddrInfoShop[3]);
         setCity(AddrInfoShop[6])
         console.log("City:", AddrInfoShop[6]);
+        setShopNumber(AddrInfoShop[5]);
+        console.log(AddrInfoShop[5]);
         alert("Вы авторизовались!");
         if(onlineShop){
           web3.eth.defaultAccount = address;
