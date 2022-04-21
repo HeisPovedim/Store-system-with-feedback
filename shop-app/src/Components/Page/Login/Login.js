@@ -11,11 +11,14 @@ const Login = () => {
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
   const [city, setCity] = useState('');
+  const [address, setAddress] = useState('');
 
   localStorage.setItem("login", login);
   localStorage.setItem("balance", balance);
   localStorage.setItem("role", role);
   localStorage.setItem("city", city);
+  localStorage.setItem("address", address);
+  
 
   const hadlePassword = (e) => {
     setPassword(e.target.value)
@@ -28,6 +31,7 @@ const Login = () => {
     try{
       e.preventDefault()
       const address = await Contract.methods.get_address(login).call();
+      setAddress(address);
       console.log("get_address", address);
       await web3.eth.personal.unlockAccount(address, password, 0);
       const protectPassword = await web3.utils.keccak256(password);
@@ -35,7 +39,6 @@ const Login = () => {
       console.log("roleUser:", roleUser);
       const roleShop = await Contract.methods.get_role_shop(login).call();
       console.log("roleShop:",roleShop);
-
       if(roleUser === "2") {
         await Contract.methods.login_user(login, protectPassword).send({from:address});
         const onlineUser = await Contract.methods.check_logged_user(login).call();
@@ -46,6 +49,7 @@ const Login = () => {
         setBalance(AddrInfoUser[2])
         console.log("Balance:", AddrInfoUser[2]);
         setRole(AddrInfoUser[3])
+        alert("Вы авторизовались!");
         if(onlineUser){
           web3.eth.defaultAccount = address;
           history.push("/Home");
@@ -61,13 +65,14 @@ const Login = () => {
         setRole(AddrInfoShop[3]);
         setCity(AddrInfoShop[6])
         console.log("City:", AddrInfoShop[6]);
+        alert("Вы авторизовались!");
         if(onlineShop){
           web3.eth.defaultAccount = address;
           history.push("/Home");
         };
       };
-    }catch(e){
-      alert(e);
+    }catch(e) {
+      console.log(e);
     };
   };
 ;

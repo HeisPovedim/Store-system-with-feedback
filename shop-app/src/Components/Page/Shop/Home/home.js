@@ -10,7 +10,8 @@ const Home = () => {
   const { web3, Contract } = UseContext();
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
-  const login = localStorage.getItem('login')
+  const login = localStorage.getItem("login");
+  const address = localStorage.getItem("address")
 
   useEffect(() => {
     setBalance(localStorage.getItem('balance'))
@@ -18,14 +19,13 @@ const Home = () => {
   })
 
   const PersonalAccountSign = async (e) => {
-    try{
+    try {
       if (role === "2") {
         history.push("/PersonalAccountUser");
       } else if (role === "3") {
         history.push("/PersonalAccountShop");
       }
     } catch (e) {
-      alert(e);
       console.log(e);
     }
   }
@@ -37,13 +37,15 @@ const Home = () => {
       const roleShop = await Contract.methods.get_role_shop(login).call();
       console.log("roleShop",roleShop);
       if(roleUser === "2") {
-        await Contract.methods.login_out_user(login).send({from:web3.eth.defaultAccount});
+        alert("Вы вышли с аккаунта!");
+        await Contract.methods.login_out_user(login).send({from:address});
       } else if (roleShop === "3") {
-        await Contract.methods.login_out_shop(login).send({from:web3.eth.defaultAccount});
+        alert("Вы вышли с аккаунта!");
+        await Contract.methods.login_out_shop(login).send({from:address});
       }
       alert(e);
     } catch (e) {
-      alert(e);
+      console.log(e);
     }
   }
 
