@@ -140,13 +140,9 @@ contract coursepaper {
     //Function adding a product
     uint256 addProductShop_idProduct = 0;
     function addProductShop (string memory title, uint256 price, string memory description) public {
-        /*for (uint i = 0; i <= productList.length; i++) {
-            if ()*/
-            structProducts[title] = structProduct(msg.sender, description , price, addProductShop_idProduct);
-            productList.push(title);
-            addProductShop_idProduct++;
-        /*}*/
-        
+        structProducts[title] = structProduct(msg.sender, description , price, addProductShop_idProduct);
+        productList.push(title);
+        addProductShop_idProduct++;
     }
     
     //Function leave a feedback
@@ -248,11 +244,13 @@ contract coursepaper {
     function productPurchases (string memory titleProduct) public {
         require(structUsers[msg.sender].ballance >= structProducts[titleProduct].price, "error: not money");
         structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, true));
+        structUsers[msg.sender].ballance = structUsers[msg.sender].ballance - structProducts[titleProduct].price;
     }
 
     //Function product return
     function productReturn (string memory titleProduct) public {
         structStatusReturns.push(structStatusReturn(msg.sender, titleProduct, true));
+
     }
 
     //Function marriage registration

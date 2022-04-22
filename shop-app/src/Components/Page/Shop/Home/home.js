@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { UseContext } from "../../../Contract/context";
 import { useHistory } from "react-router-dom";
-// import Web3 from "web3";
 import { Link } from 'react-router-dom'
 import "./home.css";
 
 const Home = () => {
   const history = useHistory();
-  const { web3, Contract } = UseContext();
+  const { Contract } = UseContext();
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
   const login = localStorage.getItem("login");
@@ -16,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     setBalance(localStorage.getItem('balance'))
     setRole(localStorage.getItem('role'))
-  })
+  },[])
 
   const PersonalAccountSign = async (e) => {
     try {

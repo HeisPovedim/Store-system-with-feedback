@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { UseContext } from "../../../Contract/context";
-import { useHistory } from "react-router-dom";
+// import { UseContext } from "../../../Contract/context";
+// import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./personal_account.css"
 
 const Seller = () => {
-  const history = useHistory();
-  const { web3, Contract } = UseContext();
+  // const history = useHistory();
+  // const { web3, Contract } = UseContext();
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
   const [city, setCity] = useState('');

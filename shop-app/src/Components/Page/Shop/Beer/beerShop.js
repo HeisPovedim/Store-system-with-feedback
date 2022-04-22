@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { UseContext } from "../../../Contract/context";
-import { useHistory } from "react-router-dom";
-import Web3 from "web3";
+import React from "react";
+// import { UseContext } from "../../../Contract/context";
+// import { useHistory } from "react-router-dom";
+// import Web3 from "web3";
+// import { Link } from 'react-router-dom'
 import "./beerShop.css"
-import { Link } from 'react-router-dom'
 
 const Beer = () => {
 

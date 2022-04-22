@@ -7,7 +7,6 @@ const Confirmation = () => {
     <>
       <header className="header-page-confirmation">
         <div className="header-page-confirmation_text-header">Подтверждение или отклонение запроса покупателя на покупку</div>
-        <div className="header-page-confirmation_text-role">Роль: магазин</div>
       </header>
       <div className="container-page-confirmation">
         <div className="container-page-confirmation__border-menu">
