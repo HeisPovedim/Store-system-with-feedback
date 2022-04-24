@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
-// import { UseContext } from "../../../Contract/context";
-// import { useHistory } from "react-router-dom";
+import { UseContext } from "../../../contract/context";
 import { Link } from "react-router-dom";
 import "./personal_account.css"
 
 const Seller = () => {
-  // const history = useHistory();
-  // const { web3, Contract } = UseContext();
+  const { Contract } = UseContext();
   const [balance, setBalance] = useState();
   const [role, setRole] = useState();
   const [city, setCity] = useState('');
   const [shopNumber, setShopNumber] = useState('');
-  const login = localStorage.getItem('login')
+  const login = localStorage.getItem('login');
+  const address = localStorage.getItem('address');
   
   //Хук эффект
-  useEffect( () => {
+  useEffect(() => {
     setBalance(localStorage.getItem('balance'));
     setRole(localStorage.getItem('role'));
     setCity(localStorage.getItem('city'));
     setShopNumber(localStorage.getItem('shopNumber'));
-  },[])
+    async function fetchData() {
+      const getBalance = await Contract.methods.get_ballance_shop(address).call();
+    setBalance(getBalance);
+    }
+    fetchData();
+  },)
   
   return (
     <>

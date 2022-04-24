@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UseContext } from "../../../Contract/context";
+import { UseContext } from "../../../contract/context";
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import "./home.css";
@@ -54,8 +54,7 @@ const Home = () => {
         <header className="header-home">
           <div className="header-home_text-header">Меню</div>
           <div className="header-home_personal-info">
-            <div className="header-home_personal-info_name">{login}, {balance}</div>
-            <p>{(role === '3')?'пользователь':'error'}</p>
+            <div className="header-home_personal-info_name">{login}</div>
             <Link className="header-home_personal-info_link" onClick={PersonalAccountSign}>Личный кабинет</Link>
           </div>
         </header>

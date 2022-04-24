@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UseContext } from "../../../../Contract/context";
+import { UseContext } from "../../../../contract/context";
 import { Link } from 'react-router-dom'
 import "./product_creation.css"
 

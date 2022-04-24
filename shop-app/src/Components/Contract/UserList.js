@@ -183,6 +183,44 @@ export const UserList = [
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "adr",
+				"type": "address"
+			}
+		],
+		"name": "get_ballance_shop",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "adr",
+				"type": "address"
+			}
+		],
+		"name": "get_ballance_user",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "login",
 				"type": "string"

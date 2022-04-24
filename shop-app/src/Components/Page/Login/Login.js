@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UseContext } from "../../Contract/context";
+import { UseContext } from "../../contract/context";
 import {useHistory} from "react-router-dom";
 import './login.css';
 
@@ -20,8 +20,6 @@ const Login = () => {
   localStorage.setItem("city", city);
   localStorage.setItem("address", address);
   localStorage.setItem("shopNumber", shopNumber);
-
-  
 
   const hadlePassword = (e) => {
     setPassword(e.target.value)

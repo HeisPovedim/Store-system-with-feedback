@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from "react";
-import { UseContext } from "../../../Contract/context";
+import { UseContext } from "../../../contract/context";
 // import { useHistory } from "react-router-dom";
-import Web3 from "web3";
+// import Web3 from "web3";
 import { Link } from 'react-router-dom'
 import "./beerShop.css"
 
 const Beer = () => {
-  const { web3, Contract } = UseContext();
+  const { Contract } = UseContext();
   const [arrayProduct, setArrayProduct] = useState([]);
-  const [Product, setProduct] = useState('');
+  const [product, setProduct] = useState('');
 
-  //Константы из localStorage
+  //Переменные из localStorage
   const address = localStorage.getItem("address")
 
   //Получение списка продуктов
@@ -28,10 +28,11 @@ const Beer = () => {
   }
 
   //Фунция создания продукта
-  const BuyarrayProduct = async (e) =>{
+  const BuyProduct = async (e) =>{
     try {
-      await Contract.methods.productPurchases(Product).send({from:address});
-      console.log(address);
+      await Contract.methods.productPurchases(product).send({from:address});
+      console.log("product:", product);
+      console.log("address:", address);
       alert("Вы купили продукт!");
     } catch (e) {
       console.log(e);
@@ -49,7 +50,7 @@ const Beer = () => {
       <div className="container-page-beer__menu">
         <div className="menu__logo-beer"></div>
         <div className="menu">
-          <button onClick={BuyarrayProduct} className="menu__buy-button">КУПИТЬ</button>
+          <button onClick={BuyProduct} className="menu__buy-button">КУПИТЬ</button>
           <select onChange={handlProduct} className="menu__products-select">
             {arrayProduct.map((arr,i)=><option key={i} value={String(arr)}>{arr}</option>)}
           </select>

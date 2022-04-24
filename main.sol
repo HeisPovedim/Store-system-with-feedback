@@ -45,6 +45,10 @@ contract coursepaper {
         function get_city(string memory login) public view returns(string memory) {
         return(structShops[shopLists[login]].city);
         }
+        //Функция получения баланса МАГАЗИНА
+        function get_ballance_shop(address adr) public view returns(uint) {
+            return(structShops[adr].ballance);
+        }
     //END REACT FUNCTON SHOP
 
     //BEGIN REACT FUNCTON USER
@@ -54,7 +58,11 @@ contract coursepaper {
         }
         //Функция получения роли для ПОЛЬЗОВАТЕЛЯ
         function get_role_user(string memory login) public view returns(uint) {
-        return(structUsers[structUserLogins[login]].role);
+            return(structUsers[structUserLogins[login]].role);
+        }
+        //Функция получения баланса ПОЛЬЗОВАТЕЛЯ
+        function get_ballance_user(address adr) public view returns(uint) {
+            return(structUsers[adr].ballance);
         }
     //END REACT FUNCTON USER
     //Функция получения хэш-пароля
@@ -242,7 +250,7 @@ contract coursepaper {
 //END SHOP FUNCTION
 
 //BEGIN USER FUNCTION
-    //Функция отказа от ПОКУПКИ
+    //Функция ПОКУПКИ
     function productPurchases (string memory titleProduct) public {
         require(structUsers[msg.sender].ballance >= structProducts[titleProduct].price, "error: not money");
         structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, true));

@@ -45,7 +45,7 @@ input::placeholder {
   height: 337px;
   left: 528px;
   top: 125px;
-  background: url(../../../Img/beerShop/logo_beer.png);
+  background: url(../../../img/beerShop/logo_beer.png);
 }
 .menu__buy-button {
   cursor: pointer;

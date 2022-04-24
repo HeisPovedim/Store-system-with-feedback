@@ -3,20 +3,20 @@ import React from "react";
 import {Switch, Route} from "react-router-dom";
 
 //Импорт страниц
-import Login from "./Components/Page/Login/login";
-import Home from "./Components/Page/Shop/Home/home"
-import Beer from "./Components/Page/Shop/Beer/beerShop";
-import PersonalAccountShop from "./Components/Page/Personal account (shop)/Personal account/personal_account";
-import PersonalAccountUser from "./Components/Page/Personal account (user)/Personal account/personal_account"
+import Login from "./components/page/login/login";
+import Home from "./components/page/shop/home/home"
+import Beer from "./components/page/shop/beer/beerShop";
+import PersonalAccountShop from "./components/page/personal account (shop)/personal account/personal_account";
+import PersonalAccountUser from "./components/page/personal account (user)/personal account/personal_account"
 //Импорт страниц - Функции магазина
-import ConfirmationSeller from "./Components/Page/Personal account (shop)/Function/Confirmation or rejection/confirmation_or_rejection";
-import ReturnSeller from "./Components/Page/Personal account (shop)/Function/Return of goods/return_of_goods";
-import MarriageSeller from "./Components/Page/Personal account (shop)/Function/Marriage registration/marriage_registration";
-import ProductCreation from "./Components/Page/Personal account (shop)/Function/Product creation/product_creation";
+import ConfirmationSeller from "./components/page/personal account (shop)/function/сonfirmation or rejection/confirmation_or_rejection";
+import ReturnSeller from "./components/page/personal account (shop)/function/return of goods/return_of_goods";
+import MarriageSeller from "./components/page/personal account (shop)/function/marriage registration/marriage_registration";
+import ProductCreation from "./components/page/personal account (shop)/function/product creation/product_creation";
 //Импорт страниц - Функции пользователя
-import RefusalToPurchaseUser from "./Components/Page/Personal account (user)/Function/Refusal to purchase/refusal_to_purchase";
-import ReturnOfGoodsUser from "./Components/Page/Personal account (user)/Function/Return of goods/return_of_goods"
-import MarriageRegistration from "./Components/Page/Personal account (user)/Function/Marriage registration/marriage_registration"
+import RefusalToPurchaseUser from "./components/page/personal account (user)/function/refusal to purchase/refusal_to_purchase";
+import ReturnOfGoodsUser from "./components/page/personal account (user)/function/return of goods/return_of_goods"
+import MarriageRegistration from "./components/page/personal account (user)/function/marriage registration/marriage_registration"
 
 const Routers = () => {
   return (
