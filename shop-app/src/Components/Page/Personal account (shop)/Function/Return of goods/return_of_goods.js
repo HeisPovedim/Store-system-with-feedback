@@ -5,26 +5,25 @@ import "./return_of_goods.css"
 const Return = () => {
   return(
     <>
-      <header className="header-page-return">
-        <div className="header-page-return_text-header">Подтверждение или отклонение запроса покупателя на возврат товара</div>
-        <div className="header-page-return_text-role">Роль: магазин</div>
+      <header className="header-return">
+        <div className="header-return__text-header">Подтверждение или отклонение запроса покупателя на возврат товара</div>
       </header>
-      <div className="container-page-return">
-        <div className="container-page-return__border-menu">
-          <div className="container-page-return__border-menu_top-line"></div>
-          <input className="container-page-return__border-menu_input-id" type="text" placeholder="id покупки"/>
-          <div className="container-page-return__border-menu_buttons">
-            <button className="container-page-return__border-menu_buttons_accept">
+      <div className="container-return-seller">
+        <div className="container-return-seller-border-menu">
+          <div className="container-return-seller-border-menu__top-line"></div>
+          <input className="container-return-seller-border-menu__input-id" type="text" placeholder="id покупки"/>
+          <div className="container-return-seller-border-menu-buttons">
+            <button className="container-return-seller-border-menu-buttons__accept">
               <p>Подтвердить</p>
             </button>
-            <button className="container-page-return__border-menu_buttons_reject">
+            <button className="container-return-seller-border-menu-buttons__reject">
               <p>Отклонить</p>
             </button>
           </div>
-          <Link to="seller"><button className="container-page-return__border-menu_exit-button">
+          <Link to="/PersonalAccountShop"><button className="container-return-seller-border-menu__exit-button">
             <p>Выйти</p>
           </button></Link>
-          <div className="container-page-return__border-menu_bottom-line"></div>
+          <div className="container-return-seller-border-menu__bottom-line"></div>
         </div>
       </div>
     </>

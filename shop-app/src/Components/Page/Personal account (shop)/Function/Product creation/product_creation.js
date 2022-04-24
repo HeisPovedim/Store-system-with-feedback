@@ -35,24 +35,24 @@ const Return = () => {
 
   return(
     <>
-      <header className="header-page-creation">
-        <div className="header-page-creation_text-header">Создание товара</div>
+      <header className="header-creation-seller">
+        <div className="header-creation-seller__text-header">Создание товара</div>
       </header>
-      <div className="container-page-creation">
-        <div className="container-page-creation__border-menu">
-          <div className="container-page-creation__border-menu_top-line"></div>
-          <input onChange={hadleNameProduct} className="container-page-creation__border-menu_input-name" type="text" placeholder="название"/>
-          <input onChange={hadleDescriptionProduct} className="container-page-creation__border-menu_input-description" type="text" placeholder="описание"/>
-          <input onChange={hadlePriceProduct} className="container-page-creation__border-menu_input-price" type="text" placeholder="цена"/>
-          <div className="container-page-creation__border-menu_buttons">
-            <button onClick={creatProduct} className="container-page-creation__border-menu_buttons_accept">
+      <div className="container-creation-seller">
+        <div className="container-creation-seller-border-menu">
+          <div className="container-creation-seller-border-menu__top-line"></div>
+          <input onChange={hadleNameProduct} className="container-creation-seller-border-menu__input-name" type="text" placeholder="название"/>
+          <input onChange={hadleDescriptionProduct} className="container-creation-seller-border-menu__input-description" type="text" placeholder="описание"/>
+          <input onChange={hadlePriceProduct} className="container-creation-seller-border-menu__input-price" type="text" placeholder="цена"/>
+          <div className="container-creation-seller-border-menu-buttons">
+            <button onClick={creatProduct} className="container-creation-seller-border-menu-buttons__accept">
               <p>Создать</p>
             </button>
-            <Link to="/PersonalAccountShop"><button className="container-page-creation__border-menu_exit-button">
+            <Link to="/PersonalAccountShop"><button className="container-creation-seller-border-menu__exit-button">
             <p>Выйти</p>
           </button></Link>
           </div>
-          <div className="container-page-creation__border-menu_bottom-line"></div>
+          <div className="container-creation-seller-border-menu__bottom-line"></div>
         </div>
       </div>
     </>

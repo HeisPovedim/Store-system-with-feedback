@@ -13,14 +13,14 @@ const Seller = () => {
   const [shopNumber, setShopNumber] = useState('');
   const login = localStorage.getItem('login')
   
-
+  //Хук эффект
   useEffect( () => {
     setBalance(localStorage.getItem('balance'));
     setRole(localStorage.getItem('role'));
     setCity(localStorage.getItem('city'));
     setShopNumber(localStorage.getItem('shopNumber'));
-
   },[])
+  
   return (
     <>
       <header className="header-page-seller">
@@ -39,11 +39,18 @@ const Seller = () => {
           <div className="container-page-seller__function-menu_text-top">Функции продовца</div>
           <Link to="/ProductCreation"><button className="container-page-seller__function-menu_button-one">Создание товара</button></Link>
           <Link to="/ConfirmationSeller"><button className="container-page-seller__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button></Link>
-          <Link to="/Return"><button className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button></Link>
-          <Link to="/Marriage"><button className="container-page-seller__function-menu_button-four"> Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>
+          <Link to="/ReturnSeller"><button className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button></Link>
+          <Link to="/MarriageSeller"><button className="container-page-seller__function-menu_button-four"> Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>
           <button className="container-page-seller__function-menu_button-five">Получить список запросов от покупателей</button>
         </div>
       </div>
+      <footer className="footer-page-seller">
+          <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home">
+            <button>
+              <p>Выйти</p>
+            </button>
+          </Link>
+        </footer>
     </>
   );
 };

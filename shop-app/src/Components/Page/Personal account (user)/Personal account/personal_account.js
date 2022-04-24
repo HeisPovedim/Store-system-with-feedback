@@ -1,31 +1,42 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import "./personal_account.css"
 
 const Seller = () => {
+  
+  const [balance, setBalance] = useState();
+  const login = localStorage.getItem('login')
+  
+  //Хук эффект
+  useEffect( () => {
+    setBalance(localStorage.getItem('balance'));
+  },[])
+
   return (
     <>
       <header className="header-page-user">
         <div className="header-page-user_text-header">Личный кабинет</div>
-        <div className="header-page-user_text-role">Роль: магазин</div>
       </header>
       <div className="container-page-user">
-        <div className="container-page-user__personal-information">
-          <div className="container-page-user__personal-information_text-top">Личная информация:</div>
-          <div className="container-page-user__personal-information_text-name">Имя: Beer</div>
-          <div className="container-page-user__personal-information_text-login">Баланс: 1000</div>
-          <div className="container-page-user__personal-information_text-city">Город: Moscow</div>
-          <div className="container-page-user__personal-information_text-shop">Номер: 1</div>
+        <div className="container-page-user-personal-information">
+          <div className="container-page-user-personal-information__text-top">Личная информация:</div>
+          <div className="container-page-user-personal-information__text-name">Имя: {login}</div>
+          <div className="container-page-user-personal-information__text-login">Баланс: {balance}</div>
         </div>
-        <div className="container-page-user__function-menu">
-          <div className="container-page-user__function-menu_text-top">Функции продовца</div>
-          <Link to="/ProductCreation"><button className="container-page-user__function-menu_button-one">Создание товара</button></Link>
-          <Link to="/ConfirmationSeller"><button className="container-page-user__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button></Link>
-          <Link to="/Return"><button className="container-page-user__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button></Link>
-          <Link to="/Marriage"><button className="container-page-user__function-menu_button-four"> Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>
-          <button className="container-page-user__function-menu_button-five">Получить список запросов от покупателей</button>
+        <div className="container-page-user-function-menu">
+          <div className="container-page-user-function-menu__text-top">Функции продовца</div>
+          <Link to="/RefusalToPurchaseUser"><button className="container-page-user-function-menu__button-one">Отказ от пукупки</button></Link>
+          <Link to="/ReturnOfGoodsUser"><button className="container-page-user-function-menu__button-two">Возврат товара</button></Link>
+          <Link to="/MarriageRegistration"><button className="container-page-user-function-menu__button-three">Оформление брака</button></Link>
         </div>
       </div>
+      <footer className="footer-page-user">
+        <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home">
+          <button>
+            <p>Выйти</p>
+          </button>
+        </Link>
+      </footer>
     </>
   );
 };

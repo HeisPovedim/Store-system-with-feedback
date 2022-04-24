@@ -69,9 +69,11 @@ const Home = () => {
         </div>
         <footer className="footer-home">
           <div className="footer-home__button-exit">
-            <Link style={{ textDecoration: 'none', color: 'white' }} to="/Login"><button onClick={LoggedOut}>
-              <p>Выйти</p>
-            </button></Link>
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="/Login">
+              <button onClick={LoggedOut}>
+                <p>Выйти</p>
+              </button>
+            </Link>
           </div>
         </footer>
       </body>

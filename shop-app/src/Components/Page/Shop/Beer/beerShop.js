@@ -1,12 +1,42 @@
-import React from "react";
-// import { UseContext } from "../../../Contract/context";
+import React, {useEffect, useState} from "react";
+import { UseContext } from "../../../Contract/context";
 // import { useHistory } from "react-router-dom";
-// import Web3 from "web3";
-// import { Link } from 'react-router-dom'
+import Web3 from "web3";
+import { Link } from 'react-router-dom'
 import "./beerShop.css"
 
 const Beer = () => {
+  const { web3, Contract } = UseContext();
+  const [arrayProduct, setArrayProduct] = useState([]);
+  const [Product, setProduct] = useState('');
 
+  //Константы из localStorage
+  const address = localStorage.getItem("address")
+
+  //Получение списка продуктов
+  useEffect(() => {
+    const ListarrayProduct = async() => {
+      let arrayProduct = await Contract.methods.get_product_list().call();
+      setArrayProduct(arrayProduct);
+    }
+    ListarrayProduct()
+  },)
+
+  //Функции обработчика событий
+  const handlProduct = (e) => {
+    setProduct(e.target.value)
+  }
+
+  //Фунция создания продукта
+  const BuyarrayProduct = async (e) =>{
+    try {
+      await Contract.methods.productPurchases(Product).send({from:address});
+      console.log(address);
+      alert("Вы купили продукт!");
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return(
     <>
@@ -19,14 +49,18 @@ const Beer = () => {
       <div className="container-page-beer__menu">
         <div className="menu__logo-beer"></div>
         <div className="menu">
-          <button className="menu__buy-button">КУПИТЬ</button>
-          <select className="menu__products-select">
-          
+          <button onClick={BuyarrayProduct} className="menu__buy-button">КУПИТЬ</button>
+          <select onChange={handlProduct} className="menu__products-select">
+            {arrayProduct.map((arr,i)=><option key={i} value={String(arr)}>{arr}</option>)}
           </select>
         </div>
       </div>
       <div className="container-page-beer__but-info">
-        <div>but</div>
+        <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home">
+          <button>
+            <p>Выйти</p>
+          </button>
+        </Link>
       </div>
     </div>
     </>

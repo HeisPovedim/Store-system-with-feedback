@@ -5,26 +5,25 @@ import "./marriage_registration.css"
 const Marriage = () => {
   return(
     <>
-      <header className="header-page-marriage">
-        <div className="header-page-marriage_text-header">Подтверждение или отклонение запроса покупателя на оформление брака</div>
-        <div className="header-page-marriage_text-role">Роль: магазин</div>
+      <header className="header-marriage">
+        <div className="header-marriage__text-header">Подтверждение или отклонение запроса покупателя на оформление брака</div>
       </header>
-      <div className="container-page-marriage">
-        <div className="container-page-marriage__border-menu">
-          <div className="container-page-marriage__border-menu_top-line"></div>
-          <input className="container-page-marriage__border-menu_input-id" type="text" placeholder="id покупки"/>
-          <div className="container-page-marriage__border-menu_buttons">
-          <button className="container-page-marriage__border-menu_buttons_accept">
+      <div className="container-marriage-seller">
+        <div className="container-marriage-seller-border-menu">
+          <div className="container-marriage-seller-border-menu__top-line"></div>
+          <input className="container-marriage-seller-border-menu__input-id" type="text" placeholder="id покупки"/>
+          <div className="container-marriage-seller-border-menu-buttons">
+          <button className="container-marriage-seller-border-menu-buttons__accept">
               <p>Подтвердить</p>
             </button>
-            <button className="container-page-marriage__border-menu_buttons_reject">
+            <button className="container-marriage-seller-border-menu-buttons__reject">
               <p>Отклонить</p>
             </button>
           </div>
-          <Link to="seller"><button className="container-page-marriage__border-menu_exit-button">
+          <Link to="/PersonalAccountShop"><button className="container-marriage-seller-border-menu__exit-button">
             <p>Выйти</p>
           </button></Link>
-          <div className="container-page-marriage__border-menu_bottom-line"></div>
+          <div className="container-marriage-seller-border-menu__bottom-line"></div>
           </div>
         </div>
     </>
