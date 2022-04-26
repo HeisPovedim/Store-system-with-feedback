@@ -180,8 +180,8 @@ contract coursepaper {
     //Функция принятия покупки
     function acceptPurchase (uint idPurchase, bool confirmation) public {
         if (confirmation == true) {
-            structStatusPurchases[idPurchase].status = false;
             structShops[msg.sender].ballance = structShops[msg.sender].ballance + structProducts[structStatusPurchases[idPurchase].titleProduct].price;
+            structStatusPurchases[idPurchase].status = false;
         } else {
             structUsers[structStatusPurchases[idPurchase].userLogin].ballance = structUsers[structStatusPurchases[idPurchase].userLogin].ballance + structProducts[structStatusPurchases[idPurchase].titleProduct].price;
             structStatusPurchases[idPurchase].status = false;

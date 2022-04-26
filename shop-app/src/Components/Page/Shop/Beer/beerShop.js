@@ -8,7 +8,7 @@ import "./beerShop.css"
 const Beer = () => {
   const { Contract } = UseContext();
   const [arrayProduct, setArrayProduct] = useState([]);
-  const [product, setProduct] = useState('');
+  const [product, setProduct] = useState(0);
 
   //Переменные из localStorage
   const address = localStorage.getItem("address")
@@ -18,6 +18,7 @@ const Beer = () => {
     const ListarrayProduct = async() => {
       let arrayProduct = await Contract.methods.get_product_list().call();
       setArrayProduct(arrayProduct);
+      setProduct(arrayProduct[0])
     }
     ListarrayProduct()
   },)
@@ -25,6 +26,7 @@ const Beer = () => {
   //Функции обработчика событий
   const handlProduct = (e) => {
     setProduct(e.target.value)
+    console.log(product);
   }
 
   //Фунция создания продукта

@@ -27,7 +27,7 @@ const Return = () => {
       console.log(nameProduct);
       console.log(descriptionProduct);
       console.log(priceProduct);
-      alert('Вы создали новый продукт:', nameProduct);
+      alert('Вы создали новый продукт: ' + nameProduct);
     } catch (e) {
       console.log(e);
     }

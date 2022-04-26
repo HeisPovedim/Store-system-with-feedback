@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import {Context} from './components/contract/context';
-import {UserList} from './components/contract/userList';
+import {Context} from './Components/contract/context';
+import {UserList} from './Components/contract/userList';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Web3 from 'web3';
 import Routers from "./routers";
 
 const App = () => {
   const [web3] = useState (new Web3('http://127.0.0.1:8545'))
-  const Addr = '0x37769b95640F5c58f9969b32fD418cB596259fFa'
+  const Addr = '0xD05aC1F2c559c190bDd615ad82F2A2F35E6d17b5'
   const [Contract] = useState(new web3.eth.Contract(UserList, Addr))
   return(
     <Router>
