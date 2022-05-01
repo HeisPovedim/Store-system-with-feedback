@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 contract coursepaper {
 
 //BEGIN CONSTRUCTOR
-    constructor() public {
+    constructor() {
 
         //Магазины
         shopLists["Beer"] = 0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004;
@@ -122,7 +122,7 @@ contract coursepaper {
     address[] userAddressArray;
 
     //Структура ПРОДУКТОВ
-    struct structProduct{
+    struct structProduct {
         address shop;
         string description;
         uint256 price;
@@ -135,6 +135,7 @@ contract coursepaper {
     struct structStatusPurchase {
         address userLogin;
         string titleProduct;
+        uint price;
         bool status;
     }
     structStatusPurchase[] public structStatusPurchases;
@@ -147,13 +148,13 @@ contract coursepaper {
     }
     structStatusReturn[] public structStatusReturns;
 
-    //Структура РЕГИСТРАЦИИ БРАКА
-    struct structMarriageRegistration {
+    //Структура статуса РЕГИСТРАЦИИ БРАКА
+    struct structStatusMarriage {
         address userLogin;
         string titleProduct;
         bool status;
     }
-    structMarriageRegistration[] public structMarriageRegistrations;
+    structStatusMarriage[] public structStatusMarriages;
 //END STRUCT
 
 //BEGIN SHOP FUNCTION
@@ -178,33 +179,33 @@ contract coursepaper {
     }
 
     //Функция принятия покупки
-    function acceptPurchase (uint idPurchase, bool confirmation) public {
+    function acceptPurchase (uint idPurchase, bool confirmation) public payable {
         if (confirmation == true) {
-            structShops[msg.sender].ballance = structShops[msg.sender].ballance + structProducts[structStatusPurchases[idPurchase].titleProduct].price;
+            payable(msg.sender).transfer(structStatusPurchases[idPurchase].price*(10**18));
             structStatusPurchases[idPurchase].status = false;
         } else {
-            structUsers[structStatusPurchases[idPurchase].userLogin].ballance = structUsers[structStatusPurchases[idPurchase].userLogin].ballance + structProducts[structStatusPurchases[idPurchase].titleProduct].price;
+            payable(structStatusPurchases[idPurchase].userLogin).transfer(structStatusPurchases[idPurchase].price*(10**18));
             structStatusPurchases[idPurchase].status = false;
         }
     }
 
     //Функция принятия возврата
-    function acceptReturn(uint idReturn, bool confirmation) public {
+    function acceptReturn(uint idReturn, bool confirmation) public payable {
         if(confirmation == true) {
+            payable(structStatusReturns[idReturn].userLogin).transfer(structProducts[structStatusReturns[idReturn].titleProduct].price*(10**18));
             structStatusReturns[idReturn].status = false;
-            structUsers[structStatusReturns[idReturn].userLogin].ballance = structUsers[structStatusReturns[idReturn].userLogin].ballance + structProducts[structStatusReturns[idReturn].titleProduct].price;
         } else {
             structStatusReturns[idReturn].status = false;
         }
     }
 
     //Функция принятия возврата товара
-    function acceptMarriageRegistration(uint idMarriageRegistration, bool confirmation) public {
+    function acceptMarriage(uint idMarriage, bool confirmation) public {
         if(confirmation == true) {
-            structUsers[structMarriageRegistrations[idMarriageRegistration].userLogin].ballance = structUsers[structMarriageRegistrations[idMarriageRegistration].userLogin].ballance + structProducts[structMarriageRegistrations[idMarriageRegistration].titleProduct].price;
-            structStatusReturns[idMarriageRegistration].status = false;
+            payable(structStatusMarriages[idMarriage].userLogin).transfer(structProducts[structStatusMarriages[idMarriage].titleProduct].price*(10**18));
+            structStatusReturns[idMarriage].status = false;
         } else {
-            structStatusReturns[idMarriageRegistration].status = false;
+            structStatusReturns[idMarriage].status = false;
         }
     }
 
@@ -251,19 +252,17 @@ contract coursepaper {
 
 //BEGIN USER FUNCTION
     //Функция ПОКУПКИ
-    function productPurchases (string memory titleProduct) public {
-        require(structUsers[msg.sender].ballance >= structProducts[titleProduct].price, "error: not money");
-        structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, true));
-        structUsers[msg.sender].ballance = structUsers[msg.sender].ballance - structProducts[titleProduct].price;
+    function productPurchases (string memory titleProduct) public payable {
+        require(msg.value == (structProducts[titleProduct].price*(10**18)), "error: not money");
+        structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, msg.value, true));
     }
     //Функция оформления ВОЗВРАТА
     function productReturn (string memory titleProduct) public {
         structStatusReturns.push(structStatusReturn(msg.sender, titleProduct, true));
-
     }
-    //Функция оформления БРАКА
-    function productMarriageRegistration (string memory titleProduct) public {
-        structMarriageRegistrations.push(structMarriageRegistration(msg.sender, titleProduct, true));
+    // //Функция оформления БРАКА
+    function productMarriage (string memory titleProduct) public {
+        structStatusMarriages.push(structStatusMarriage(msg.sender, titleProduct, true));
     }
     //Функция создания ПОЛЬЗОВАТЕЛЯ
     function create_user(address addr, string memory login, bytes32 password) public {

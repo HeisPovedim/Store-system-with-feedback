@@ -9,30 +9,35 @@ const Beer = () => {
   const { Contract } = UseContext();
   const [arrayProduct, setArrayProduct] = useState([]);
   const [product, setProduct] = useState(0);
+  const [price, setPrice] = useState(0);
 
   //Переменные из localStorage
   const address = localStorage.getItem("address")
 
   //Получение списка продуктов
-  useEffect(() => {
+  useEffect(() =>  {
     const ListarrayProduct = async() => {
       let arrayProduct = await Contract.methods.get_product_list().call();
       setArrayProduct(arrayProduct);
-      setProduct(arrayProduct[0])
+      setProduct(arrayProduct[0]);
     }
-    ListarrayProduct()
-  },)
+    ListarrayProduct();
+  },[])
 
-  //Функции обработчика событий
-  const handlProduct = (e) => {
-    setProduct(e.target.value)
+  useEffect(() => {
+    async function temp() {
+      var structProduct = await Contract.methods.structProducts(product).call();
+      setPrice(structProduct[2]);
+    }
+    temp();
     console.log(product);
-  }
+  })
+
 
   //Фунция создания продукта
-  const BuyProduct = async (e) =>{
+  const BuyProduct = async (e) => {
     try {
-      await Contract.methods.productPurchases(product).send({from:address});
+      await Contract.methods.productPurchases(product).send({from:address, value:price*(10**18)});
       console.log("product:", product);
       console.log("address:", address);
       alert("Вы купили продукт!");
@@ -53,9 +58,10 @@ const Beer = () => {
         <div className="menu__logo-beer"></div>
         <div className="menu">
           <button onClick={BuyProduct} className="menu__buy-button">КУПИТЬ</button>
-          <select onChange={handlProduct} className="menu__products-select">
-            {arrayProduct.map((arr,i)=><option key={i} value={String(arr)}>{arr}</option>)}
+          <select onChange={ (e) => setProduct(e.target.value) } className="menu__products-select">
+            {arrayProduct.map((arr,i) => <option key={i} value={String(arr)}> { arr } </option>)}
           </select>
+          <p> {price} </p>
         </div>
       </div>
       <div className="container-page-beer__but-info">

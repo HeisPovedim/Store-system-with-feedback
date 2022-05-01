@@ -155,3 +155,37 @@
 12:52:14.911627 db@open done T·45.154ms
 14:15:49.705279 db@close closing
 14:15:49.708409 db@close done T·3.6346ms
+=============== May 1, 2022 (MSK) ===============
+13:48:21.489257 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:48:21.489764 version@stat F·[3 1] S·3MiB[1MiB 1MiB] Sc·[0.75 0.02]
+13:48:21.489764 db@open opening
+13:48:21.489764 journal@recovery F·1
+13:48:21.494832 journal@recovery recovering @35
+13:48:21.500408 memdb@flush created L0@37 N·2971 S·223KiB "\x02\x84H..`\am,v77342":"\xff\x06\xb9..[B\",v77237"
+13:48:21.502437 version@stat F·[4 1] S·3MiB[1MiB 1MiB] Sc·[1.00 0.02]
+13:48:21.505479 db@janitor F·7 G·0
+13:48:21.505479 db@open done T·15.7152ms
+13:48:21.505986 table@compaction L0·4 -> L1·1 S·3MiB Q·77403
+13:48:21.545153 table@build created L1@40 N·34520 S·2MiB "\x00\x19Y..\xc1\x1d\u007f,v70119":"h\x00\x00..\x17\xef\xb7,v50160"
+13:48:21.563529 table@build created L1@41 N·17436 S·1015KiB "h\x00\x00..\xef\xb7t,v50157":"\xff\x06\xb9..[B\",v77299"
+13:48:21.563529 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+13:48:21.564597 table@compaction committed F-3 S-451KiB Ke·0 D·9088 T·58.6111ms
+13:48:21.564597 table@remove removed @34
+13:48:21.565103 table@remove removed @31
+13:48:21.565103 table@remove removed @28
+13:48:21.565103 table@remove removed @27
+13:48:36.661252 db@close closing
+13:48:36.661252 db@close done T·0s
+=============== May 1, 2022 (MSK) ===============
+13:48:52.622509 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:48:52.623016 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+13:48:52.623016 db@open opening
+13:48:52.623016 journal@recovery F·1
+13:48:52.624536 journal@recovery recovering @38
+13:48:52.626057 memdb@flush created L0@42 N·4 S·16KiB "Sna..tor,v77405":"unc..own,v77404"
+13:48:52.627577 version@stat F·[1 2] S·3MiB[16KiB 3MiB] Sc·[0.25 0.03]
+13:48:52.630617 db@janitor F·6 G·1
+13:48:52.630617 db@janitor removing table-37
+13:48:52.630617 db@open done T·7.6004ms
+17:27:53.714281 db@close closing
+17:27:53.714281 db@close done T·0s

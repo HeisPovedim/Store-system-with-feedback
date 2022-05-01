@@ -1,4 +1,5 @@
-export const UserList = [
+export const UserList = 
+[
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -8,7 +9,7 @@ export const UserList = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "idMarriageRegistration",
+				"name": "idMarriage",
 				"type": "uint256"
 			},
 			{
@@ -17,7 +18,7 @@ export const UserList = [
 				"type": "bool"
 			}
 		],
-		"name": "acceptMarriageRegistration",
+		"name": "acceptMarriage",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -37,7 +38,7 @@ export const UserList = [
 		],
 		"name": "acceptPurchase",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -55,7 +56,7 @@ export const UserList = [
 		],
 		"name": "acceptReturn",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -431,7 +432,7 @@ export const UserList = [
 				"type": "string"
 			}
 		],
-		"name": "productMarriageRegistration",
+		"name": "productMarriage",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -446,7 +447,7 @@ export const UserList = [
 		],
 		"name": "productPurchases",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -476,35 +477,6 @@ export const UserList = [
 				"internalType": "address",
 				"name": "",
 				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "structMarriageRegistrations",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "userLogin",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "titleProduct",
-				"type": "string"
-			},
-			{
-				"internalType": "bool",
-				"name": "status",
-				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -606,6 +578,35 @@ export const UserList = [
 				"type": "uint256"
 			}
 		],
+		"name": "structStatusMarriages",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "userLogin",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "titleProduct",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "status",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"name": "structStatusPurchases",
 		"outputs": [
 			{
@@ -617,6 +618,11 @@ export const UserList = [
 				"internalType": "string",
 				"name": "titleProduct",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
 			},
 			{
 				"internalType": "bool",

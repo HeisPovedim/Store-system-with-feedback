@@ -23,6 +23,7 @@ const Return = () => {
 
   const creatProduct = async (e) => {
     try {
+      alert('Вы создаете продукт...');
       await Contract.methods.addProductShop(nameProduct, priceProduct, descriptionProduct).send({from:address});
       console.log(nameProduct);
       console.log(descriptionProduct);
