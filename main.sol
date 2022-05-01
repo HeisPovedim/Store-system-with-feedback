@@ -161,7 +161,7 @@ contract coursepaper {
     //Функция добавления продукта
     uint256 addProductShop_idProduct = 0;
     function addProductShop (string memory title, uint256 price, string memory description) public {
-        structProducts[title] = structProduct(msg.sender, description , price, addProductShop_idProduct);
+        structProducts[title] = structProduct(msg.sender, description , price*(10**18), addProductShop_idProduct);
         productList.push(title);
         addProductShop_idProduct++;
     }
@@ -181,10 +181,10 @@ contract coursepaper {
     //Функция принятия покупки
     function acceptPurchase (uint idPurchase, bool confirmation) public payable {
         if (confirmation == true) {
-            payable(msg.sender).transfer(structStatusPurchases[idPurchase].price*(10**18));
+            payable(msg.sender).transfer(structStatusPurchases[idPurchase].price);
             structStatusPurchases[idPurchase].status = false;
         } else {
-            payable(structStatusPurchases[idPurchase].userLogin).transfer(structStatusPurchases[idPurchase].price*(10**18));
+            payable(structStatusPurchases[idPurchase].userLogin).transfer(structStatusPurchases[idPurchase].price);
             structStatusPurchases[idPurchase].status = false;
         }
     }
@@ -192,7 +192,7 @@ contract coursepaper {
     //Функция принятия возврата
     function acceptReturn(uint idReturn, bool confirmation) public payable {
         if(confirmation == true) {
-            payable(structStatusReturns[idReturn].userLogin).transfer(structProducts[structStatusReturns[idReturn].titleProduct].price*(10**18));
+            payable(structStatusReturns[idReturn].userLogin).transfer(structProducts[structStatusReturns[idReturn].titleProduct].price);
             structStatusReturns[idReturn].status = false;
         } else {
             structStatusReturns[idReturn].status = false;
@@ -202,7 +202,7 @@ contract coursepaper {
     //Функция принятия возврата товара
     function acceptMarriage(uint idMarriage, bool confirmation) public {
         if(confirmation == true) {
-            payable(structStatusMarriages[idMarriage].userLogin).transfer(structProducts[structStatusMarriages[idMarriage].titleProduct].price*(10**18));
+            payable(structStatusMarriages[idMarriage].userLogin).transfer(structProducts[structStatusMarriages[idMarriage].titleProduct].price);
             structStatusReturns[idMarriage].status = false;
         } else {
             structStatusReturns[idMarriage].status = false;
@@ -253,7 +253,7 @@ contract coursepaper {
 //BEGIN USER FUNCTION
     //Функция ПОКУПКИ
     function productPurchases (string memory titleProduct) public payable {
-        require(msg.value == (structProducts[titleProduct].price*(10**18)), "error: not money");
+        require(msg.value == (structProducts[titleProduct].price), "error: not money");
         structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, msg.value, true));
     }
     //Функция оформления ВОЗВРАТА

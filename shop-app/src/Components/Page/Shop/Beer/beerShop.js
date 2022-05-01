@@ -37,7 +37,7 @@ const Beer = () => {
   //Фунция создания продукта
   const BuyProduct = async (e) => {
     try {
-      await Contract.methods.productPurchases(product).send({from:address, value:price*(10**18)});
+      await Contract.methods.productPurchases(product).send({from:address, value:price});
       console.log("product:", product);
       console.log("address:", address);
       alert("Вы купили продукт!");
@@ -61,7 +61,7 @@ const Beer = () => {
           <select onChange={ (e) => setProduct(e.target.value) } className="menu__products-select">
             {arrayProduct.map((arr,i) => <option key={i} value={String(arr)}> { arr } </option>)}
           </select>
-          <p> {price} </p>
+          <p> {price/(10**18)} </p>
         </div>
       </div>
       <div className="container-page-beer__but-info">

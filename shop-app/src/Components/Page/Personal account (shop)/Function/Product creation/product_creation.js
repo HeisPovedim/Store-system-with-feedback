@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UseContext } from "../../../../contract/context";
 import { Link } from 'react-router-dom'
 import "./product_creation.css"
@@ -7,19 +7,9 @@ const Return = () => {
   const { Contract } = UseContext();
   const [nameProduct, setNameProduct] = useState();
   const [descriptionProduct, setDescriptionProduct] = useState();
-  const [priceProduct, setPriceProduct] = useState();
+  const [priceProduct, setPriceProduct] = useState("");
 
   const address = localStorage.getItem('address');
-
-  const hadleNameProduct = (e) => {
-    setNameProduct(e.target.value);
-  }
-  const hadleDescriptionProduct = (e) => {
-    setDescriptionProduct(e.target.value);
-  }
-  const hadlePriceProduct = (e) => {
-    setPriceProduct(e.target.value);
-  }
 
   const creatProduct = async (e) => {
     try {
@@ -27,7 +17,7 @@ const Return = () => {
       await Contract.methods.addProductShop(nameProduct, priceProduct, descriptionProduct).send({from:address});
       console.log(nameProduct);
       console.log(descriptionProduct);
-      console.log(priceProduct);
+      console.log(priceProduct*(10**18));
       alert('Вы создали новый продукт: ' + nameProduct);
     } catch (e) {
       console.log(e);
@@ -42,9 +32,9 @@ const Return = () => {
       <div className="container-creation-seller">
         <div className="container-creation-seller-border-menu">
           <div className="container-creation-seller-border-menu__top-line"></div>
-          <input onChange={hadleNameProduct} className="container-creation-seller-border-menu__input-name" type="text" placeholder="название"/>
-          <input onChange={hadleDescriptionProduct} className="container-creation-seller-border-menu__input-description" type="text" placeholder="описание"/>
-          <input onChange={hadlePriceProduct} className="container-creation-seller-border-menu__input-price" type="text" placeholder="цена"/>
+          <input onChange={ (e) => setNameProduct(e.target.value) } className="container-creation-seller-border-menu__input-name" type="text" placeholder="название"/>
+          <input onChange={ (e) => setDescriptionProduct(e.target.value) } className="container-creation-seller-border-menu__input-description" type="text" placeholder="описание"/>
+          <input onChange={ (e) => setPriceProduct(e.target.value) } className="container-creation-seller-border-menu__input-price" type="text" placeholder="цена"/>
           <div className="container-creation-seller-border-menu-buttons">
             <button onClick={creatProduct} className="container-creation-seller-border-menu-buttons__accept">
               <p>Создать</p>

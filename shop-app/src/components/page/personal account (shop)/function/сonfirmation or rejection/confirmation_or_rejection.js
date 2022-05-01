@@ -17,9 +17,9 @@ const Confirmation = () => {
 
   const AcceptPurchase = async (e) => {
     try {
-      alert("Выполняется подтверждение!")
+      alert("Выполняется подтверждение...")
       await Contract.methods.acceptPurchase(purchase, confirmation).send({from:address});
-      console.log(true);
+      console.log(confirmation);
       alert('Подтверждение выполнено!');
     } catch (e) {
       console.log(e);
@@ -39,7 +39,7 @@ const Confirmation = () => {
             <button onChange={ (e) => setConfirmation(true) } onClick={AcceptPurchase} className="container-confirmation-seller-border-menu-buttons__accept">
               <p>Подтвердить</p>
             </button>
-            <button className="container-confirmation-seller-border-menu-buttons__reject">
+            <button onChange={ (e) => setConfirmation(false) } onClick={AcceptPurchase} className="container-confirmation-seller-border-menu-buttons__reject">
               <p>Отклонить</p>
             </button>
           </div>
