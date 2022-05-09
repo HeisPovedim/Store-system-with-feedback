@@ -8,18 +8,27 @@ const Confirmation = () => {
   const [purchase, setPurchase] = useState();
   const [confirmation, setConfirmation] = useState();
 
-  useEffect(() => {
-    console.log(purchase);
-  })
-
   //Переменные из localStorage
   const address = localStorage.getItem("address")
 
-  const AcceptPurchase = async (e) => {
+  const AcceptPurchaseInc = async (e) => {
     try {
       alert("Выполняется подтверждение...")
-      await Contract.methods.acceptPurchase(purchase, confirmation).send({from:address});
-      console.log(confirmation);
+      console.log("purchase:", purchase);
+      console.log("confirmation:", confirmation);
+      await Contract.methods.acceptPurchase(purchase, 1).send({from:address});
+      alert('Подтверждение выполнено!');
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const AcceptPurchaseDec = async (e) => {
+    try {
+      alert("Выполняется подтверждение...")
+      console.log("purchase:", purchase);
+      console.log("confirmation:", confirmation);
+      await Contract.methods.acceptPurchase(purchase, 0).send({from:address});
       alert('Подтверждение выполнено!');
     } catch (e) {
       console.log(e);
@@ -34,18 +43,12 @@ const Confirmation = () => {
       <div className="container-confirmation-seller">
         <div className="container-confirmation-seller-border-menu">
           <div className="container-confirmation-seller-border-menu__top-line"></div>
-          <input onChange={ (e) => setPurchase(e.target.value) } className="container-confirmation-seller-border-menu__input-id" type="text" placeholder="id покупки"/>
+          <input onChange={ (e) => setPurchase(e.target.value) } className="container-confirmation-seller-border-menu__input-id" placeholder="id покупки"/>
           <div className="container-confirmation-seller-border-menu-buttons">
-            <button onChange={ (e) => setConfirmation(true) } onClick={AcceptPurchase} className="container-confirmation-seller-border-menu-buttons__accept">
-              <p>Подтвердить</p>
-            </button>
-            <button onChange={ (e) => setConfirmation(false) } onClick={AcceptPurchase} className="container-confirmation-seller-border-menu-buttons__reject">
-              <p>Отклонить</p>
-            </button>
+            <button onClick = { AcceptPurchaseInc } className = "container-confirmation-seller-border-menu-buttons__accept" >Подтвердить</button>
+            <button onClick = { AcceptPurchaseDec } className="container-confirmation-seller-border-menu-buttons__reject">Отклонить</button>
           </div>
-          <Link to="/PersonalAccountShop"><button className="container-confirmation-seller-border-menu__exit-button">
-            <p>Выйти</p>
-          </button></Link>
+          <Link to="/PersonalAccountShop"><button className="container-confirmation-seller-border-menu__exit-button">Выйти</button></Link>
           <div className="container-confirmation-seller-border-menu__bottom-line"></div>
         </div>
       </div>

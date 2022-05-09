@@ -9,15 +9,15 @@ contract coursepaper {
 
         //Магазины
         shopLists["Beer"] = 0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004;
-        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004] = structShop("Beer", get_hash("2"), 1000, 3, false, "1", "Moscow", 0);
+        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004] = structShop("Beer", get_hash("2"), 3, false, "1", "Moscow", 0);
         shopList.push(structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].shopName);
         shopLists["Product"] = 0x49C364fedaD517382ee5A776d3071f11CfDE4C5c;
-        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c] = structShop("Product", get_hash("2"), 1000, 3, false, "2", "Petersburg", 0);
+        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c] = structShop("Product", get_hash("2"), 3, false, "2", "Petersburg", 0);
         shopList.push(structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].shopName);
 
         //Юзеры
         structUserLogins["Peta"] = 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025;
-        structUsers[0xAdA67460CF329D12c1ed898710CC8Da5D40d8025] = structUser("Peta", get_hash("3"), 1000, 2, false);
+        structUsers[0xAdA67460CF329D12c1ed898710CC8Da5D40d8025] = structUser("Peta", get_hash("3"), 2, false);
         userLoginsArray.push("Peta");
         userAddressArray.push(0xAdA67460CF329D12c1ed898710CC8Da5D40d8025);
     }
@@ -45,10 +45,6 @@ contract coursepaper {
         function get_city(string memory login) public view returns(string memory) {
         return(structShops[shopLists[login]].city);
         }
-        //Функция получения баланса МАГАЗИНА
-        function get_ballance_shop(address adr) public view returns(uint) {
-            return(structShops[adr].ballance);
-        }
     //END REACT FUNCTON SHOP
 
     //BEGIN REACT FUNCTON USER
@@ -60,11 +56,12 @@ contract coursepaper {
         function get_role_user(string memory login) public view returns(uint) {
             return(structUsers[structUserLogins[login]].role);
         }
-        //Функция получения баланса ПОЛЬЗОВАТЕЛЯ
-        function get_ballance_user(address adr) public view returns(uint) {
-            return(structUsers[adr].ballance);
-        }
     //END REACT FUNCTON USER
+    //Получение баланса
+    function get_balance(address adr) public view returns (uint) {
+        uint curBalance = adr.balance;
+        return curBalance;
+    }
     //Функция получения хэш-пароля
     function get_hash(string memory password) public pure returns(bytes32) {
             return(keccak256(abi.encodePacked(password)));
@@ -86,7 +83,6 @@ contract coursepaper {
     struct structShop {
         string shopName;
         bytes32 password;
-        uint256 ballance;
         uint role;          //1 - гость, 2 - пользователь, 3 - магазин
         bool logged;
         string number;
@@ -112,7 +108,6 @@ contract coursepaper {
     struct structUser {
         string userName;
         bytes32 password;
-        uint256 ballance;
         uint role;          //1 - гость, 2 - пользователь, 3 - магазин
         bool logged;
     }
@@ -179,11 +174,11 @@ contract coursepaper {
     }
 
     //Функция принятия покупки
-    function acceptPurchase (uint idPurchase, bool confirmation) public payable {
-        if (confirmation == true) {
+    function acceptPurchase (uint idPurchase, uint confirmation) public payable {
+        if (confirmation == 1) {
             payable(msg.sender).transfer(structStatusPurchases[idPurchase].price);
             structStatusPurchases[idPurchase].status = false;
-        } else {
+        } else if (confirmation == 0) {
             payable(structStatusPurchases[idPurchase].userLogin).transfer(structStatusPurchases[idPurchase].price);
             structStatusPurchases[idPurchase].status = false;
         }
@@ -252,22 +247,22 @@ contract coursepaper {
 
 //BEGIN USER FUNCTION
     //Функция ПОКУПКИ
-    function productPurchases (string memory titleProduct) public payable {
+    function productPurchases(string memory titleProduct) public payable {
         require(msg.value == (structProducts[titleProduct].price), "error: not money");
         structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, msg.value, true));
     }
     //Функция оформления ВОЗВРАТА
-    function productReturn (string memory titleProduct) public {
+    function productReturn(string memory titleProduct) public {
         structStatusReturns.push(structStatusReturn(msg.sender, titleProduct, true));
     }
     // //Функция оформления БРАКА
-    function productMarriage (string memory titleProduct) public {
+    function productMarriage(string memory titleProduct) public {
         structStatusMarriages.push(structStatusMarriage(msg.sender, titleProduct, true));
     }
     //Функция создания ПОЛЬЗОВАТЕЛЯ
     function create_user(address addr, string memory login, bytes32 password) public {
         require(structUserLogins[login] == address(0), "Error: User already exist");
-        structUsers[addr] = structUser(login, password, 1000, 2, false);
+        structUsers[addr] = structUser(login, password, 2, false);
         structUserLogins[login] = addr;
         userAddressArray.push(addr);
     }

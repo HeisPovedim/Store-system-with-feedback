@@ -15,14 +15,14 @@ const Beer = () => {
   const address = localStorage.getItem("address")
 
   //Получение списка продуктов
-  useEffect(() =>  {
+  useEffect(() => {
     const ListarrayProduct = async() => {
       let arrayProduct = await Contract.methods.get_product_list().call();
       setArrayProduct(arrayProduct);
       setProduct(arrayProduct[0]);
     }
     ListarrayProduct();
-  },[])
+  }, [])
 
   useEffect(() => {
     async function temp() {
@@ -40,6 +40,7 @@ const Beer = () => {
       await Contract.methods.productPurchases(product).send({from:address, value:price});
       console.log("product:", product);
       console.log("address:", address);
+      console.log("price", price);
       alert("Вы купили продукт!");
     } catch (e) {
       console.log(e);
@@ -66,9 +67,7 @@ const Beer = () => {
       </div>
       <div className="container-page-beer__but-info">
         <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home">
-          <button>
-            <p>Выйти</p>
-          </button>
+          <button>Выйти</button>
         </Link>
       </div>
     </div>

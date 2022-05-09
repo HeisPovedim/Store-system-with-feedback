@@ -1,5 +1,4 @@
-export const UserList = 
-[
+export const UserList = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -31,9 +30,9 @@ export const UserList =
 				"type": "uint256"
 			},
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "confirmation",
-				"type": "bool"
+				"type": "uint256"
 			}
 		],
 		"name": "acceptPurchase",
@@ -189,26 +188,7 @@ export const UserList =
 				"type": "address"
 			}
 		],
-		"name": "get_ballance_shop",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "adr",
-				"type": "address"
-			}
-		],
-		"name": "get_ballance_user",
+		"name": "get_balance",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -538,11 +518,6 @@ export const UserList =
 			},
 			{
 				"internalType": "uint256",
-				"name": "ballance",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
 				"name": "role",
 				"type": "uint256"
 			},
@@ -700,11 +675,6 @@ export const UserList =
 				"internalType": "bytes32",
 				"name": "password",
 				"type": "bytes32"
-			},
-			{
-				"internalType": "uint256",
-				"name": "ballance",
-				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",

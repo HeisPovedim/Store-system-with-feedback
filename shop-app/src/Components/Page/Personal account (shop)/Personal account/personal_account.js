@@ -14,13 +14,12 @@ const Seller = () => {
   
   //Хук эффект
   useEffect(() => {
-    setBalance(localStorage.getItem('balance'));
     setRole(localStorage.getItem('role'));
     setCity(localStorage.getItem('city'));
     setShopNumber(localStorage.getItem('shopNumber'));
     async function fetchData() {
-      const getBalance = await Contract.methods.get_ballance_shop(address).call();
-    setBalance(getBalance);
+      const getBalance = await Contract.methods.get_balance(address).call();
+      setBalance(getBalance);
     }
     fetchData();
   },)
@@ -35,7 +34,7 @@ const Seller = () => {
         <div className="container-page-seller__personal-information">
           <div className="container-page-seller__personal-information_text-top">Личная информация:</div>
           <div className="container-page-seller__personal-information_text-name">Имя: {login}</div>
-          <div className="container-page-seller__personal-information_text-login">Баланс: {balance}</div>
+          <div className="container-page-seller__personal-information_text-login">Баланс: {balance/10**18} eth</div>
           <div className="container-page-seller__personal-information_text-city">Город: {city}</div>
           <div className="container-page-seller__personal-information_text-shop">Номер: {shopNumber}</div>
         </div>

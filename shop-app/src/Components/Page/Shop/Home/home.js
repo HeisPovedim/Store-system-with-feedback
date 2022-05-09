@@ -42,7 +42,6 @@ const Home = () => {
         alert("Вы вышли с аккаунта!");
         await Contract.methods.login_out_shop(login).send({from:address});
       }
-      alert(e);
     } catch (e) {
       console.log(e);
     }

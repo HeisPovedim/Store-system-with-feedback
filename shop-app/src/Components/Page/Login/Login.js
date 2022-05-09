@@ -8,14 +8,12 @@ const Login = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-  const [balance, setBalance] = useState();
   const [role, setRole] = useState();
   const [city, setCity] = useState('');
   const [address, setAddress] = useState();
   const [shopNumber, setShopNumber] = useState();
 
   localStorage.setItem("login", login);
-  localStorage.setItem("balance", balance);
   localStorage.setItem("role", role);
   localStorage.setItem("city", city);
   localStorage.setItem("address", address);
@@ -33,7 +31,7 @@ const Login = () => {
       e.preventDefault()
       const address = await Contract.methods.get_address(login).call();
       setAddress(address);
-      console.log("get_address", address);
+      console.log("Address:", address);
       await web3.eth.personal.unlockAccount(address, password, 0);
       const protectPassword = await web3.utils.keccak256(password);
       const roleUser = await Contract.methods.get_role_user(login).call();
@@ -46,10 +44,8 @@ const Login = () => {
         console.log(onlineUser)
         localStorage.setItem("address", address);
         var AddrInfoUser = await Contract.methods.structUsers(address).call();
-        console.log(AddrInfoUser);
-        setBalance(AddrInfoUser[2])
-        console.log("Balance:", AddrInfoUser[2]);
-        setRole(AddrInfoUser[3])
+        setRole(AddrInfoUser[2])
+        console.log("Role:", AddrInfoUser[2]);
         alert("Вы авторизовались!");
         if(onlineUser){
           web3.eth.defaultAccount = address;
@@ -60,14 +56,12 @@ const Login = () => {
         const onlineShop = await Contract.methods.check_logged_shop(login).call();
         console.log(onlineShop);
         var AddrInfoShop = await Contract.methods.structShops(address).call();
-        console.log(AddrInfoShop);
-        setBalance(AddrInfoShop[2]);
-        console.log("Balance:", AddrInfoShop[2]);
-        setRole(AddrInfoShop[3]);
-        setCity(AddrInfoShop[6])
-        console.log("City:", AddrInfoShop[6]);
-        setShopNumber(AddrInfoShop[5]);
-        console.log(AddrInfoShop[5]);
+        setRole(AddrInfoShop[2]);
+        console.log("Role:", AddrInfoShop[2]);
+        setCity(AddrInfoShop[5]);
+        console.log("City:", AddrInfoShop[5]);
+        setShopNumber(AddrInfoShop[4]);
+        console.log("Number:", AddrInfoShop[4]);
         alert("Вы авторизовались!");
         if(onlineShop){
           web3.eth.defaultAccount = address;
@@ -98,7 +92,7 @@ const Login = () => {
       await Contract.methods.create_user(address, login, protectPassword).send({from:accounts[0]});
       alert("Аккаунт создан, ваш адрес:"+ address);
     } catch(e) {
-      alert(e);
+      console.log(e);
     }
   };
 
