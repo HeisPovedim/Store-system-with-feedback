@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { UseContext } from "../../../../contract/context";
 import { Link } from "react-router-dom";
 import "./confirmation_or_rejection.css"
@@ -6,7 +6,6 @@ import "./confirmation_or_rejection.css"
 const Confirmation = () => {
   const { Contract } = UseContext();
   const [purchase, setPurchase] = useState();
-  const [confirmation, setConfirmation] = useState();
 
   //Переменные из localStorage
   const address = localStorage.getItem("address")
@@ -15,7 +14,6 @@ const Confirmation = () => {
     try {
       alert("Выполняется подтверждение...")
       console.log("purchase:", purchase);
-      console.log("confirmation:", confirmation);
       await Contract.methods.acceptPurchase(purchase, 1).send({from:address});
       alert('Подтверждение выполнено!');
     } catch (e) {
@@ -25,11 +23,10 @@ const Confirmation = () => {
 
   const AcceptPurchaseDec = async (e) => {
     try {
-      alert("Выполняется подтверждение...")
+      alert("Выполняется отклонение...")
       console.log("purchase:", purchase);
-      console.log("confirmation:", confirmation);
       await Contract.methods.acceptPurchase(purchase, 0).send({from:address});
-      alert('Подтверждение выполнено!');
+      alert('Отклонение выполнено!');
     } catch (e) {
       console.log(e);
     }

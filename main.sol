@@ -20,6 +20,11 @@ contract coursepaper {
         structUsers[0xAdA67460CF329D12c1ed898710CC8Da5D40d8025] = structUser("Peta", get_hash("3"), 2, false);
         userLoginsArray.push("Peta");
         userAddressArray.push(0xAdA67460CF329D12c1ed898710CC8Da5D40d8025);
+        //Товары
+        structProducts["Apple"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 100*(10**18), addProductShop_idProduct);
+        productList.push("Apple");
+        addProductShop_idProduct++;
+
     }
 //END CONSTRUCTOR
 
@@ -126,7 +131,7 @@ contract coursepaper {
     mapping(string => structProduct) public structProducts;
     string [] productList;
 
-    //Структура статуса ПРОДУКТА
+    //Структура статуса ПОКУПКИ ПРОДУКТА
     struct structStatusPurchase {
         address userLogin;
         string titleProduct;
@@ -173,7 +178,7 @@ contract coursepaper {
         }
     }
 
-    //Функция принятия покупки
+    //Функция принятия ПОКУПКИ
     function acceptPurchase (uint idPurchase, uint confirmation) public payable {
         if (confirmation == 1) {
             payable(msg.sender).transfer(structStatusPurchases[idPurchase].price);
@@ -184,23 +189,23 @@ contract coursepaper {
         }
     }
 
-    //Функция принятия возврата
-    function acceptReturn(uint idReturn, bool confirmation) public payable {
-        if(confirmation == true) {
-            payable(structStatusReturns[idReturn].userLogin).transfer(structProducts[structStatusReturns[idReturn].titleProduct].price);
+    //Функция принятия ВОЗВРАТА
+    function acceptReturn(uint idReturn, uint confirmation) public payable {
+        if(confirmation == 1) {
+            payable(structStatusReturns[idReturn].userLogin).transfer(msg.value);
             structStatusReturns[idReturn].status = false;
-        } else {
+        } else if(confirmation == 0) {
             structStatusReturns[idReturn].status = false;
         }
     }
 
-    //Функция принятия возврата товара
-    function acceptMarriage(uint idMarriage, bool confirmation) public {
+    //Функция принятия БРАКА
+    function acceptMarriage(uint idMarriage, bool confirmation) public payable {
         if(confirmation == true) {
-            payable(structStatusMarriages[idMarriage].userLogin).transfer(structProducts[structStatusMarriages[idMarriage].titleProduct].price);
-            structStatusReturns[idMarriage].status = false;
-        } else {
-            structStatusReturns[idMarriage].status = false;
+            payable(structStatusMarriages[idMarriage].userLogin).transfer(msg.value);
+            structStatusMarriages[idMarriage].status = false;
+        } else if(confirmation == false) {
+            structStatusMarriages[idMarriage].status = false;
         }
     }
 
@@ -251,13 +256,35 @@ contract coursepaper {
         require(msg.value == (structProducts[titleProduct].price), "error: not money");
         structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, msg.value, true));
     }
+    //Фукнция отказа отказа от ПОКУПКИ
+    function refusalToPurchase (uint idPurchase) public payable {
+        require(msg.sender == structStatusPurchases[idPurchase].userLogin, "error: yor not msg.sender");
+        payable(msg.sender).transfer(structStatusPurchases[idPurchase].price);
+        structStatusPurchases[idPurchase].status = false;
+    }
     //Функция оформления ВОЗВРАТА
     function productReturn(string memory titleProduct) public {
-        structStatusReturns.push(structStatusReturn(msg.sender, titleProduct, true));
+        bool tempRequire;
+        for(uint i = 0; i < productList.length; i++) {
+            string memory tempProductName = productList[i];
+            if(keccak256(abi.encodePacked(tempProductName)) == keccak256(abi.encodePacked(titleProduct))) {                    
+                structStatusReturns.push(structStatusReturn(msg.sender, titleProduct, true));
+                tempRequire = true;
+            }
+        }
+        require(tempRequire == true, "error: there is no such product");
     }
-    // //Функция оформления БРАКА
+    //Функция оформления БРАКА
     function productMarriage(string memory titleProduct) public {
-        structStatusMarriages.push(structStatusMarriage(msg.sender, titleProduct, true));
+        bool tempRequire;
+        for(uint i = 0; i < productList.length; i++) {
+            string memory tempProductName = productList[i];
+            if(keccak256(abi.encodePacked(tempProductName)) == keccak256(abi.encodePacked(titleProduct))) {                    
+                structStatusMarriages.push(structStatusMarriage(msg.sender, titleProduct, true));
+                tempRequire = true;
+            }
+        }
+        require(tempRequire == true, "error: there is no such product");
     }
     //Функция создания ПОЛЬЗОВАТЕЛЯ
     function create_user(address addr, string memory login, bytes32 password) public {

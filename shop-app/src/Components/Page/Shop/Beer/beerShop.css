@@ -40,6 +40,13 @@ input::placeholder {
   align-items: center;
   border-color: red;
 }
+.menu p {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.menu select {
+  font-size: 18px;
+}
 .menu__logo-beer {
   width: 384px;
   height: 337px;

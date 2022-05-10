@@ -34,7 +34,7 @@ const Seller = () => {
         <div className="container-page-seller__personal-information">
           <div className="container-page-seller__personal-information_text-top">Личная информация:</div>
           <div className="container-page-seller__personal-information_text-name">Имя: {login}</div>
-          <div className="container-page-seller__personal-information_text-login">Баланс: {balance/10**18} eth</div>
+          <div className="container-page-seller__personal-information_text-login">Баланс: {(balance/10**18).toFixed(4)} eth</div>
           <div className="container-page-seller__personal-information_text-city">Город: {city}</div>
           <div className="container-page-seller__personal-information_text-shop">Номер: {shopNumber}</div>
         </div>

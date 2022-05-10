@@ -6,3 +6,15 @@
 19:09:46.115296 db@open done T·2.0266ms
 19:37:56.102484 db@close closing
 19:37:56.102484 db@close done T·0s
+=============== May 10, 2022 (MSK) ===============
+10:48:24.431710 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+10:48:24.431710 version@stat F·[] S·0B[] Sc·[]
+10:48:24.431710 db@open opening
+10:48:24.432217 journal@recovery F·1
+10:48:24.433230 journal@recovery recovering @1
+10:48:24.457698 memdb@flush created L0@2 N·17330 S·434KiB "loc..seq,v4":"version,v1"
+10:48:24.459218 version@stat F·[1] S·434KiB[434KiB] Sc·[0.25]
+10:48:24.462879 db@janitor F·3 G·0
+10:48:24.462879 db@open done T·30.6618ms
+14:31:36.855015 db@close closing
+14:31:36.855521 db@close done T·506.6µs

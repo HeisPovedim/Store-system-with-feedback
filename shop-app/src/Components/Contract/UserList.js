@@ -1,4 +1,5 @@
-export const UserList = [
+export const UserList =
+[
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -19,7 +20,7 @@ export const UserList = [
 		],
 		"name": "acceptMarriage",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -48,9 +49,9 @@ export const UserList = [
 				"type": "uint256"
 			},
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "confirmation",
-				"type": "bool"
+				"type": "uint256"
 			}
 		],
 		"name": "acceptReturn",
@@ -441,6 +442,19 @@ export const UserList = [
 		"name": "productReturn",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "idPurchase",
+				"type": "uint256"
+			}
+		],
+		"name": "refusalToPurchase",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{

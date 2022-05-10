@@ -24,6 +24,7 @@ const Beer = () => {
     ListarrayProduct();
   }, [])
 
+  //Получение цены продкута
   useEffect(() => {
     async function temp() {
       var structProduct = await Contract.methods.structProducts(product).call();
@@ -37,7 +38,7 @@ const Beer = () => {
   //Фунция создания продукта
   const BuyProduct = async (e) => {
     try {
-      await Contract.methods.productPurchases(product).send({from:address, value:price});
+      await Contract.methods.productPurchases(product).send({ from:address, value:price });
       console.log("product:", product);
       console.log("address:", address);
       console.log("price", price);
@@ -62,7 +63,7 @@ const Beer = () => {
           <select onChange={ (e) => setProduct(e.target.value) } className="menu__products-select">
             {arrayProduct.map((arr,i) => <option key={i} value={String(arr)}> { arr } </option>)}
           </select>
-          <p> {price/(10**18)} </p>
+          <p> {price/(10**18)} eth </p>
         </div>
       </div>
       <div className="container-page-beer__but-info">

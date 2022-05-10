@@ -12,7 +12,7 @@ const Seller = () => {
   //Хук эффект
   useEffect(() => {
     async function fetchData() {
-      const getBalance = await Contract.methods.get_ballance_user(address).call();
+      const getBalance = await Contract.methods.get_balance(address).call();
       setBalance(getBalance);
     }
     fetchData();
@@ -27,7 +27,7 @@ const Seller = () => {
           <div className="container-page-user-personal-information">
             <div className="container-page-user-personal-information__text-top">Личная информация:</div>
             <div className="container-page-user-personal-information__text-name">Имя: {login}</div>
-            <div className="container-page-user-personal-information__text-login">Баланс: {balance}</div>
+            <div className="container-page-user-personal-information__text-login">Баланс: {(balance/10**18).toFixed(4)} eth</div>
           </div>
           <div className="container-page-user-function-menu">
             <div className="container-page-user-function-menu__text-top">Функции продовца</div>
