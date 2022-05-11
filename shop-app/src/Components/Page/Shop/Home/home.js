@@ -62,7 +62,7 @@ const Home = () => {
             <Link to="/Beer"><button>Beer</button></Link>
           </div>
           <div className="menu-home__border-two">
-            <button>Product</button>
+            <Link to="/Product"><button>Product</button></Link>
           </div>
         </div>
         <footer className="footer-home">

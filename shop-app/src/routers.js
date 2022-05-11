@@ -6,6 +6,7 @@ import {Switch, Route} from "react-router-dom";
 import Login from "./components/page/login/login";
 import Home from "./components/page/shop/home/home"
 import Beer from "./components/page/shop/beer/beerShop";
+import Product from "./components/page/shop/product/productShop";
 import PersonalAccountShop from "./components/page/personal account (shop)/personal account/personal_account";
 import PersonalAccountUser from "./components/page/personal account (user)/personal account/personal_account"
 //Импорт страниц - Функции магазина
@@ -25,6 +26,7 @@ const Routers = () => {
       <Route path="/Login" component={Login} exact />
       <Route path="/Home" component={Home} exact />
       <Route path="/Beer" component={Beer} exact />
+      <Route path="/Product" component={Product} exact />
       <Route path="/PersonalAccountShop" component={PersonalAccountShop} exact />
       <Route path="/PersonalAccountUser" component={PersonalAccountUser} exact />
       <Route path="/ConfirmationSeller" component={ConfirmationSeller} exact />

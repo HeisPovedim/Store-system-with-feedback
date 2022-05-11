@@ -11,10 +11,10 @@ contract coursepaper {
 
         //Магазины
         shopLists["Beer"] = 0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004;
-        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004] = structShop("Beer", get_hash("2"), 3, false, "1", "Moscow", 0);
+        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004] = structShop("Beer", get_hash("2"), 3, false, "1", "Moscow", 0, Products);
         shopList.push(structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].shopName);
         shopLists["Product"] = 0x49C364fedaD517382ee5A776d3071f11CfDE4C5c;
-        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c] = structShop("Product", get_hash("2"), 3, false, "2", "Petersburg", 0);
+        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c] = structShop("Product", get_hash("2"), 3, false, "2", "Petersburg", 0, Products);
         shopList.push(structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].shopName);
 
         //Юзеры
@@ -24,11 +24,11 @@ contract coursepaper {
         userAddressArray.push(0xAdA67460CF329D12c1ed898710CC8Da5D40d8025);
         //Товары
         structProducts["Vodka"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 100*(10**18), addProductShop_idProduct);
-        productList.push("Vodka");
+        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].Products.push("Vodka");
         addProductShop_idProduct++;
 
         structProducts["Bannana"] = structProduct(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, "asd", 100*(10**18), addProductShop_idProduct);
-        productList.push("Bannana");
+        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].Products.push("Bannana");
         addProductShop_idProduct++;
 
     }
@@ -41,8 +41,9 @@ contract coursepaper {
             return shopList;
         }
         //Функция получения списка продуктов
-        function get_product_list() public view returns(string[] memory) {
-            return productList;
+        function get_product_list(string memory login) public view returns(string[] memory) {
+            address shopAdr = get_address(login);
+            return structShops[shopAdr].Products;
         }
         //Функция проверка онлайн-статуса МАГАЗИНА
         function check_logged_shop(string memory login) public view returns(bool) {
@@ -99,10 +100,13 @@ contract coursepaper {
         string number;
         string city;
         uint256 rating;
+        string [] Products;
     }
     mapping (address => structShop) public structShops;
     mapping(string => address) public shopLists;
     string[] shopList;
+    string [] Products;
+
     
     //Структура книга ЖАЛОБ
     struct complaintBook {
@@ -132,10 +136,9 @@ contract coursepaper {
         address shop;
         string description;
         uint256 price;
-        uint256 id;
+        uint id;
     }
     mapping(string => structProduct) public structProducts;
-    string [] productList;
 
     //Структура статуса ПОКУПКИ ПРОДУКТА
     struct structStatusPurchase {
@@ -168,7 +171,7 @@ contract coursepaper {
     uint256 addProductShop_idProduct = 0;
     function addProductShop (string memory title, uint256 price, string memory description) public {
         structProducts[title] = structProduct(msg.sender, description , price*(10**18), addProductShop_idProduct);
-        productList.push(title);
+        structShops[msg.sender].Products.push(title);
         addProductShop_idProduct++;
     }
     
@@ -274,8 +277,9 @@ contract coursepaper {
     //Функция оформления ВОЗВРАТА
     function productReturn(string memory titleProduct) public {
         bool tempRequire;
-        for(uint i = 0; i < productList.length; i++) {
-            string memory tempProductName = productList[i];
+        address shopAdr = structProducts[titleProduct].shop;
+        for(uint i = 0; i < structShops[shopAdr].Products.length; i++) {
+            string memory tempProductName = structShops[shopAdr].Products[i];
             if(keccak256(abi.encodePacked(tempProductName)) == keccak256(abi.encodePacked(titleProduct))) {                    
                 structStatusReturns.push(structStatusReturn(msg.sender, titleProduct, true));
                 tempRequire = true;
@@ -286,8 +290,9 @@ contract coursepaper {
     //Функция оформления БРАКА
     function productMarriage(string memory titleProduct) public {
         bool tempRequire;
-        for(uint i = 0; i < productList.length; i++) {
-            string memory tempProductName = productList[i];
+        address shopAdr = structProducts[titleProduct].shop;
+        for(uint i = 0; i < structShops[shopAdr].Products.length; i++) {
+            string memory tempProductName = structShops[shopAdr].Products[i];
             if(keccak256(abi.encodePacked(tempProductName)) == keccak256(abi.encodePacked(titleProduct))) {                    
                 structStatusMarriages.push(structStatusMarriage(msg.sender, titleProduct, true));
                 tempRequire = true;

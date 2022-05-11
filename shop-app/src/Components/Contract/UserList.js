@@ -239,7 +239,13 @@ export const UserList =
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			}
+		],
 		"name": "get_product_list",
 		"outputs": [
 			{

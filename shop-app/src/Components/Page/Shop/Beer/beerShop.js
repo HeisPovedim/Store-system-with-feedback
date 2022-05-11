@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { UseContext } from "../../../contract/context";
-// import { useHistory } from "react-router-dom";
-// import Web3 from "web3";
 import { Link } from 'react-router-dom'
 import "./beerShop.css"
 
@@ -12,25 +10,16 @@ const Beer = () => {
   const [price, setPrice] = useState(0);
 
   //Переменные из localStorage
-  const address = localStorage.getItem("address")
+  const address = localStorage.getItem("address");
 
-  //Получение списка продуктов НУЖНО ВЫВЕСТИ СПИСОК ПРОДУКТОВ ПО АДРЕСУ МАГАЗИНА - будем выводить элмент массива только в том случаи, если наш магазин в структуре будет === магазину
+  //Получение списка продуктов
   useEffect(() => {
-    const ListarrayProduct = async () => {
-      let arrayProduct = await Contract.methods.get_product_list().call();  //список продуктов
-      let tempArr = [];
-      for (let i = 0; i < arrayProduct.length; i++) {
-        let structProducts = await Contract.methods.structProducts(arrayProduct[i]).call(); 
-        let adrShop = await Contract.methods.get_address("Beer").call();
-        if (structProducts[0] === adrShop) {
-          tempArr = arrayProduct[i];
-          console.log(arrayProduct[i]);
-        }
-        setArrayProduct(tempArr);
-        setProduct(tempArr[0]);
-      }
+    const ListArrayProduct = async () => {
+      let arrayProduct = await Contract.methods.get_product_list("Beer").call();
+      setArrayProduct(arrayProduct);
+      setProduct(arrayProduct[0]);
     }
-    ListarrayProduct();
+    ListArrayProduct();
   }, [])
 
   //Получение цены продкута
