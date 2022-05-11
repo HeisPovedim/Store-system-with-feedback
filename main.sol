@@ -2,6 +2,8 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
+import "hardhat/console.sol";
+
 contract coursepaper {
 
 //BEGIN CONSTRUCTOR
@@ -21,8 +23,12 @@ contract coursepaper {
         userLoginsArray.push("Peta");
         userAddressArray.push(0xAdA67460CF329D12c1ed898710CC8Da5D40d8025);
         //Товары
-        structProducts["Apple"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 100*(10**18), addProductShop_idProduct);
-        productList.push("Apple");
+        structProducts["Vodka"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 100*(10**18), addProductShop_idProduct);
+        productList.push("Vodka");
+        addProductShop_idProduct++;
+
+        structProducts["Bannana"] = structProduct(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, "asd", 100*(10**18), addProductShop_idProduct);
+        productList.push("Bannana");
         addProductShop_idProduct++;
 
     }
@@ -179,28 +185,31 @@ contract coursepaper {
     }
 
     //Функция принятия ПОКУПКИ
-    function acceptPurchase (uint idPurchase, uint confirmation) public payable {
-        if (confirmation == 1) {
+    function acceptPurchase (uint idPurchase, bool confirmation) public payable {
+        require(msg.sender == structProducts[structStatusPurchases[idPurchase].titleProduct].shop, "error: this is not your product");
+        if (confirmation == true) {
             payable(msg.sender).transfer(structStatusPurchases[idPurchase].price);
             structStatusPurchases[idPurchase].status = false;
-        } else if (confirmation == 0) {
+        } else if (confirmation == false) {
             payable(structStatusPurchases[idPurchase].userLogin).transfer(structStatusPurchases[idPurchase].price);
             structStatusPurchases[idPurchase].status = false;
         }
     }
 
     //Функция принятия ВОЗВРАТА
-    function acceptReturn(uint idReturn, uint confirmation) public payable {
-        if(confirmation == 1) {
+    function acceptReturn(uint idReturn, bool confirmation) public payable {
+        require(msg.sender == structProducts[structStatusReturns[idReturn].titleProduct].shop, "error: this is not your product");
+        if(confirmation == true) {
             payable(structStatusReturns[idReturn].userLogin).transfer(msg.value);
             structStatusReturns[idReturn].status = false;
-        } else if(confirmation == 0) {
+        } else if(confirmation == false) {
             structStatusReturns[idReturn].status = false;
         }
     }
 
     //Функция принятия БРАКА
     function acceptMarriage(uint idMarriage, bool confirmation) public payable {
+        require(msg.sender == structProducts[structStatusMarriages[idMarriage].titleProduct].shop, "error: this is not your product");
         if(confirmation == true) {
             payable(structStatusMarriages[idMarriage].userLogin).transfer(msg.value);
             structStatusMarriages[idMarriage].status = false;

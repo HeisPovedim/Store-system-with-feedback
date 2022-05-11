@@ -18,7 +18,7 @@ const Marriage = () => {
       var structStatusMarriages = await Contract.methods.structStatusMarriages(idMarriage).call();
       var structProduct = await Contract.methods.structProducts(structStatusMarriages[1]).call();
       console.log("id брака:", idMarriage);
-      await Contract.methods.acceptReturn(idMarriage, 1).send({ from:address, value:structProduct[2]} );
+      await Contract.methods.acceptReturn(idMarriage, true).send({ from:address, value:structProduct[2]} );
       alert('Подтверждение выполнено!');
     } catch (e) {
       console.log(e);
@@ -32,7 +32,7 @@ const Marriage = () => {
       var structStatusReturn = await Contract.methods.structStatusReturn(idMarriage).call();
       var structProduct = await Contract.methods.structProduct(structStatusReturn[1]).call();
       console.log("id брака:", idMarriage);
-      await Contract.methods.acceptReturn(idMarriage, 0).send({ from:address, value:structProduct[2]} );
+      await Contract.methods.acceptReturn(idMarriage, false).send({ from:address, value:structProduct[2]} );
       alert('Отклонение выполнено!');
     } catch (e) {
       console.log(e);

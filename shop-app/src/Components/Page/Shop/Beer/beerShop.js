@@ -14,12 +14,21 @@ const Beer = () => {
   //Переменные из localStorage
   const address = localStorage.getItem("address")
 
-  //Получение списка продуктов
+  //Получение списка продуктов НУЖНО ВЫВЕСТИ СПИСОК ПРОДУКТОВ ПО АДРЕСУ МАГАЗИНА - будем выводить элмент массива только в том случаи, если наш магазин в структуре будет === магазину
   useEffect(() => {
-    const ListarrayProduct = async() => {
-      let arrayProduct = await Contract.methods.get_product_list().call();
-      setArrayProduct(arrayProduct);
-      setProduct(arrayProduct[0]);
+    const ListarrayProduct = async () => {
+      let arrayProduct = await Contract.methods.get_product_list().call();  //список продуктов
+      let tempArr = [];
+      for (let i = 0; i < arrayProduct.length; i++) {
+        let structProducts = await Contract.methods.structProducts(arrayProduct[i]).call(); 
+        let adrShop = await Contract.methods.get_address("Beer").call();
+        if (structProducts[0] === adrShop) {
+          tempArr = arrayProduct[i];
+          console.log(arrayProduct[i]);
+        }
+        setArrayProduct(tempArr);
+        setProduct(tempArr[0]);
+      }
     }
     ListarrayProduct();
   }, [])

@@ -18,7 +18,7 @@ const Return = () => {
       var structStatusReturn = await Contract.methods.structStatusReturns(idReturn).call();
       var structProduct = await Contract.methods.structProducts(structStatusReturn[1]).call();
       console.log("id возврата:", idReturn);
-      await Contract.methods.acceptReturn(idReturn, 1).send({ from:address, value:structProduct[2]});
+      await Contract.methods.acceptReturn(idReturn, true).send({ from:address, value:structProduct[2]});
       alert('Подтверждение выполнено!');
     } catch (e) {
       console.log(e);
@@ -32,7 +32,7 @@ const Return = () => {
       var structStatusReturn = await Contract.methods.structStatusReturn(idReturn).call();
       var structProduct = await Contract.methods.structProduct(structStatusReturn[1]).call();
       console.log("id возврата:", idReturn);
-      await Contract.methods.acceptReturn(idReturn, 0).send({ from:address, value:structProduct[2]});
+      await Contract.methods.acceptReturn(idReturn, false).send({ from:address, value:structProduct[2]});
       alert('Отклонение выполнено!');
     } catch (e) {
       console.log(e);

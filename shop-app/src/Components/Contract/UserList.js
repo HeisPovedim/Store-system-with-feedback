@@ -31,9 +31,9 @@ export const UserList =
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "bool",
 				"name": "confirmation",
-				"type": "uint256"
+				"type": "bool"
 			}
 		],
 		"name": "acceptPurchase",
@@ -49,9 +49,9 @@ export const UserList =
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "bool",
 				"name": "confirmation",
-				"type": "uint256"
+				"type": "bool"
 			}
 		],
 		"name": "acceptReturn",

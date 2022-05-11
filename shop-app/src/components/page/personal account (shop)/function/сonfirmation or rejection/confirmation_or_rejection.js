@@ -14,7 +14,7 @@ const Confirmation = () => {
     try {
       alert("Выполняется подтверждение...")
       console.log("purchase:", purchase);
-      await Contract.methods.acceptPurchase(purchase, 1).send({from:address});
+      await Contract.methods.acceptPurchase(purchase, true).send({from:address});
       alert('Подтверждение выполнено!');
     } catch (e) {
       console.log(e);
@@ -25,7 +25,7 @@ const Confirmation = () => {
     try {
       alert("Выполняется отклонение...")
       console.log("purchase:", purchase);
-      await Contract.methods.acceptPurchase(purchase, 0).send({from:address});
+      await Contract.methods.acceptPurchase(purchase, false).send({from:address});
       alert('Отклонение выполнено!');
     } catch (e) {
       console.log(e);
