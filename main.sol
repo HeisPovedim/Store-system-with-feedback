@@ -30,6 +30,9 @@ contract coursepaper {
         structProducts["Bannana"] = structProduct(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, "asd", 100*(10**18), addProductShop_idProduct);
         structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].Products.push("Bannana");
         addProductShop_idProduct++;
+        //Отзывы
+        string[] memory zerroArray;
+        complaintBooks.push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "Pooooop!", 5, zerroArray));
 
     }
 //END CONSTRUCTOR
@@ -69,6 +72,13 @@ contract coursepaper {
             return(structUsers[structUserLogins[login]].role);
         }
     //END REACT FUNCTON USER
+    function get_complaintBooks(address shopAdr) public view returns(uint[] memory) {
+        // for(uint i = 0; i < complaintBooks.length; i++) {
+        //     if(shopAdr == complaintBooks[i].shop) {
+                // return complaintBooks;
+        //     }
+        // }
+    }
     //Получение баланса
     function get_balance(address adr) public view returns (uint) {
         uint curBalance = adr.balance;
@@ -167,14 +177,35 @@ contract coursepaper {
 //END STRUCT
 
 //BEGIN SHOP FUNCTION
-    //Функция добавления продукта
-    uint256 addProductShop_idProduct = 0;
-    function addProductShop (string memory title, uint256 price, string memory description) public {
-        structProducts[title] = structProduct(msg.sender, description , price*(10**18), addProductShop_idProduct);
-        structShops[msg.sender].Products.push(title);
-        addProductShop_idProduct++;
+//Функция онлайн-статуса МАГАЗИНА - true
+    function login_shop(string memory login, bytes32 password) public {
+        require(structShops[shopLists[login]].logged == false, "Error: You are already logged");
+        require(shopLists[login] != address(0), "Error: User doesn't exist");
+        require(structShops[shopLists[login]].password == password, "Error: Invalid password");
+        structShops[shopLists[login]].logged = true;
     }
-    
+    //Функция онлайн-статуса МАГАЗИНА - false
+    function login_out_shop(string memory login) public {
+        structShops[shopLists[login]].logged = false;
+    }
+    //Функция получения рейтинга МАГАЗИНА
+    function getStoryRating(string memory shopName) public view returns(uint) {
+        uint totalAverageValue = 0;
+        uint countArrayRating = 0;
+        for(uint i = 0; i < shopList.length; i++) {
+            string memory tempShopName = shopList[i];
+            if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shopName))) {                    
+                for (i = 0; i <= complaintBooks.length; i++) {
+                    if(keccak256(abi.encodePacked(shopName)) == keccak256(abi.encodePacked(complaintBooks[i].shop))) {
+                        countArrayRating += complaintBooks[i].rating;
+                        totalAverageValue;
+                    }
+                }
+            }
+        }
+        countArrayRating += countArrayRating / totalAverageValue;
+        return countArrayRating;
+    }
     //Функция для оформления отзыва
     function leaveFeedback (string memory shop, string memory feedback, uint rating) public {
         require(rating <= 10,"error: rating can be from 1 to 10");
@@ -190,7 +221,22 @@ contract coursepaper {
         }
         require(yes == true, "error: shop name not!");
     }
-
+    //Функция для оставления комментария к отзыву
+    function leaveComment (string[] memory comment) public {
+        for(uint i = 0; i < complaintBooks.length; i++) {
+            address tempUserAdr = complaintBooks[i].user;
+            if(keccak256(abi.encodePacked(tempUserAdr)) == keccak256(abi.encodePacked(msg.sender))) {                    
+                complaintBooks[i].comments = comment;
+            }
+        }
+    }
+    //Функция добавления продукта
+    uint256 addProductShop_idProduct = 0;
+    function addProductShop (string memory title, uint256 price, string memory description) public {
+        structProducts[title] = structProduct(msg.sender, description , price*(10**18), addProductShop_idProduct);
+        structShops[msg.sender].Products.push(title);
+        addProductShop_idProduct++;
+    }
     //Функция принятия ПОКУПКИ
     function acceptPurchase (uint idPurchase, bool confirmation) public payable {
         require(msg.sender == structProducts[structStatusPurchases[idPurchase].titleProduct].shop, "error: this is not your product");
@@ -223,46 +269,6 @@ contract coursepaper {
         } else if(confirmation == false) {
             structStatusMarriages[idMarriage].status = false;
         }
-    }
-
-    //Функция получения рейтинга МАГАЗИНА
-    function getStoryRating(string memory shopName) public view returns(uint) {
-        uint totalAverageValue = 0;
-        uint countArrayRating = 0;
-        for(uint i = 0; i < shopList.length; i++) {
-            string memory tempShopName = shopList[i];
-            if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shopName))) {                    
-                for (i = 0; i <= complaintBooks.length; i++) {
-                    if(keccak256(abi.encodePacked(shopName)) == keccak256(abi.encodePacked(complaintBooks[i].shop))) {
-                        countArrayRating += complaintBooks[i].rating;
-                        totalAverageValue;
-                    }
-                }
-            }
-        }
-        countArrayRating += countArrayRating / totalAverageValue;
-        return countArrayRating;
-    }
-
-    //Функция для оставления комментария к отзыву
-    function leaveComment (string[] memory comment) public {
-        for(uint i = 0; i < complaintBooks.length; i++) {
-            address tempUserAdr = complaintBooks[i].user;
-            if(keccak256(abi.encodePacked(tempUserAdr)) == keccak256(abi.encodePacked(msg.sender))) {                    
-                complaintBooks[i].comments = comment;
-            }
-        }
-    }
-    //Функция онлайн-статуса МАГАЗИНА - true
-    function login_shop(string memory login, bytes32 password) public {
-        require(structShops[shopLists[login]].logged == false, "Error: You are already logged");
-        require(shopLists[login] != address(0), "Error: User doesn't exist");
-        require(structShops[shopLists[login]].password == password, "Error: Invalid password");
-        structShops[shopLists[login]].logged = true;
-    }
-    //Функция онлайн-статуса МАГАЗИНА - false
-    function login_out_shop(string memory login) public {
-        structShops[shopLists[login]].logged = false;
     }
 //END SHOP FUNCTION
 

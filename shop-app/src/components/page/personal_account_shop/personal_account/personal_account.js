@@ -43,7 +43,8 @@ const Seller = () => {
           <Link to="/ProductCreation"><button className="container-page-seller__function-menu_button-one">Создание товара</button></Link>
           <Link to="/ConfirmationSeller"><button className="container-page-seller__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button></Link>
           <Link to="/ReturnSeller"><button className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button></Link>
-          <Link to="/MarriageSeller"><button className="container-page-seller__function-menu_button-four"> Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>
+          <Link to="/MarriageSeller"><button className="container-page-seller__function-menu_button-four">Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>
+          <Link to="/Comment"><button className="container-page-seller__function-menu_button-one">Отзывы</button></Link>
           <button className="container-page-seller__function-menu_button-five">Получить список запросов от покупателей</button>
         </div>
       </div>

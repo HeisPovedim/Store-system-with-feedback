@@ -123,6 +123,40 @@ export const UserList =
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "complaintBooks",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "shop",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "feedback",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "rating",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "addr",
 				"type": "address"
