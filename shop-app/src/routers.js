@@ -7,18 +7,18 @@ import Login from "./components/page/login/login";
 import Home from "./components/page/shop/home/home"
 import Beer from "./components/page/shop/beer/beerShop";
 import Product from "./components/page/shop/product/productShop";
-import PersonalAccountShop from "./components/page/personal account (shop)/personal account/personal_account";
-import PersonalAccountUser from "./components/page/personal account (user)/personal account/personal_account"
+import PersonalAccountShop from "./components/page/personal_account_shop/personal account/personal_account";
+import PersonalAccountUser from "./components/page/personal_account_user/personal account/personal_account"
 //Импорт страниц - Функции магазина
-import ConfirmationSeller from "./components/page/personal account (shop)/function/сonfirmation or rejection/confirmation_or_rejection";
-import ReturnSeller from "./components/page/personal account (shop)/function/return of goods/return_of_goods";
-import MarriageSeller from "./components/page/personal account (shop)/function/marriage registration/marriage_registration";
-import ProductCreation from "./components/page/personal account (shop)/function/product creation/product_creation";
+import ConfirmationSeller from "./components/page/personal_account_shop/function/сonfirmation or rejection/confirmation_or_rejection";
+import ReturnSeller from "./components/page/personal_account_shop/function/return of goods/return_of_goods";
+import MarriageSeller from "./components/page/personal_account_shop/function/marriage registration/marriage_registration";
+import ProductCreation from "./components/page/personal_account_shop/function/product creation/product_creation";
 //Импорт страниц - Функции пользователя
-import RefusalToPurchaseUser from "./components/page/personal account (user)/function/refusal to purchase/refusal_to_purchase";
-import ReturnOfGoodsUser from "./components/page/personal account (user)/function/return of goods/return_of_goods"
-import MarriageRegistration from "./components/page/personal account (user)/function/marriage registration/marriage_registration"
-import LeaveFeedback from "./components/page/personal account (user)/function/leave feedback/leave_feedback"
+import RefusalToPurchaseUser from "./components/page/personal_account_user/function/refusal to purchase/refusal_to_purchase";
+import ReturnOfGoodsUser from "./components/page/personal_account_user/function/return of goods/return_of_goods"
+import MarriageRegistration from "./components/page/personal_account_user/function/marriage registration/marriage_registration"
+import LeaveFeedback from "./components/page/personal_account_user/function/leave feedback/leave_feedback"
 
 const Routers = () => {
   return (
