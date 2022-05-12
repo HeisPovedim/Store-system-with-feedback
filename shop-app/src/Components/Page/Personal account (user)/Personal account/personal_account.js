@@ -34,13 +34,12 @@ const Seller = () => {
             <Link to="/RefusalToPurchaseUser"><button className="container-page-user-function-menu__button-one">Отказ от пукупки</button></Link>
             <Link to="/ReturnOfGoodsUser"><button className="container-page-user-function-menu__button-two">Возврат товара</button></Link>
             <Link to="/MarriageRegistration"><button className="container-page-user-function-menu__button-three">Оформление брака</button></Link>
+            <Link to="/LeaveFeedback"><button className="container-page-user-function-menu__button-three">Оставить отзыв</button></Link>
           </div>
         </div>
         <footer className="footer-page-user">
           <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home">
-            <button>
-              <p>Выйти</p>
-            </button>
+            <button>Выйти</button>
           </Link>
         </footer>
       </>

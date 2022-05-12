@@ -14,7 +14,7 @@ const Confirmation = () => {
   //Переменные из localStorage
   const address = localStorage.getItem("address");
 
-//UseEffect - адресов
+  //UseEffect - адресов
   useEffect(() => {
     const ListarrayProduct = async() => {
       let arrayProduct = await Contract.methods.get_shop_list().call();

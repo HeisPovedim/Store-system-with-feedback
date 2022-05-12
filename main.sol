@@ -110,14 +110,14 @@ contract coursepaper {
     
     //Структура книга ЖАЛОБ
     struct complaintBook {
-        string shop;
-        string userName;
+        address shop;
+        address user;
         string feedback;
         uint rating;
         string[] comments;
     }
     //mapping(uint => complaintBook) public complaintBooks;
-    complaintBook[] complaintBooks;
+    complaintBook[] public complaintBooks;
 
     //Структура ЮЗЕРА
     struct structUser {
@@ -175,16 +175,20 @@ contract coursepaper {
         addProductShop_idProduct++;
     }
     
-    //Функция для оставления отзыва
-    function leaveFeedback (string memory shop, string memory feedback, uint256 rating) public {
+    //Функция для оформления отзыва
+    function leaveFeedback (string memory shop, string memory feedback, uint rating) public {
         require(rating <= 10,"error: rating can be from 1 to 10");
-        for(uint i = 0; i <= shopList.length; i++) {
+        bool yes = false;
+        for(uint i = 0; i < shopList.length; i++) {
             string memory tempShopName = shopList[i];
+            address tempShopAdr = get_address(tempShopName);
             if(keccak256(abi.encodePacked(tempShopName)) == keccak256(abi.encodePacked(shop))) {                    
                 string[] memory zerroArray;
-                complaintBooks.push(complaintBook(shop, structUsers[msg.sender].userName, feedback, rating, zerroArray));
+                complaintBooks.push(complaintBook(tempShopAdr, msg.sender, feedback, rating, zerroArray));
+                yes = true;
             }
         }
+        require(yes == true, "error: shop name not!");
     }
 
     //Функция принятия ПОКУПКИ
@@ -241,10 +245,10 @@ contract coursepaper {
     }
 
     //Функция для оставления комментария к отзыву
-    function leaveComment (string memory userName, string[] memory comment) public {
+    function leaveComment (string[] memory comment) public {
         for(uint i = 0; i < complaintBooks.length; i++) {
-            string memory tempUserName = complaintBooks[i].userName;
-            if(keccak256(abi.encodePacked(tempUserName)) == keccak256(abi.encodePacked(userName))) {                    
+            address tempUserAdr = complaintBooks[i].user;
+            if(keccak256(abi.encodePacked(tempUserAdr)) == keccak256(abi.encodePacked(msg.sender))) {                    
                 complaintBooks[i].comments = comment;
             }
         }

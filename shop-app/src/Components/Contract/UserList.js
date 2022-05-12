@@ -311,11 +311,6 @@ export const UserList =
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "userName",
-				"type": "string"
-			},
-			{
 				"internalType": "string[]",
 				"name": "comment",
 				"type": "string[]"

@@ -18,6 +18,7 @@ import ProductCreation from "./components/page/personal account (shop)/function/
 import RefusalToPurchaseUser from "./components/page/personal account (user)/function/refusal to purchase/refusal_to_purchase";
 import ReturnOfGoodsUser from "./components/page/personal account (user)/function/return of goods/return_of_goods"
 import MarriageRegistration from "./components/page/personal account (user)/function/marriage registration/marriage_registration"
+import LeaveFeedback from "./components/page/personal account (user)/function/leave feedback/leave_feedback"
 
 const Routers = () => {
   return (
@@ -36,6 +37,7 @@ const Routers = () => {
       <Route path="/RefusalToPurchaseUser" component={RefusalToPurchaseUser} exact />
       <Route path="/ReturnOfGoodsUser" component={ReturnOfGoodsUser} exact />
       <Route path="/MarriageRegistration" component={MarriageRegistration} exact />
+      <Route path="/LeaveFeedback" component={LeaveFeedback} exact />
     </Switch>
   );
 };
