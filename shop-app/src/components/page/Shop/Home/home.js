@@ -7,15 +7,10 @@ import "./home.css";
 const Home = () => {
   const history = useHistory();
   const { Contract } = UseContext();
-  const [balance, setBalance] = useState();
-  const [role, setRole] = useState();
+
+  const role = localStorage.getItem("role");
   const login = localStorage.getItem("login");
   const address = localStorage.getItem("address")
-
-  useEffect(() => {
-    setBalance(localStorage.getItem('balance'))
-    setRole(localStorage.getItem('role'))
-  },[])
 
   const PersonalAccountSign = async (e) => {
     try {

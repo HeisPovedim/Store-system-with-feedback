@@ -101,3 +101,38 @@
 =============== May 13, 2022 (MSK) ===============
 00:07:17.005815 db@close closing
 00:07:17.006323 db@close done T·507.6µs
+=============== May 13, 2022 (MSK) ===============
+13:17:07.685977 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:17:07.686990 version@stat F·[3 2] S·3MiB[618KiB 2MiB] Sc·[0.75 0.03]
+13:17:07.686990 db@open opening
+13:17:07.686990 journal@recovery F·1
+13:17:07.691550 journal@recovery recovering @23
+13:17:07.697630 memdb@flush created L0@25 N·2767 S·192KiB "\x04\x9c+..\xbbsK,v69916":"\xfc<\xaa..\xda\xcci,v69950"
+13:17:07.699149 version@stat F·[4 2] S·3MiB[811KiB 2MiB] Sc·[1.00 0.03]
+13:17:07.703935 db@janitor F·8 G·0
+13:17:07.703935 db@open done T·16.9445ms
+13:17:07.704469 table@compaction L0·4 -> L1·2 S·3MiB Q·69969
+13:17:07.741754 table@build created L1@28 N·28762 S·2MiB "\x00Mg..\x82\xea\x94,v33794":"h\x00\x00..V*\xfa,v36454"
+13:17:07.763394 table@build created L1@29 N·17514 S·1MiB "h\x00\x00..*\xfat,v36451":"\xff\x06\xb9..[B\",v64445"
+13:17:07.763394 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+13:17:07.763932 table@compaction committed F-4 S-244KiB Ke·0 D·3585 T·59.463ms
+13:17:07.764469 table@remove removed @22
+13:17:07.764469 table@remove removed @19
+13:17:07.764469 table@remove removed @16
+13:17:07.764976 table@remove removed @14
+13:17:07.764976 table@remove removed @15
+14:36:34.187572 db@close closing
+14:36:34.188073 db@close done T·501µs
+=============== May 15, 2022 (MSK) ===============
+11:30:11.933307 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:30:11.934320 version@stat F·[0 2] S·3MiB[0B 3MiB] Sc·[0.00 0.03]
+11:30:11.934320 db@open opening
+11:30:11.934320 journal@recovery F·1
+11:30:11.938880 journal@recovery recovering @26
+11:30:11.948599 memdb@flush created L0@30 N·5956 S·336KiB "\x04\xc7\x0e..\x8a̭,v75913":"\xe6\x96\xe5..\x18\x1e\xcc,v75918"
+11:30:11.951716 version@stat F·[1 2] S·3MiB[336KiB 3MiB] Sc·[0.25 0.03]
+11:30:11.955950 db@janitor F·6 G·1
+11:30:11.955950 db@janitor removing table-25
+11:30:11.955950 db@open done T·21.6293ms
+16:52:48.677581 db@close closing
+16:52:48.679143 db@close done T·1.5627ms

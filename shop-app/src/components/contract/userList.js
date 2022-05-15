@@ -123,6 +123,11 @@ export const UserList =
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
@@ -149,6 +154,16 @@ export const UserList =
 				"internalType": "uint256",
 				"name": "rating",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "comment",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "status",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -175,25 +190,6 @@ export const UserList =
 		"name": "create_user",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "shopName",
-				"type": "string"
-			}
-		],
-		"name": "getStoryRating",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -248,6 +244,73 @@ export const UserList =
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "shop",
+				"type": "string"
+			}
+		],
+		"name": "get_complaintBooks",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "shop",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "idFeedbach",
+				"type": "uint256"
+			}
+		],
+		"name": "get_complaintBooks_feedback",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "shop",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "idFeedbach",
+				"type": "uint256"
+			}
+		],
+		"name": "get_complaintBooks_user",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -345,9 +408,33 @@ export const UserList =
 	{
 		"inputs": [
 			{
-				"internalType": "string[]",
+				"internalType": "string",
+				"name": "shopName",
+				"type": "string"
+			}
+		],
+		"name": "get_story_rating",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
 				"name": "comment",
-				"type": "string[]"
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "idFeedbach",
+				"type": "uint256"
 			}
 		],
 		"name": "leaveComment",

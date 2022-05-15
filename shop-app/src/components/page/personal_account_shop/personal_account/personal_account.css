@@ -31,13 +31,13 @@
   margin-top: 20px;
   margin-left: 25px;
   width: 540px;
-  height: 266px;
+  height: max-content;
   left: 25px;
   top: 107px;
   background: #C4C4C4;
   border-radius: 5px 20px;
 }
-.container-page-seller__personal-information_text-top {
+.container-page-seller__personal-information_text-title {
   margin-left: 50px;
   font-weight: 700;
   font-size: 39px;
@@ -45,7 +45,7 @@
   text-decoration-line: underline;
   color: #000000;
 }
-.container-page-seller__personal-information_text-name {
+.container-page-seller__personal-information_text-base {
   margin-top: 15px;
   margin-left: 20px;
   margin-bottom: 5px;
@@ -54,29 +54,8 @@
   line-height: 41px;
   color: #000000;
 }
-.container-page-seller__personal-information_text-login {
-  margin-bottom: 5px;
-  margin-left: 20px;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 41px;
-  color: #000000;
-}
-.container-page-seller__personal-information_text-city {
-  margin-bottom: 5px;
-  margin-left: 20px;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 41px;
-  color: #000000;
-}
-.container-page-seller__personal-information_text-shop {
-  margin-bottom: 5px;
-  margin-left: 20px;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 41px;
-  color: #000000;
+.container-page-seller__personal-information button {
+  cursor: pointer;
 }
 .container-page-seller__function-menu {
   margin-top: 20px;
