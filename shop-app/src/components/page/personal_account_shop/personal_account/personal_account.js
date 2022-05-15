@@ -26,19 +26,123 @@ const Seller = () => {
     const countComments = await Contract.methods.get_complaintBooks(login).call();
     setCountComments(countComments);
   }
-  const getFeedbach = async () => {
-    let id = prompt("Введите id отзыва:", undefined);
-    const feedback = await Contract.methods.get_complaintBooks_feedback(login, id).call();
 
-    
-    alert("Отзыв: " + feedback);
-  }
   //Хук эффект
-  useEffect(() => {
-    getBalance();
-    getComments();
-  },)
+    useEffect(() => {
+      getBalance();
+      getComments();
+    },)
+
+  //Функция создания продукта
+  const СreatProduct = async (e) => {
+    try {
+      const result = window.confirm("Создать товар?");
+      if (result === true) {
+        const title = prompt("Название товара:", undefined);
+        const price = prompt("Цена товара:", undefined);
+        const description = prompt("Описание товара:", undefined);
+        await Contract.methods.addProductShop(title, price, description).send({ from: address });
+        console.log(title);
+        console.log(description);
+        console.log(price * (10 ** 18));
+        alert('Вы создали новый продукт: ' + title);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
   
+  //Функция подтверждения или отклонения запроса покупателя на покупку товара
+  const Сonfirmation = async () => {
+    try {
+      let result = window.confirm("Подтвердить или отклонить запрос покупателя на покупку товара?");
+      if (result === true) {
+        result = window.confirm(`Принять или отклонить?`);
+        if (result === true) {
+          const idPurchase = prompt("Введите id покупки:", undefined);
+          console.log("purchase:", idPurchase);
+          await Contract.methods.acceptPurchase(idPurchase, true).send({ from: address });
+          alert('Подтверждение выполнено!');
+        } else if (result === false) {
+          const idPurchase = prompt("Введите id покупки:", undefined)
+          console.log("purchase:", idPurchase);
+          await Contract.methods.acceptPurchase(idPurchase, false).send({ from: address });
+          alert('Отклонение выполнено!');
+        }
+      }
+      } catch (e) {
+        alert(e);
+      }
+  }
+
+//Функция подтверждения или отклонения запроса покупателя на возврат товара
+  const Return = async () => {
+    try {
+      let result = window.confirm("Подтвердить или отклонить запрос покупателя на возврат товара?");
+      if (result === true) {
+        result = window.confirm(`Принять или отклонить?`);
+        if (result === true) {
+          const idReturn = prompt("Введите id возврата:", undefined);
+          const structStatusReturn = await Contract.methods.structStatusReturns(idReturn).call();
+          const structProduct = await Contract.methods.structProducts(structStatusReturn[1]).call();
+          console.log("id возврата:", idReturn);
+          await Contract.methods.acceptReturn(idReturn, true).send({ from:address, value:structProduct[2]});
+          alert('Подтверждение выполнено!');
+        } else if (result === false) {
+          const idReturn = prompt("Введите id возврата:", undefined);
+          const structStatusReturn = await Contract.methods.structStatusReturn(idReturn).call();
+          const structProduct = await Contract.methods.structProduct(structStatusReturn[1]).call();
+          console.log("id возврата:", idReturn);
+          await Contract.methods.acceptReturn(idReturn, false).send({ from:address, value:structProduct[2]});
+          alert('Отклонение выполнено!');
+        }
+      }
+      } catch (e) {
+        alert(e);
+      }
+  }
+//Функция подтверждения или отклонения запроса покупателя на оформление брака
+  const Marriage = async () => {
+    try {
+      let result = window.confirm("Подтвердить или отклонить запрос покупателя на оформление брака?");
+      if (result === true) {
+        result = window.confirm(`Принять или отклонить?`);
+        if (result === true) {
+          const idMarriage = prompt("Введите id брака:", undefined);
+          const structStatusMarriages = await Contract.methods.structStatusMarriages(idMarriage).call();
+          const structProduct = await Contract.methods.structProducts(structStatusMarriages[1]).call();
+          console.log("id брака:", idMarriage);
+          await Contract.methods.acceptMarriage(idMarriage, true).send({ from:address, value:structProduct[2]} );
+          alert('Подтверждение выполнено!');
+        } else if (result === false) {
+          const idMarriage = prompt("Введите id брака:", undefined);
+          const structStatusReturn = await Contract.methods.structStatusReturn(idMarriage).call();
+          const structProduct = await Contract.methods.structProduct(structStatusReturn[1]).call();
+          console.log("id брака:", idMarriage);
+          await Contract.methods.acceptMarriage(idMarriage, false).send({ from:address, value:structProduct[2]} );
+          alert('Отклонение выполнено!');
+        }
+      }
+      } catch (e) {
+        alert(e);
+      }
+  }
+
+  //Функция оформления коментария к отзыву
+  const Comment = async () => {
+    try {
+      const result = window.confirm("Оставить комментарий?");
+      if (result === true) {
+        const leaveComment = prompt("Введите комментарий:", undefined);
+        const idFeedbach = prompt("Введите id отзыва:", undefined);
+        await Contract.methods.leaveComment(leaveComment, idFeedbach).send({ from: address });
+        alert("Комментарий оформлен.");
+      }
+    } catch (e) {
+      alert(e);
+    }
+  }
+
   return (
     <>
       <header className="header-page-seller">
@@ -53,23 +157,20 @@ const Seller = () => {
           <div className="container-page-seller__personal-information_text-base">Город: {city}</div>
           <div className="container-page-seller__personal-information_text-base">Номер: {shopNumber}</div>
           <div className="container-page-seller__personal-information_text-base">Кол-во отзывов: {countComments}</div>
-          <button onClick={ getFeedbach }>Получить отзывы</button>
         </div>
         <div className="container-page-seller__function-menu">
           <div className="container-page-seller__function-menu_text-top">Функции продовца</div>
-          <Link to="/ProductCreation"><button className="container-page-seller__function-menu_button-one">Создание товара</button></Link>
-          <Link to="/ConfirmationSeller"><button className="container-page-seller__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button></Link>
-          <Link to="/ReturnSeller"><button className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button></Link>
-          <Link to="/MarriageSeller"><button className="container-page-seller__function-menu_button-four">Подтверждение или отклонение запроса покупателя на оформление брака</button></Link>
-          <Link to="/Comment"><button className="container-page-seller__function-menu_button-one">Оставить комментарий</button></Link>
+          <button onClick={ СreatProduct } className="container-page-seller__function-menu_button-one">Создание товара</button>
+          <button onClick={ Сonfirmation } className="container-page-seller__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button>
+          <button onClick={ Return } className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button>
+          <button onClick={ Marriage } className="container-page-seller__function-menu_button-four">Подтверждение или отклонение запроса покупателя на оформление брака</button>
+          <button onClick={ Comment } className="container-page-seller__function-menu_button-one">Оставить комментарий</button>
           <button className="container-page-seller__function-menu_button-five">Получить список запросов от покупателей</button>
         </div>
       </div>
       <footer className="footer-page-seller">
           <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home">
-            <button>
-              <p>Выйти</p>
-            </button>
+            <button>Выйти</button>
           </Link>
         </footer>
     </>

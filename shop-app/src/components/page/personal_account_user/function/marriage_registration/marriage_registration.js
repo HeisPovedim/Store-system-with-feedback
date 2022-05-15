@@ -22,7 +22,7 @@ const Confirmation = () => {
       setAdrShop(arrayProduct[0]);
     }
     ListarrayProduct();
-  }, [])
+  })
 
   //Функция оформления БРАКА
   const ProductMarriage = async (e) => {

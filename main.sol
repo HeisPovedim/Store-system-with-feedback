@@ -25,17 +25,17 @@ contract coursepaper {
 
         //Товары
         structProducts["Vodka"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 100*(10**18), addProductShop_idProduct);
-        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].Products.push("Vodka");
+        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].products.push("Vodka");
         addProductShop_idProduct++;
 
         structProducts["Bannana"] = structProduct(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, "asd", 100*(10**18), addProductShop_idProduct);
-        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].Products.push("Bannana");
+        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].products.push("Bannana");
         addProductShop_idProduct++;
 
         //Отзывы
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "Poop!", 5, "asd", true));
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "Poop!", 2, "asd", true));
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "Poop!", 7, "asd", true));
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "bad!", 5, "good", true));
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "very bad!", 2, "very good", true));
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "cool bad!", 7, "cool good", true));
 
     }
 //END CONSTRUCTOR
@@ -49,7 +49,7 @@ contract coursepaper {
         //Функция получения списка продуктов
         function get_product_list(string memory login) public view returns(string[] memory) {
             address shopAdr = get_address(login);
-            return structShops[shopAdr].Products;
+            return structShops[shopAdr].products;
         }
         //Функция проверка онлайн-статуса МАГАЗИНА
         function check_logged_shop(string memory login) public view returns(bool) {
@@ -120,6 +120,21 @@ contract coursepaper {
         }
         return(adr);
     }
+    //Функция получения логина по адресу
+    function get_login(address adr) public view returns(string memory) {
+        string memory login;
+        if (get_hash(structUsers[adr].userName) != get_hash("")) {
+            login = structUsers[adr].userName;
+        } else {
+            login = structShops[adr].shopName;
+        }
+        return(login);
+    }
+    //Функция получения списка книги отзывов по адресу
+    function get_complaintBooks_adrShop(string memory login) public view returns(complaintBook[] memory) {
+        address shopAdr = get_address(login);
+        return complaintBooks[shopAdr];
+    }
 //END GET FUNCTION
 
 //BEGIN STRUCT
@@ -132,7 +147,7 @@ contract coursepaper {
         string number;
         string city;
         uint rating;
-        string [] Products;
+        string [] products;
     }
     mapping (address => structShop) public structShops;
     mapping(string => address) public shopLists;
@@ -236,7 +251,7 @@ contract coursepaper {
     uint256 addProductShop_idProduct = 0;
     function addProductShop (string memory title, uint256 price, string memory description) public {
         structProducts[title] = structProduct(msg.sender, description , price*(10**18), addProductShop_idProduct);
-        structShops[msg.sender].Products.push(title);
+        structShops[msg.sender].products.push(title);
         addProductShop_idProduct++;
     }
     //Функция принятия ПОКУПКИ
@@ -280,7 +295,7 @@ contract coursepaper {
         require(msg.value == (structProducts[titleProduct].price), "error: not money");
         structStatusPurchases.push(structStatusPurchase(msg.sender, titleProduct, msg.value, true));
     }
-    //Фукнция отказа отказа от ПОКУПКИ
+    //Фукнция отказа от ПОКУПКИ
     function refusalToPurchase (uint idPurchase) public payable {
         require(msg.sender == structStatusPurchases[idPurchase].userLogin, "error: yor not msg.sender");
         payable(msg.sender).transfer(structStatusPurchases[idPurchase].price);
@@ -290,8 +305,8 @@ contract coursepaper {
     function productReturn(string memory titleProduct) public {
         bool tempRequire;
         address shopAdr = structProducts[titleProduct].shop;
-        for(uint i = 0; i < structShops[shopAdr].Products.length; i++) {
-            string memory tempProductName = structShops[shopAdr].Products[i];
+        for(uint i = 0; i < structShops[shopAdr].products.length; i++) {
+            string memory tempProductName = structShops[shopAdr].products[i];
             if(keccak256(abi.encodePacked(tempProductName)) == keccak256(abi.encodePacked(titleProduct))) {                    
                 structStatusReturns.push(structStatusReturn(msg.sender, titleProduct, true));
                 tempRequire = true;
@@ -303,8 +318,8 @@ contract coursepaper {
     function productMarriage(string memory titleProduct) public {
         bool tempRequire;
         address shopAdr = structProducts[titleProduct].shop;
-        for(uint i = 0; i < structShops[shopAdr].Products.length; i++) {
-            string memory tempProductName = structShops[shopAdr].Products[i];
+        for(uint i = 0; i < structShops[shopAdr].products.length; i++) {
+            string memory tempProductName = structShops[shopAdr].products[i];
             if(keccak256(abi.encodePacked(tempProductName)) == keccak256(abi.encodePacked(titleProduct))) {                    
                 structStatusMarriages.push(structStatusMarriage(msg.sender, titleProduct, true));
                 tempRequire = true;

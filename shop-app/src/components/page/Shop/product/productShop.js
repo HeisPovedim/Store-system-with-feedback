@@ -20,7 +20,7 @@ const Product = () => {
       setProduct(arrayProduct[0]);
     }
     ListArrayProduct();
-  }, [])
+  })
 
   //Получение цены продкута
   useEffect(() => {

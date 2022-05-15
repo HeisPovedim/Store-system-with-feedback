@@ -1,3 +1,9 @@
+.body-page-user{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
 .header-page-user {
   display: flex;
   align-items: center;
@@ -66,14 +72,14 @@
   margin-top: 20px;
   margin-right: 25px;
   width: 540px;
-  height: 630px;
+  height: max-content;
   background: #C4C4C4;
   border-radius: 20px 5px;
 }
 .container-page-user-function-menu__text-top {
   margin: 10px 66px 20px 80px;
   font-weight: 700;
-  font-size: 39px;
+  font-size: 31.6px;
   line-height: 46px;
   text-decoration-line: underline;
   color: #000000;
@@ -134,13 +140,18 @@
 .footer-page-user {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  width: 100%;
+  height: 99px;
+  background: #2B2F32;
+  border-radius: 0px;
 }
 .footer-page-user button{
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 335px;
   height: 79.76px;
   background: #C16471;

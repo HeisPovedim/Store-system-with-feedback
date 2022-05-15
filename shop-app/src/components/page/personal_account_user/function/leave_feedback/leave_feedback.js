@@ -23,7 +23,7 @@ const Feedback = () => {
       setShopName(arrayProduct[0]);
     }
     ListarrayProduct();
-  }, [])
+  })
 
   //Функция оформления БРАКА
   const Feedback = async (e) => {

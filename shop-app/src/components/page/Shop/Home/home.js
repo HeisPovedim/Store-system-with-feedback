@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { UseContext } from "../../../contract/context";
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
@@ -54,20 +54,17 @@ const Home = () => {
         </header>
         <div className="menu-home">
           <div className="menu-home__border-one">
-            <Link to="/Beer"><button>Beer</button></Link>
+            <Link to="/BeerBuy"><button>Beer</button></Link>
+            <Link to="/BeerFeedback"><button>Отзывы</button></Link>
           </div>
           <div className="menu-home__border-two">
             <Link to="/Product"><button>Product</button></Link>
           </div>
         </div>
         <footer className="footer-home">
-          <div className="footer-home__button-exit">
             <Link style={{ textDecoration: 'none', color: 'white' }} to="/Login">
-              <button onClick={LoggedOut}>
-                <p>Выйти</p>
-              </button>
+              <button onClick={LoggedOut}>Выйти</button>
             </Link>
-          </div>
         </footer>
       </body>
     </>

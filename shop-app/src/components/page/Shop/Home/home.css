@@ -75,6 +75,8 @@ input::placeholder {
 .menu-home__border-one button {
   cursor: pointer;
   font-size: 24px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .menu-home__border-two button {
   cursor: pointer;
@@ -82,23 +84,20 @@ input::placeholder {
 }
 .footer-home {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 99px;
   background: #2B2F32;
   border-radius: 0px;
 }
-.footer-home__button-exit button {
+.footer-home button {
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 335px;
   height: 79.76px;
   background: #C16471;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
-.footer-home__button-exit p {
   font-style: normal;
   font-size: 30px;
   line-height: 34px;

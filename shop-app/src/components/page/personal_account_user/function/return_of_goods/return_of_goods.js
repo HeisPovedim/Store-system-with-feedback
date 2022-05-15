@@ -21,13 +21,12 @@ const Confirmation = () => {
       setAdrShop(arrayProduct[0]);
     }
     ListarrayProduct();
-  }, [])
+  })
 
   //Функция оформления ВОЗВРАТА
   const ProductReturn = async (e) => {
     try {
       alert("Происходит оформление возврата...");
-      //adrShop == с шопом из стрктуры продукта 
       let structProducts = await Contract.methods.structProducts(productReturn).call();
       let structAdrShop = await Contract.methods.get_address(adrShop).call();
       if (structAdrShop === structProducts[0]) {
