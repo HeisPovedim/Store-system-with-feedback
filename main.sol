@@ -65,14 +65,14 @@ contract coursepaper {
         }
         //Функция получения рейтинга МАГАЗИНА
         function get_story_rating(string memory shopName) public view returns(uint) {
-        address shopAdr = get_address(shopName);
-        uint rating = 0;
-        for(uint i = 0; i < complaintBooks[shopAdr].length; i++) {
-            rating += complaintBooks[shopAdr][i].rating;
+            address shopAdr = get_address(shopName);
+            uint rating = 0;
+            for(uint i = 0; i < complaintBooks[shopAdr].length; i++) {
+                rating += complaintBooks[shopAdr][i].rating;
+            }
+            rating = rating / complaintBooks[shopAdr].length;
+            return rating;
         }
-        rating = rating / complaintBooks[shopAdr].length;
-        return rating;
-    }
     //END GET FUNCTION SHOP
 
     //BEGIN GET FUNCTION USER

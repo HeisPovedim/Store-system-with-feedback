@@ -72,15 +72,33 @@ input::placeholder {
   text-decoration: none;
   color: #FFFFFF;
 }
+.menu-home__border-one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-home__border-one button, p {
+  font-size: 24px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .menu-home__border-one button {
   cursor: pointer;
+  background: none;
+}
+.menu-home__border-two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-home__border-two button, p {
   font-size: 24px;
   margin-left: 5px;
   margin-right: 5px;
 }
 .menu-home__border-two button {
   cursor: pointer;
-  font-size: 24px;
+  background: none;
 }
 .footer-home {
   display: flex;
