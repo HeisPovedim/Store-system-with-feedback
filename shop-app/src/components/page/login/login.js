@@ -98,7 +98,7 @@ const Login = () => {
 
   return(
     <>
-      <body className="border-login">
+      <div className="border-login">
         <div className="border-login__line-top"></div>
         <div className="border-login__text">Вход</div>
           <input onChange={handleLogin} type="text" placeholder="Логин"/>
@@ -110,7 +110,7 @@ const Login = () => {
             <p>Зарегестрироваться</p>
           </button>
         <div className="border-login__line-button"></div>
-      </body>
+      </div>
     </>
   );
 };

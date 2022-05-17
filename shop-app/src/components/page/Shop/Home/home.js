@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UseContext } from "../../../contract/context";
 import { useHistory } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import "./home.css";
 
 const Home = () => {
@@ -18,12 +18,12 @@ const Home = () => {
 
   //Хук эффект
   useEffect(() => {
-    async function GetRating() {
+    const GetRating = async () => {
       setRatingBeer(await Contract.methods.get_story_rating("Beer").call());
       setRatingProduct(await Contract.methods.get_story_rating("Product").call());
     }
     GetRating();
-  })
+  },[])
 
   const PersonalAccountSign = async (e) => {
     try {
@@ -57,12 +57,12 @@ const Home = () => {
 
   return(
     <>
-      <body className="container-home">
+      <div className="container-home">
         <header className="header-home">
           <div className="header-home_text-header">Меню</div>
           <div className="header-home_personal-info">
             <div className="header-home_personal-info_name">{login}</div>
-            <Link className="header-home_personal-info_link" onClick={PersonalAccountSign}>Личный кабинет</Link>
+            <div className="header-home_personal-info_link" onClick={PersonalAccountSign}>Личный кабинет</div>
           </div>
         </header>
         <div className="menu-home">
@@ -82,7 +82,7 @@ const Home = () => {
               <button onClick={LoggedOut}>Выйти</button>
             </Link>
         </footer>
-      </body>
+      </div>
     </>
   )
 }
