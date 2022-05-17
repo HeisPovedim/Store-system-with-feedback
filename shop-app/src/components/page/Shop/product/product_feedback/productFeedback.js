@@ -8,6 +8,29 @@ const Beer = () => {
   const [listItems, setlistItems] = useState([]);
   const [list, setList] = useState([]);
   
+  //Переменные из localStorage
+  const address = localStorage.getItem('address');
+  const role = localStorage.getItem("role")
+  
+  //Функция ответа на отзыв
+  const AnswerFeedback = async () => {
+    console.log(role)
+    try {
+      const confirm = window.confirm("Вы хотите оставить отзыв?")
+      if (confirm === true) {
+        if (role === "3") {
+          const comment = prompt("Введите комментарий:", undefined);
+          const idFeedbach = prompt("Введите id отзыва:", undefined);
+          await Contract.methods.leaveComment(comment, idFeedbach).send({from: address})
+        } else {
+          alert("На отзывы может ответить только админ!")
+        }
+      }
+    } catch (e) {
+      alert(e);
+    }
+  }
+
   //Функция получения отзыва
   const GetFeedback = async () => {
     setList(await Contract.methods.get_complaintBooks_adrShop("Product").call())
@@ -42,6 +65,7 @@ const Beer = () => {
             <h1>Список отзывов:</h1>
             {listItems}
             <button onClick={GetFeedback}>ОБНОВИТЬ</button>
+            <button onClick={AnswerFeedback}>Ответить на отзыв</button>
           </div>
         </div>
         <div className="container-page-beer__but-info">
