@@ -70,9 +70,7 @@ const Beer = () => {
           </div>
         </div>
         <div className="container-page-beer__but-info">
-          <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home">
-            <button>Выйти</button>
-          </Link>
+          <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home"><button>Выйти</button></Link>
         </div>
       </div>
     </>

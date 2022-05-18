@@ -7,11 +7,11 @@ const Login = () => {
   const { web3, Contract } = UseContext();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
   const [role, setRole] = useState();
   const [city, setCity] = useState('');
   const [address, setAddress] = useState();
   const [shopNumber, setShopNumber] = useState();
+  const history = useHistory();
 
   localStorage.setItem("login", login);
   localStorage.setItem("role", role);
@@ -27,8 +27,9 @@ const Login = () => {
   }
 
   const LogIn = async (e) => {
-    try{
-      e.preventDefault()
+    try {
+      alert("Выполняется вход...");
+      e.preventDefault();
       const address = await Contract.methods.get_address(login).call();
       setAddress(address);
       console.log("Address:", address);
@@ -69,19 +70,19 @@ const Login = () => {
         };
       };
     }catch(e) {
-      console.log(e);
+      alert(e);
     };
   };
-;
+
   const Registration = async (e) => {
     try
     {
+      alert("Выполняется регистрация...");
       e.preventDefault()
       const accounts = await web3.eth.getAccounts();
       console.log(accounts);
       await web3.eth.personal.unlockAccount(accounts[0],"1",0);
       const address = await web3.eth.personal.newAccount(password);
-      alert("Ваш аккаунт создается, подождите..")
       await web3.eth.personal.unlockAccount(address, password,0);
       const protectPassword = await web3.utils.keccak256(password);
       await web3.eth.sendTransaction({
@@ -92,9 +93,23 @@ const Login = () => {
       await Contract.methods.create_user(address, login, protectPassword).send({from:accounts[0]});
       alert("Аккаунт создан, ваш адрес:"+ address);
     } catch(e) {
-      console.log(e);
-    }
+      alert(e);
+    };
   };
+
+  const Guest = async (e) => {
+    try {
+      alert("Выполняется вход...");
+      setRole(1);
+      setAddress(0x0000000000000000000000000000000000000000);
+      setLogin("No name");
+      console.log("role: " + role + "\nAddress: " + address + "\nLogin: " + login);
+      alert("Вы вошли!")
+      history.push("/Home");
+    } catch (e) {
+      alert(e);
+    }
+  }
 
   return(
     <>
@@ -103,12 +118,9 @@ const Login = () => {
         <div className="border-login__text">Вход</div>
           <input onChange={handleLogin} type="text" placeholder="Логин"/>
           <input onChange={hadlePassword} type="password" placeholder="Пароль"/>
-          <button className="border-login__button-login" onClick={LogIn}>
-            <p>Войти</p>
-          </button>
-          <button className="border-login__button-signIn" onClick={Registration}>
-            <p>Зарегестрироваться</p>
-          </button>
+          <button className="border-login__button-login" onClick={LogIn}>Войти</button>
+          <button className="border-login__button-signIn" onClick={Registration}>Зарегестрироваться</button>
+          <button className="border-login__button-view" onClick={Guest}>Просмотр содержимого</button>
         <div className="border-login__line-button"></div>
       </div>
     </>

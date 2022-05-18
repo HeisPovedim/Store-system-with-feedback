@@ -46,8 +46,9 @@ form {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   width: 561px;
+  height: max-content;
   background: #80A2A9;
   backdrop-filter: blur(4px);
   border-radius: 5px;
@@ -81,8 +82,6 @@ form {
   background: #F0D3C1;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
-.border-login__button-login p {
   font-style: normal;
   font-size: 36px;
   line-height: 41px;
@@ -98,11 +97,25 @@ form {
   background: #C16471;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
-.border-login__button-signIn p {
   font-style: normal;
   font-size: 30px;
   line-height: 34px;
+  color: #000000;
+}
+.border-login__button-view {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  width: 301px;
+  height: 83.39px;
+  background: #F0D3C1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 30px;
   color: #000000;
 }
 .border-login__line-button {
