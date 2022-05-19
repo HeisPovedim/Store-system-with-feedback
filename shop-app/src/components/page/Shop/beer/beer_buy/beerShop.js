@@ -11,6 +11,7 @@ const Beer = () => {
 
   //Переменные из localStorage
   const address = localStorage.getItem("address");
+  const role = localStorage.getItem("role");
 
   //Получение списка продуктов
   useEffect(() => {
@@ -20,7 +21,7 @@ const Beer = () => {
       setProduct(arrayProduct[0]);
     }
     ListArrayProduct();
-  })
+  }, [])
 
   //Получение цены продкута
   useEffect(() => {
@@ -33,14 +34,21 @@ const Beer = () => {
   })
 
 
-  //Фунция создания продукта
+  //Фунция покупки продукта
   const BuyProduct = async (e) => {
     try {
-      await Contract.methods.productPurchases(product).send({ from:address, value:price });
-      console.log("product:", product);
-      console.log("address:", address);
-      console.log("price", price);
-      alert("Вы купили продукт!");
+      if (role === "2") {
+        alert("Происходит покупки продукта...")
+        await Contract.methods.productPurchases(product).send({from:address, value:price});
+        console.log("product:", product);
+        console.log("address:", address);
+        console.log("price", price);
+        alert("Вы купили продукт!");
+      } else if (role === "3") {
+        alert("Магазин не может оформлять покупку твора!")
+      } else if (role === "1") {
+        alert("Гости не могут оформлять покупку товара!");
+      }
     } catch (e) {
       console.log(e);
     }

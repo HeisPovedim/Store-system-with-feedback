@@ -113,10 +113,10 @@ const Seller = () => {
             </div>
             <div className="container-page-user-function-menu">
               <div className="container-page-user-function-menu__text-top">Функции пользователя:</div>
-              <button onClick={ Refusal } className="container-page-user-function-menu__button-one">Отказ от пукупки</button>
-              <button onClick={ Return } className="container-page-user-function-menu__button-two">Возврат товара</button>
-              <button onClick={ Marriage } className="container-page-user-function-menu__button-three">Оформление брака</button>
-              <button onClick={ Feedback } className="container-page-user-function-menu__button-three">Оставить отзыв</button>
+              <button onClick={Refusal} className="container-page-user-function-menu__button-one">Отказ от пукупки</button>
+              <button onClick={Return} className="container-page-user-function-menu__button-two">Возврат товара</button>
+              <button onClick={Marriage} className="container-page-user-function-menu__button-three">Оформление брака</button>
+              <button onClick={Feedback} className="container-page-user-function-menu__button-three">Оставить отзыв</button>
             </div>
           </div>
           <footer className="footer-page-user">

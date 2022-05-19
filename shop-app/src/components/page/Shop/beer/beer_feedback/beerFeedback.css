@@ -29,9 +29,6 @@ input::placeholder {
   flex-direction: column;
   align-items: center;
 }
-.container-page-beer__menu button {
-  background: none;
-}
 .borderList {
   font-size: 30px;
 }

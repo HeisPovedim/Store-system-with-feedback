@@ -42,7 +42,7 @@ const Home = () => {
       const roleUser = await Contract.methods.get_role_user(login).call();
       console.log("roleUser:", roleUser);
       const roleShop = await Contract.methods.get_role_shop(login).call();
-      console.log("roleShop",roleShop);
+      console.log("roleShop:",roleShop);
       if(roleUser === "2") {
         alert("Вы вышли с аккаунта!");
         await Contract.methods.login_out_user(login).send({from:address});

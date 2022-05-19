@@ -4,12 +4,12 @@ import {useHistory} from "react-router-dom";
 import './login.css';
 
 const Login = () => {
-  const { web3, Contract } = UseContext();
-  const [login, setLogin] = useState('');
+  const {web3, Contract} = UseContext();
+  const [login, setLogin] = useState("no name");
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState();
+  const [role, setRole] = useState(1);
   const [city, setCity] = useState('');
-  const [address, setAddress] = useState();
+  const [address, setAddress] = useState(0x0000000000000000000000000000000000000000);
   const [shopNumber, setShopNumber] = useState();
   const history = useHistory();
 
@@ -100,9 +100,6 @@ const Login = () => {
   const Guest = async (e) => {
     try {
       alert("Выполняется вход...");
-      setRole(1);
-      setAddress(0x0000000000000000000000000000000000000000);
-      setLogin("No name");
       console.log("role: " + role + "\nAddress: " + address + "\nLogin: " + login);
       alert("Вы вошли!")
       history.push("/Home");
