@@ -33,9 +33,9 @@ contract coursepaper {
         addProductShop_idProduct++;
 
         //Отзывы
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "bad!", 5, "good", true));
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "bad!", 2, "good", true));
         complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "very bad!", 2, "very good", true));
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "cool bad!", 7, "cool good", true));
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "cool bad!", 2, "cool good", true));
 
     }
 //END CONSTRUCTOR
@@ -72,10 +72,18 @@ contract coursepaper {
             }
             rating = rating / complaintBooks[shopAdr].length;
             for(uint i = 0; i < structShops[shopAdr].products.length; i++) {
-
-                //перезаписать цену продуктов
-                //вытягивание первого элемента и перезапись его
-                structProducts[structShops[shopAdr].products[i]].price = ; // Измени тут на то, насколько тебе нужно увеличить цену.
+                uint priceProduct = structProducts[structShops[shopAdr].products[i]].price;
+                if(rating < 2) {
+                    priceProduct -= ((50*100)/100);
+                } else if(rating > 2 && rating < 4) {
+                    priceProduct -= ((20*100)/100);
+                } else if(rating > 4 && rating < 6) {
+                    
+                } else if(rating > 6 && rating < 8) {
+                    priceProduct += ((20*100)/100);
+                } else if(rating > 8){
+                    priceProduct += ((50*100)/100);
+                }
             }
             return rating;
         }

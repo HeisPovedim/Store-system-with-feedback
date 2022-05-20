@@ -7,7 +7,7 @@ import Routers from "./routers";
 
 const App = () => {
   const [web3] = useState(new Web3('http://127.0.0.1:8545'));
-  const Addr = '0x575a65B2Db93aB9641c715f589E60b428eA8ff9f';
+  const Addr = '0xc4eE6070603575438EB8EB039aB505d6ac7D4b9a';
   const [Contract] = useState(new web3.eth.Contract(UserList, Addr));
   return(
     <Router>
