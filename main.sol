@@ -71,6 +71,12 @@ contract coursepaper {
                 rating += complaintBooks[shopAdr][i].rating;
             }
             rating = rating / complaintBooks[shopAdr].length;
+            for(uint i = 0; i < structShops[shopAdr].products.length; i++) {
+
+                //перезаписать цену продуктов
+                //вытягивание первого элемента и перезапись его
+                structProducts[structShops[shopAdr].products[i]].price = ; // Измени тут на то, насколько тебе нужно увеличить цену.
+            }
             return rating;
         }
     //END GET FUNCTION SHOP
