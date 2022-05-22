@@ -93,6 +93,7 @@ const Seller = () => {
         const feedback = prompt("Введите свой отзыв:", undefined);
         const rating = prompt("Введите рейтинг магазина от 1-го до 10-ти:", undefined);
         await Contract.methods.leaveFeedback(shopName, feedback, rating).send({ from: address });
+        alert("Вы оставили отзыва!")
       }
     } catch (e) {
       alert(e);

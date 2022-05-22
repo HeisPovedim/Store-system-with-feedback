@@ -8,7 +8,6 @@ contract coursepaper {
 
 //BEGIN CONSTRUCTOR
     constructor() {
-
         //Магазины
         shopLists["Beer"] = 0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004;
         structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004] = structShop("Beer", get_hash("2"), 3, false, "1", "Moscow", 0, Products);
@@ -24,19 +23,30 @@ contract coursepaper {
         userAddressArray.push(0xAdA67460CF329D12c1ed898710CC8Da5D40d8025);
 
         //Товары
-        structProducts["Vodka"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 100*(10**18), addProductShop_idProduct);
+        //beer
+        structProducts["Vodka"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 100*(10**18), 100*(10**18), addProductShop_idProduct);
         structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].products.push("Vodka");
         addProductShop_idProduct++;
-
-        structProducts["Bannana"] = structProduct(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, "asd", 100*(10**18), addProductShop_idProduct);
+        structProducts["Beer"] = structProduct(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, "asd", 29*(10**18), 29*(10**18), addProductShop_idProduct);
+        structShops[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].products.push("Beer");
+        addProductShop_idProduct++;
+        //product
+        structProducts["Bannana"] = structProduct(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, "asd", 100*(10**18), 100*(10**18), addProductShop_idProduct);
         structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].products.push("Bannana");
+        addProductShop_idProduct++;
+        structProducts["Apple"] = structProduct(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, "asd", 176*(10**18), 176*(10**18), addProductShop_idProduct);
+        structShops[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].products.push("Apple");
         addProductShop_idProduct++;
 
         //Отзывы
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "bad!", 2, "good", true));
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "very bad!", 2, "very good", true));
-        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "cool bad!", 2, "cool good", true));
-
+        //beer
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "bad!", 5, "good", true));
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "very bad!", 5, "very good", true));
+        complaintBooks[0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004].push(complaintBook(0x5412E9b0e4Ef9d1546DF79ae907eeE34bDCF3004, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "cool bad!", 5, "cool good", true));
+        //product
+        complaintBooks[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].push(complaintBook(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "bad!", 2, "cool good", true));
+        complaintBooks[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].push(complaintBook(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "very bad!", 2, "cool good", true));
+        complaintBooks[0x49C364fedaD517382ee5A776d3071f11CfDE4C5c].push(complaintBook(0x49C364fedaD517382ee5A776d3071f11CfDE4C5c, 0xAdA67460CF329D12c1ed898710CC8Da5D40d8025, "cool bad!", 2, "cool good", true));
     }
 //END CONSTRUCTOR
 
@@ -71,21 +81,27 @@ contract coursepaper {
                 rating += complaintBooks[shopAdr][i].rating;
             }
             rating = rating / complaintBooks[shopAdr].length;
-            for(uint i = 0; i < structShops[shopAdr].products.length; i++) {
-                uint priceProduct = structProducts[structShops[shopAdr].products[i]].price;
-                if(rating < 2) {
-                    priceProduct -= ((50*100)/100);
-                } else if(rating > 2 && rating < 4) {
-                    priceProduct -= ((20*100)/100);
-                } else if(rating > 4 && rating < 6) {
-                    
-                } else if(rating > 6 && rating < 8) {
-                    priceProduct += ((20*100)/100);
-                } else if(rating > 8){
-                    priceProduct += ((50*100)/100);
-                }
-            }
             return rating;
+        }
+        //Функция обновления рейтинга
+        function rating_update(string memory shopName) public {
+            address shopAdr = get_address(shopName);
+            structShops[shopAdr].rating = get_story_rating(shopName);
+        }
+        //Функция обновления цены продукта
+        function product_price_update(string memory titleProduct, string memory shopName) public {
+            uint rating = get_story_rating(shopName);
+            if(rating < 2) {
+                structProducts[titleProduct].price = (structProducts[titleProduct].firstPrice/100)*50; //скидка 50%
+            } else if(rating >= 2 &&  rating < 4 ) {
+                structProducts[titleProduct].price = (structProducts[titleProduct].firstPrice/100)*80; //скидка 20%
+            } else if(rating >= 4 &&  rating <= 6 ) {
+                structProducts[titleProduct].price = structProducts[titleProduct].firstPrice; //обычная цена
+            } else if(rating > 6 && rating <= 8) {
+                structProducts[titleProduct].price = (structProducts[titleProduct].firstPrice/100)*120; //наценка 20%
+            } else if(rating > 8) {
+                structProducts[titleProduct].price = (structProducts[titleProduct].firstPrice/100)*150; //наценка 50%
+            }
         }
     //END GET FUNCTION SHOP
 
@@ -149,6 +165,18 @@ contract coursepaper {
         address shopAdr = get_address(login);
         return complaintBooks[shopAdr];
     }
+    //Функция получения цены продукта
+    function get_product_price(string memory shopName) public view returns(uint) {
+        return structProducts[shopName].price;
+    }
+    //Функция получения первой цены продукта
+    function get_product_firstPrice(string memory shopName) public view returns(uint) {
+        return structProducts[shopName].firstPrice;
+    }
+    //Функция перевода денег с нулевого аккаунта 
+    function get_money(address adr) public payable {
+        payable(adr).transfer(1000*(10 ** 18));
+    } 
 //END GET FUNCTION
 
 //BEGIN STRUCT
@@ -161,12 +189,12 @@ contract coursepaper {
         string number;
         string city;
         uint rating;
-        string [] products;
+        string[] products;
     }
     mapping (address => structShop) public structShops;
     mapping(string => address) public shopLists;
     string[] shopList;
-    string [] Products;
+    string[] Products;
 
     
     //Структура книга ЖАЛОБ
@@ -198,6 +226,7 @@ contract coursepaper {
         address shop;
         string description;
         uint256 price;
+        uint256 firstPrice;
         uint id;
     }
     mapping(string => structProduct) public structProducts;
@@ -264,7 +293,7 @@ contract coursepaper {
     //Функция добавления продукта
     uint256 addProductShop_idProduct = 0;
     function addProductShop (string memory title, uint256 price, string memory description) public {
-        structProducts[title] = structProduct(msg.sender, description , price*(10**18), addProductShop_idProduct);
+        structProducts[title] = structProduct(msg.sender, description , price*(10**18), price*(10**18), addProductShop_idProduct);
         structShops[msg.sender].products.push(title);
         addProductShop_idProduct++;
     }

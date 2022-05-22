@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { UseContext } from "../../../contract/context";
 import { useHistory } from "react-router-dom";
@@ -7,36 +8,60 @@ import "./home.css";
 const Home = () => {
   //Stat'ы
   const history = useHistory();
-  const { Contract } = UseContext();
-  const [ ratingBeer, setRatingBeer ] = useState(0);
-  const [ ratingProduct, setRatingProduct ] = useState(0);
+  const {Contract} = UseContext();
+  const [ratingBeer, setRatingBeer] = useState(0);
+  const [ratingProduct, setRatingProduct] = useState(0);
+  // const [arrayProduct, setArrayProduct] = useState([]);
 
   //Перменные из localStorage
   const role = localStorage.getItem("role");
   const login = localStorage.getItem("login");
   const address = localStorage.getItem("address")
 
+  //Функция получения рейтинга
+  const GetRating = async () => {
+    setRatingBeer(await Contract.methods.get_story_rating("Beer").call());
+    setRatingProduct(await Contract.methods.get_story_rating("Product").call());
+  };
+
   //Хук эффект
   useEffect(() => {
-    const GetRating = async () => {
-      setRatingBeer(await Contract.methods.get_story_rating("Beer").call());
-      setRatingProduct(await Contract.methods.get_story_rating("Product").call());
-    }
     GetRating();
-  },[])
+  },[]);
 
+  //Функция входа в магазин BEER
+  const SignInBeerShop = async () => {
+    let arrayProduct = await Contract.methods.get_product_list("Beer").call();
+    for(let i of arrayProduct) {
+      await Contract.methods.product_price_update(i, "Beer").send({from: '0x5271A094D799F7a4eB135951D7005a60Ac8bD7a8'});
+    }
+    history.push("/BeerBuy");
+  }
+  //Функция входа в магазин PRODCUT
+  const SignInProductShop = async () => {
+    let arrayProduct = await Contract.methods.get_product_list("Product").call();
+    for(let i of arrayProduct) {
+      await Contract.methods.product_price_update(i, "Product").send({from: '0x5271A094D799F7a4eB135951D7005a60Ac8bD7a8'});
+    }
+    history.push("/ProductBuy");
+  }
+
+  //Функция входа в личный кабинет
   const PersonalAccountSign = async (e) => {
     try {
       if (role === "2") {
         history.push("/PersonalAccountUser");
       } else if (role === "3") {
         history.push("/PersonalAccountShop");
+      } else if (role === "1") {
+        alert("У гостя нет личного кабинета!")
       }
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
+  //Функция выхода из аккаунта
   const LoggedOut = async (e) => {
     try {
       const roleUser = await Contract.methods.get_role_user(login).call();
@@ -51,7 +76,7 @@ const Home = () => {
         await Contract.methods.login_out_shop(login).send({from:address});
       }
     } catch (e) {
-      console.log(e);
+      alert(e);
     }
   }
 
@@ -68,12 +93,12 @@ const Home = () => {
         <div className="menu-home">
           <div className="menu-home__border-one">
             <p>Рейтинг: {ratingBeer}</p>
-            <Link to="/BeerBuy"><button>Beer</button></Link>
+            <button onClick={SignInBeerShop}>Beer</button>
             <Link to="/BeerFeedback"><button>Отзывы</button></Link>
           </div>
           <div className="menu-home__border-two">
             <p>Рейтинг: {ratingProduct}</p>
-            <Link to="/ProductBuy"><button>Product</button></Link>
+            <button onClick={SignInProductShop}>Product</button>
             <Link to="/ProductFeedback"><button>Отзывы</button></Link>
           </div>
         </div>

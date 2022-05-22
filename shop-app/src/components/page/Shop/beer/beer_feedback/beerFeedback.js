@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
 import { UseContext } from "../../../../contract/context";
 import { Link } from 'react-router-dom'
@@ -6,8 +7,7 @@ import "./beerFeedback.css"
 const Beer = () => {
   const { Contract } = UseContext();
   const [listItems, setlistItems] = useState([]);
-  const [list, setList] = useState([]);
-
+  
   //Переменные из localStorage
   const address = localStorage.getItem('address');
   const role = localStorage.getItem("role")
@@ -16,15 +16,15 @@ const Beer = () => {
   const AnswerFeedback = async () => {
     console.log(role)
     try {
+      if (role === "3") {
       const confirm = window.confirm("Вы хотите оставить отзыв?")
       if (confirm === true) {
-        if (role === "3") {
           const comment = prompt("Введите комментарий:", undefined);
           const idFeedbach = prompt("Введите id отзыва:", undefined);
           await Contract.methods.leaveComment(comment, idFeedbach).send({from: address})
-        } else {
-          alert("На отзывы может ответить только админ!")
         }
+      } else {
+        alert("На отзывы может ответить только админ!")
       }
     } catch (e) {
       alert(e);
@@ -33,11 +33,9 @@ const Beer = () => {
 
   //Функция получения отзыва
   const GetFeedback = async () => {
-    setList(await Contract.methods.get_complaintBooks_adrShop("Beer").call())
-    console.log(list)
-
-    setlistItems(list.map((element, id) => 
-      <div className="borderList">
+    const listMap = await Contract.methods.get_complaintBooks_adrShop("Beer").call();
+    setlistItems(listMap.map((element, id) => 
+      <div key={id} className="borderList">
         <p>ID Отзывы №{id} от пользователя {element.user} </p>
         <p>Магазин: {element.shop}</p>
         <p>Отзыв: {element.feedback} </p>
@@ -51,7 +49,7 @@ const Beer = () => {
 
   useEffect(() => {
     GetFeedback();
-  },[])
+  }, [])
 
   return(
     <>
@@ -70,7 +68,7 @@ const Beer = () => {
           </div>
         </div>
         <div className="container-page-beer__but-info">
-          <Link style={{ textDecoration: 'none', color: 'white' }} to="/Home"><button>Выйти</button></Link>
+          <Link style={{textDecoration: 'none', color: 'white'}} to="/Home"><button>Выйти</button></Link>
         </div>
       </div>
     </>

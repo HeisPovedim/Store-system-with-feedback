@@ -20,26 +20,21 @@ const Product = () => {
       setProduct(arrayProduct[0]);
     }
     ListArrayProduct();
-  })
-
-  //Получение цены продкута
+  }, [Contract.methods])
   useEffect(() => {
-    async function temp() {
+    const GetProductPrice = async () => {
+      console.log("product: " + product)
       var structProduct = await Contract.methods.structProducts(product).call();
       setPrice(structProduct[2]);
+      console.log("price product: " + structProduct[2])
     }
-    temp();
-    console.log(product);
-  })
-
+    GetProductPrice();
+  },[Contract.methods, product])
 
   //Фунция создания продукта
   const BuyProduct = async (e) => {
     try {
-      await Contract.methods.productPurchases(product).send({ from:address, value:price });
-      console.log("product:", product);
-      console.log("address:", address);
-      console.log("price", price);
+      await Contract.methods.productPurchases(product).send({from:address, value:price});
       alert("Вы купили продукт!");
     } catch (e) {
       console.log(e);
