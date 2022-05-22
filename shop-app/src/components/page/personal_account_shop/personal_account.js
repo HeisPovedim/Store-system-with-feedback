@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UseContext } from "../../../contract/context";
+import { UseContext } from "../../contract/context";
 import { Link } from "react-router-dom";
 import "./personal_account.css"
 

@@ -9,8 +9,8 @@ import BeerBuy from "./components/page/shop/beer/beer_buy/beerShop";
 import BeerFeedback from "./components/page/shop/beer/beer_feedback/beerFeedback";
 import ProductBuy from "./components/page/shop/product/product_buy/productShop";
 import ProductFeedback from "./components/page/shop/product/product_feedback/productFeedback";
-import PersonalAccountShop from "./components/page/personal_account_shop/personal_account/personal_account";
-import PersonalAccountUser from "./components/page/personal_account_user/personal_account/personal_account"
+import PersonalAccountShop from "./components/page/personal_account_shop/personal_account";
+import PersonalAccountUser from "./components/page/personal_account_user/personal_account";
 
 const Routers = () => {
   return (
