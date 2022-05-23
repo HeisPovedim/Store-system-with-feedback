@@ -8,6 +8,7 @@ const Seller = () => {
   const { Contract } = UseContext();
   const [balance, setBalance] = useState();
   const [countComments, setCountComments] = useState();
+  const [rating, setRating] = useState();
 
   //Перменные из localStorage
   const login = localStorage.getItem('login');
@@ -27,10 +28,17 @@ const Seller = () => {
     setCountComments(countComments);
   }
 
+  //Функция получения рейтинга магазина
+  const getRating = async () => {
+    const getRating = await Contract.methods.get_story_rating("Product").call();
+    setRating(getRating);
+  }
+
   //Хук эффект
     useEffect(() => {
       getBalance();
       getComments();
+      getRating();
     },)
 
   //Функция создания продукта
@@ -147,7 +155,7 @@ const Seller = () => {
     <>
       <header className="header-page-seller">
         <div className="header-page-seller_text-header">Личный кабинет</div>
-        <div className="header-page-seller_text-role">Роль: {role}</div>
+        <div className="header-page-seller_text-role">Роль: {role === "3" ? "Магазин" : undefined}</div>
       </header>
       <div className="container-page-seller">
         <div className="container-page-seller__personal-information">
@@ -157,6 +165,7 @@ const Seller = () => {
           <div className="container-page-seller__personal-information_text-base">Город: {city}</div>
           <div className="container-page-seller__personal-information_text-base">Номер: {shopNumber}</div>
           <div className="container-page-seller__personal-information_text-base">Кол-во отзывов: {countComments}</div>
+          <div className="container-page-seller__personal-information_text-base">Рейтинг магазина: {rating}</div>
         </div>
         <div className="container-page-seller__function-menu">
           <div className="container-page-seller__function-menu_text-top">Функции продовца</div>

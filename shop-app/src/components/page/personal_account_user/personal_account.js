@@ -11,6 +11,7 @@ const Seller = () => {
   //Переменные из localStorage
   const login = localStorage.getItem('login');
   const address = localStorage.getItem('address');
+  const role = localStorage.getItem("role");
 
   //Хук эффект
   useEffect(() => {
@@ -105,6 +106,7 @@ const Seller = () => {
         <div className="body-page-user">
           <header className="header-page-user">
             <div className="header-page-user_text-header">Личный кабинет</div>
+            <div className="header-page-seller_text-role">Роль: {role === "2" ? "Пользователь" : undefined}</div>
           </header>
           <div className="container-page-user">
             <div className="container-page-user-personal-information">

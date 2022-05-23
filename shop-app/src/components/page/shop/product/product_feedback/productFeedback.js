@@ -7,26 +7,27 @@ import "./productFeedback.css"
 const Beer = () => {
   const { Contract } = UseContext();
   const [listItems, setlistItems] = useState([]);
-  const [list, setList] = useState([]);
   
   //Переменные из localStorage
   const address = localStorage.getItem('address');
-  const role = localStorage.getItem("role")
+  const role = localStorage.getItem("role");
+  const login = localStorage.getItem("login");
   
   //Функция ответа на отзыв
   const AnswerFeedback = async () => {
     console.log(role)
     try {
-      const confirm = window.confirm("Вы хотите оставить отзыв?")
-      if (confirm === true) {
-        if (role === "3") {
-          const comment = prompt("Введите комментарий:", undefined);
-          const idFeedbach = prompt("Введите id отзыва:", undefined);
-          await Contract.methods.leaveComment(comment, idFeedbach).send({from: address})
-        } else {
-          alert("На отзывы может ответить только админ!")
-        }
-      }
+      if (role === "3") {
+        if("Product" === login){
+          const confirm = window.confirm("Вы хотите оставить отзыв?")
+          if (confirm === true) {
+            const comment = prompt("Введите отзыв:", undefined);
+            const idFeedbach = prompt("Введите id отзыва:", undefined);
+            await Contract.methods.leaveComment(comment, idFeedbach).send({from: address})
+            alert("Отзыв оставлен!");
+          }
+        } else alert("Магазины не могут отвечать на чужие отзывы!");
+      } else alert("На отзывы может ответить только админ!");
     } catch (e) {
       alert(e);
     }
@@ -34,9 +35,8 @@ const Beer = () => {
 
   //Функция получения отзыва
   const GetFeedback = async () => {
-    setList(await Contract.methods.get_complaintBooks_adrShop("Product").call())
-    console.log(list)
-    setlistItems(list.map((element, id) =>
+    const listMap = await Contract.methods.get_complaintBooks_adrShop("Product").call();
+    setlistItems(listMap.map((element, id) =>
       <div className="borderList">
         <p>ID Отзывы №{ id } от пользователя { element.user } </p>
         <p>Магазин: { element.shop }</p>
@@ -51,7 +51,7 @@ const Beer = () => {
 
   useEffect(() => {
     GetFeedback();
-  },[])
+  },[AnswerFeedback])
 
   return(
     <>

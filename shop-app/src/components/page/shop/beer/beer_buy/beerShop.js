@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { UseContext } from "../../../../contract/context";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import png from "../../../../img/beerShop/logo_beer.png";
 import "./beerShop.css"
 
 const Beer = () => {
@@ -61,7 +62,7 @@ const Beer = () => {
         </div>
       </header>
       <div className="container-page-beer__menu">
-        <div className="menu__logo-beer"></div>
+        <img src={png} alt="logo" />
         <div className="menu">
           <button onClick={BuyProduct} className="menu__buy-button">КУПИТЬ</button>
           <select onChange={ (e) => setProduct(e.target.value) } className="menu__products-select">
