@@ -333,3 +333,42 @@
 00:21:49.488702 db@open done T·20.4024ms
 00:28:04.684063 db@close closing
 00:28:04.684063 db@close done T·0s
+=============== May 29, 2022 (MSK) ===============
+10:42:51.874069 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+10:42:51.875128 version@stat F·[2 4] S·10MiB[3MiB 7MiB] Sc·[0.50 0.07]
+10:42:51.875128 db@open opening
+10:42:51.875128 journal@recovery F·1
+10:42:51.880391 journal@recovery recovering @82
+10:42:51.882925 memdb@flush created L0@84 N·120 S·57KiB "0_\x9e..\x1czM,v226758":"\xfc\xad\x98..\xc3\t?,v226763"
+10:42:51.885459 version@stat F·[3 4] S·10MiB[3MiB 7MiB] Sc·[0.75 0.07]
+10:42:51.888499 db@janitor F·9 G·0
+10:42:51.888499 db@open done T·13.371ms
+11:19:59.005655 db@close closing
+11:19:59.006161 db@close done T·506.5µs
+=============== May 29, 2022 (MSK) ===============
+11:20:05.030847 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:20:05.030847 version@stat F·[3 4] S·10MiB[3MiB 7MiB] Sc·[0.75 0.07]
+11:20:05.030847 db@open opening
+11:20:05.031354 journal@recovery F·1
+11:20:05.032874 journal@recovery recovering @85
+11:20:05.034396 memdb@flush created L0@87 N·4 S·52KiB "Sna..tor,v226769":"unc..own,v226768"
+11:20:05.036425 version@stat F·[4 4] S·10MiB[3MiB 7MiB] Sc·[1.00 0.07]
+11:20:05.039465 db@janitor F·10 G·0
+11:20:05.039465 db@open done T·8.6177ms
+11:20:05.039465 table@compaction L0·4 -> L1·4 S·10MiB Q·226772
+11:20:05.082363 table@build created L1@90 N·47056 S·2MiB "\x00\x03U..\xe9\xc1\xc1,v96439":"b\x00\x00..\xc0_\xdf,v160691"
+11:20:05.108892 table@build created L1@91 N·16717 S·2MiB "b\x00\x00..\xe3z\xf4,v61930":"h\x00\x00..\xc4\x18\x8f,v11521"
+11:20:05.140446 table@build created L1@92 N·24762 S·2MiB "h\x00\x00..\x18\x8ft,v11518":"h\x00\x00..|i\x12,v157982"
+11:20:05.173585 table@build created L1@93 N·25300 S·2MiB "h\x00\x00..i\x12t,v157979":"h\x00\x00..\xae\x92|,v209765"
+11:20:05.194042 table@build created L1@94 N·27724 S·1MiB "h\x00\x00..\x92|t,v209762":"\xff\xa4%..c\x11\xc8,v217303"
+11:20:05.194042 version@stat F·[0 5] S·9MiB[0B 9MiB] Sc·[0.00 0.10]
+11:20:05.194550 table@compaction committed F-3 S-932KiB Ke·0 D·20150 T·155.0848ms
+11:20:05.195058 table@remove removed @84
+11:20:05.195058 table@remove removed @81
+11:20:05.195058 table@remove removed @78
+11:20:05.195566 table@remove removed @74
+11:20:05.195566 table@remove removed @75
+11:20:05.196073 table@remove removed @76
+11:20:05.196073 table@remove removed @77
+11:27:03.495208 db@close closing
+11:27:03.495208 db@close done T·0s

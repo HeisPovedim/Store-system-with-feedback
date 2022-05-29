@@ -1,47 +1,50 @@
-import React, {useEffect, useState} from "react";
-import { UseContext } from "../../../../contract/context";
-import { Link } from "react-router-dom";
-import png from "../../../../img/productShop/prodcut.png";
-import "./productShop.css";
+import React, { useEffect, useState } from 'react'
+import { UseContext } from '../../../../contract/context'
+import { Link } from 'react-router-dom'
+import png from '../../../../img/productShop/prodcut.png'
+import './productShop.css'
 
 const Product = () => {
-  const { Contract } = UseContext();
-  const [arrayProduct, setArrayProduct] = useState([]);
-  const [product, setProduct] = useState(0);
-  const [price, setPrice] = useState(0);
+  // Stat'ы && Context'ы
+  const { Contract } = UseContext()
+  const [arrayProduct, setArrayProduct] = useState([])
+  const [product, setProduct] = useState(0)
+  const [price, setPrice] = useState(0)
 
-  //Переменные из localStorage
-  const address = localStorage.getItem("address");
+  // Переменные из localStorage
+  const address = localStorage.getItem("address")
 
-  //Получение списка продуктов
+  // Получение списка продуктов
   useEffect(() => {
     const ListArrayProduct = async () => {
-      let arrayProduct = await Contract.methods.get_product_list("Product").call();
-      setArrayProduct(arrayProduct);
-      setProduct(arrayProduct[0]);
+      let arrayProduct = await Contract.methods.get_product_list("Product").call()
+      setArrayProduct(arrayProduct)
+      setProduct(arrayProduct[0])
     }
-    ListArrayProduct();
+    ListArrayProduct()
   }, [Contract.methods])
+  // Получение цены продукта
   useEffect(() => {
     const GetProductPrice = async () => {
       console.log("product: " + product)
-      var structProduct = await Contract.methods.structProducts(product).call();
-      setPrice(structProduct[2]);
+      var structProduct = await Contract.methods.structProducts(product).call()
+      setPrice(structProduct[2])
       console.log("price product: " + structProduct[2])
     }
-    GetProductPrice();
+    GetProductPrice()
   },[Contract.methods, product])
 
-  //Фунция создания продукта
+  // Фунция создания продукта
   const BuyProduct = async (e) => {
     try {
-      await Contract.methods.productPurchases(product).send({from:address, value:price});
-      alert("Вы купили продукт!");
+      await Contract.methods.productPurchases(product).send({from:address, value:price})
+      alert("Вы купили продукт!")
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
   }
 
+  //HTML Code
   return(
     <>
     <div className="container-page-product">
@@ -67,7 +70,7 @@ const Product = () => {
       </div>
     </div>
     </>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

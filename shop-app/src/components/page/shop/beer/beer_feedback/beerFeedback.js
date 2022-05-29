@@ -1,19 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from "react";
-import { UseContext } from "../../../../contract/context";
+
+import React, { useEffect, useState } from 'react'
+import { UseContext } from '../../../../contract/context'
 import { Link } from 'react-router-dom'
-import "./beerFeedback.css"
+import './beerFeedback.css'
 
 const Beer = () => {
-  const { Contract } = UseContext();
-  const [listItems, setlistItems] = useState([]);
+  // Stat'ы && Context'ы
+  const { Contract } = UseContext()
+  const [listItems, setlistItems] = useState([])
   
-  //Переменные из localStorage
-  const address = localStorage.getItem('address');
-  const role = localStorage.getItem("role");
-  const login = localStorage.getItem("login");
+  // Переменные из localStorage
+  const address = localStorage.getItem('address')
+  const role = localStorage.getItem("role")
+  const login = localStorage.getItem("login")
   
-  //Функция ответа на отзыв
+  // Функция ответа на отзыв
   const AnswerFeedback = async () => {
     console.log(role)
     try {
@@ -21,21 +23,21 @@ const Beer = () => {
         if("Beer" === login) {
           const confirm = window.confirm("Вы хотите оставить отзыв?")
           if (confirm === true) {
-            const comment = prompt("Введите отзыв:", undefined);
-            const idFeedbach = prompt("Введите id отзыва:", undefined);
+            const comment = prompt("Введите отзыв:", undefined)
+            const idFeedbach = prompt("Введите id отзыва:", undefined)
             await Contract.methods.leaveComment(comment, idFeedbach).send({from: address})
-            alert("Отзыв оставлен!");
+            alert("Отзыв оставлен!")
           }
-        } else alert("Магазины не могут отвечать на чужие отзывы!");
+        } else alert("Магазины не могут отвечать не на свои отзывы!")
       } else alert("На отзывы может ответить только админ!")
     } catch (e) {
-      alert(e);
+      alert(e)
     }
   }
 
-  //Функция получения отзыва
+  // Функция получения отзыва
   const GetFeedback = async () => {
-    const listMap = await Contract.methods.get_complaintBooks_adrShop("Beer").call();
+    const listMap = await Contract.methods.get_complaintBooks_adrShop("Beer").call()
     setlistItems(listMap.map((element, id) => 
       <div key={id} className="borderList">
         <p>ID Отзывы №{id} от пользователя {element.user} </p>
@@ -49,10 +51,12 @@ const Beer = () => {
     )
   }
 
+  // Получение отзыва
   useEffect(() => {
-    GetFeedback();
+    GetFeedback()
   }, [])
 
+  // HTML Code
   return(
     <>
       <div className="container-page-beer">
@@ -74,7 +78,7 @@ const Beer = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Beer;
+export default Beer

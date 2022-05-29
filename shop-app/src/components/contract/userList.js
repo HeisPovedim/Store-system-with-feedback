@@ -1,6 +1,11 @@
 export const UserList =
 [
 	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -76,233 +81,6 @@ export const UserList =
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "addr",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "password",
-				"type": "bytes32"
-			}
-		],
-		"name": "create_user",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "adr",
-				"type": "address"
-			}
-		],
-		"name": "get_money",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "comment",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "idFeedbach",
-				"type": "uint256"
-			}
-		],
-		"name": "leaveComment",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "shop",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "feedback",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "rating",
-				"type": "uint256"
-			}
-		],
-		"name": "leaveFeedback",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
-			}
-		],
-		"name": "login_out_shop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
-			}
-		],
-		"name": "login_out_user",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "password",
-				"type": "bytes32"
-			}
-		],
-		"name": "login_shop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "password",
-				"type": "bytes32"
-			}
-		],
-		"name": "login_user",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "titleProduct",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "shopName",
-				"type": "string"
-			}
-		],
-		"name": "product_price_update",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "titleProduct",
-				"type": "string"
-			}
-		],
-		"name": "productMarriage",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "titleProduct",
-				"type": "string"
-			}
-		],
-		"name": "productPurchases",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "titleProduct",
-				"type": "string"
-			}
-		],
-		"name": "productReturn",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "shopName",
-				"type": "string"
-			}
-		],
-		"name": "rating_update",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "idPurchase",
-				"type": "uint256"
-			}
-		],
-		"name": "refusalToPurchase",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
 	},
 	{
 		"inputs": [
@@ -389,6 +167,29 @@ export const UserList =
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "addr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "password",
+				"type": "bytes32"
+			}
+		],
+		"name": "create_user",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -607,6 +408,19 @@ export const UserList =
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "adr",
+				"type": "address"
+			}
+		],
+		"name": "get_money",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "shopName",
 				"type": "string"
@@ -729,6 +543,192 @@ export const UserList =
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "comment",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "idFeedbach",
+				"type": "uint256"
+			}
+		],
+		"name": "leaveComment",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "shop",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "feedback",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "rating",
+				"type": "uint256"
+			}
+		],
+		"name": "leaveFeedback",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			}
+		],
+		"name": "login_out_shop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			}
+		],
+		"name": "login_out_user",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "password",
+				"type": "bytes32"
+			}
+		],
+		"name": "login_shop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "login",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "password",
+				"type": "bytes32"
+			}
+		],
+		"name": "login_user",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "titleProduct",
+				"type": "string"
+			}
+		],
+		"name": "productMarriage",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "titleProduct",
+				"type": "string"
+			}
+		],
+		"name": "productPurchases",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "titleProduct",
+				"type": "string"
+			}
+		],
+		"name": "productReturn",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "titleProduct",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "shopName",
+				"type": "string"
+			}
+		],
+		"name": "product_price_update",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "shopName",
+				"type": "string"
+			}
+		],
+		"name": "rating_update",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "idPurchase",
+				"type": "uint256"
+			}
+		],
+		"name": "refusalToPurchase",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
