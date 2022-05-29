@@ -23,6 +23,7 @@ const Product = () => {
     }
     ListArrayProduct()
   }, [Contract.methods])
+
   // Получение цены продукта
   useEffect(() => {
     const GetProductPrice = async () => {
@@ -34,7 +35,7 @@ const Product = () => {
     GetProductPrice()
   },[Contract.methods, product])
 
-  // Фунция создания продукта
+  // Фунция покупки продукта
   const BuyProduct = async (e) => {
     try {
       await Contract.methods.productPurchases(product).send({from:address, value:price})

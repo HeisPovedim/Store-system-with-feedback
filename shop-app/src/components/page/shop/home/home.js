@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useState } from 'react'
 import { UseContext } from '../../../contract/context'
 import { useHistory } from 'react-router-dom'
@@ -36,6 +37,7 @@ const Home = () => {
     }
     history.push("/BeerBuy")
   }
+  
   // Функция входа в магазин PRODCUT
   const SignInProductShop = async () => {
     let arrayProduct = await Contract.methods.get_product_list("Product").call()

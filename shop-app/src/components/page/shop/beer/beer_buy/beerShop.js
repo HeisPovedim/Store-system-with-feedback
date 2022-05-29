@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { UseContext } from '../../../../contract/context'
 import { Link } from 'react-router-dom'
 import png from '../../../../img/beerShop/logo_beer.png'
