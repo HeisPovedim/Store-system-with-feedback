@@ -537,3 +537,36 @@
 11:20:05.204699 table@compaction committed F-1 S-239KiB Ke·0 D·15251 T·35.303ms
 11:20:05.205207 table@remove removed @125
 11:20:05.205207 table@remove removed @126
+=============== Jun 6, 2022 (MSK) ===============
+11:37:39.394166 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:37:39.396699 version@stat F·[0 2] S·2MiB[0B 2MiB] Sc·[0.00 0.02]
+11:37:39.396699 db@open opening
+11:37:39.396699 journal@recovery F·1
+11:37:39.398219 journal@recovery recovering @128
+11:37:39.406367 memdb@flush created L0@132 N·2373 S·82KiB "loc..seq,v741054":"n:\xfe..ong,v742354"
+11:37:39.408393 version@stat F·[1 2] S·2MiB[82KiB 2MiB] Sc·[0.25 0.02]
+11:37:39.413541 db@janitor F·6 G·1
+11:37:39.413541 db@janitor removing table-127
+11:37:39.413541 db@open done T·16.8419ms
+11:37:39.445073 table@compaction L0·1 -> L1·2 S·2MiB Q·743426
+11:37:39.475030 table@build created L1@135 N·48014 S·2MiB "loc..seq,v741054":"n:\xde..ail,v483611"
+11:37:39.481112 table@build created L1@136 N·6644 S·287KiB "n:\xde..ail,v483614":"version,v1"
+11:37:39.481112 version@stat F·[0 2] S·2MiB[0B 2MiB] Sc·[0.00 0.02]
+11:37:39.482137 table@compaction committed F-1 S-26KiB Ke·0 D·761 T·37.0642ms
+11:37:39.482137 table@remove removed @130
+11:37:39.482690 table@remove removed @131
+12:29:39.473759 memdb@flush N·38783 S·3MiB
+12:29:39.488381 memdb@flush created L0@138 N·38783 S·860KiB "loc..seq,v743428":"n:\xff..ail,v751545"
+12:29:39.488381 version@stat F·[1 2] S·3MiB[860KiB 2MiB] Sc·[0.25 0.02]
+12:29:39.489394 memdb@flush committed F·1 T·15.6356ms
+12:29:39.489901 journal@remove removed @133
+12:29:58.350853 table@compaction L0·1 -> L1·2 S·3MiB Q·782290
+12:29:58.381936 table@build created L1@139 N·49716 S·2MiB "loc..seq,v743428":"n:\xbd..ail,v631886"
+12:29:58.395331 table@build created L1@140 N·16192 S·681KiB "n:\xbd..ail,v631885":"version,v1"
+12:29:58.395331 version@stat F·[0 2] S·2MiB[0B 2MiB] Sc·[0.00 0.03]
+12:29:58.395863 table@compaction committed F-1 S-464KiB Ke·0 D·27533 T·45.0098ms
+12:29:58.395863 table@remove removed @138
+12:29:58.396371 table@remove removed @135
+12:29:58.396371 table@remove removed @136
+14:23:47.114108 db@close closing
+14:23:47.115627 db@close done T·1.5197ms

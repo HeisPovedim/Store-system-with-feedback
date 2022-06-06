@@ -170,7 +170,7 @@ const Seller = () => {
           <div className="container-page-seller__personal-information_text-base">Рейтинг магазина: {rating}</div>
         </div>
         <div className="container-page-seller__function-menu">
-          <div className="container-page-seller__function-menu_text-top">Функции продовца</div>
+          <div className="container-page-seller__function-menu_text-top">Функции магазина:</div>
           <button onClick={ СreatProduct } className="container-page-seller__function-menu_button-one">Создание товара</button>
           <button onClick={ Сonfirmation } className="container-page-seller__function-menu_button-two">Подтверждение или отклонение запроса покупателя на покупку</button>
           <button onClick={ Return } className="container-page-seller__function-menu_button-three">Подтверждение или отклонение запроса покупателя на возврат товара</button>
